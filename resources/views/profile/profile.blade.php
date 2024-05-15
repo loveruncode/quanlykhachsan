@@ -3,10 +3,5 @@
 
 
 @section('content')
- day la profile
- nhat my lam profile
-
-
-
- madslam;dmasl;dmsa
+ toi da xoa het roi 
 @endsection
