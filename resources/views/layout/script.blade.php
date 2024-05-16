@@ -1,5 +1,5 @@
 <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
-<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="{{asset('vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 
 <!-- Core plugin JavaScript-->
 <script src="{{ asset('vendor/jquery-easing/jquery.easing.min.js') }}"></script>
@@ -15,12 +15,11 @@
 <script src="{{ asset('js/demo/chart-pie-demo.js') }}"></script>
 <script src="{{ asset('js/setup.js') }}"></script>
 <script src="{{ asset('js/jquery-3.6.4.min.js') }}"></script>
-<script src="{{asset('js/sweetalert2@11.js')}}"></script>
-
+<script src="{{ asset('js/sweetalert2@11.js') }}"></script>
 
 
 <script>
-    @if(session('success'))
+    @if (session('success'))
         Swal.fire({
             icon: 'success',
             title: 'Thành công!',
@@ -30,7 +29,7 @@
 </script>
 
 <script>
-       @if(session('error'))
+    @if (session('error'))
         Swal.fire({
             icon: 'error',
             title: 'Thất Bại!',

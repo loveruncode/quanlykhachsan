@@ -36,9 +36,9 @@
         </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Custom Components:</h6>
-                <a class="collapse-item" href="buttons.html">Buttons</a>
-                <a class="collapse-item" href="cards.html">Cards</a>
+                <h6 class="collapse-header">Danh Sách Các Phòng:</h6>
+                <a class="collapse-item" href="{{route('room.index')}}">Phòng Hạng Thường</a>
+                <a class="collapse-item" href="#">Phòng Hạng Sang</a>
             </div>
         </div>
     </li>
@@ -61,6 +61,19 @@
             </div>
         </div>
     </li>
+    <li class="nav-item">
+        <a href="#" class="nav-link collapsed" data-toggle="collapse" data-target="#collapseNotify" aria-expanded="true" aria-controls="collapseNotify">
+            <i class="fas fa-fw fa-bell"></i>
+            <span>Notification</span>
+        </a>
+        <div id="collapseNotify" class="collapse" aria-labelledby="headingNotify"
+            data-parent="#accordionSidebar">
+            <div class="bg-white  py-2  collapse-inner rounded">
+                <a class="collapse-item" href="{{route('notify.index')}}">Danh Sách Thông Báo</a>
+                <a class="collapse-item" href="{{route('notify.create')}}">Thêm Thông Báo</a>
+            </div>
+        </div>
+    </li>
 
     <!-- Divider -->
     <hr class="sidebar-divider">
@@ -80,7 +93,7 @@
         <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Login Screens:</h6>
-                <a class="collapse-item load" href="{{ url('/login') }}">Login</a>
+                <a class="collapse-item load" href="{{ route('login') }}">Login</a>
                 <a class="collapse-item" href="register.html">Register</a>
                 <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
                 <div class="collapse-divider"></div>
@@ -115,7 +128,7 @@
 
     <!-- Sidebar Message -->
     <div class="sidebar-card d-none d-lg-flex">
-        <img class="sidebar-card-illustration mb-2" src="img/undraw_rocket.svg" alt="...">
+        <img class="sidebar-card-illustration mb-2" src="{{asset('img/undraw_rocket.svg')}}" alt="...">
         <p class="text-center mb-2"><strong>SB Admin Pro</strong> is packed with premium features, components, and
             more!</p>
         <a class="btn btn-success btn-sm" href="https://startbootstrap.com/theme/sb-admin-pro">Upgrade to Pro!</a>

@@ -1,12 +1,13 @@
 <?php
 
+use App\Http\Controllers\RoomController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
+require __DIR__.'/api/v1.php';
 
 
-
-Route::get('/login', [UserController::class, 'login'])->name('login');
-Route::post('/login', [UserController::class, 'checklogin'])->name('checklogin');
+Route::get('/', [UserController::class, 'login'])->name('login');
+Route::post('/dangnhap', [UserController::class, 'checklogin'])->name('checklogin');
 
 
 
@@ -16,10 +17,24 @@ Route::post('/login', [UserController::class, 'checklogin'])->name('checklogin')
 
     Route::get('/profile', function () {
         return view('profile.profile');
-    })->middleware('checklogin');
-    Route::get('/logout', [UserController::class, 'logout'])->name('logout')->middleware('checklogin');
+    })->middleware('checklogin')->name('profile');
+    Route::get('/logout', [UserController::class, 'logout'])->name('logout');
 
 
 
+Route::prefix('/room')->as('room.')->group(function(){
+    Route::controller(App\Http\Controllers\RoomController::class)->group(function(){
+        Route::get('/', 'index')->name('index');
+    });
+})->middleware('checklogin');
+
+//// Notify
+Route::prefix('/notify')->as('notify.')->group(function(){
+    Route::controller(App\Http\Controllers\NotificationController::class)->group(function(){
+        Route::get('/', 'index')->name('index');
+        Route::get('/them', 'create')->name('create');
+        Route::post('/them', 'store')->name('store');
+    });
+});
 Route::get('/register', [UserController::class, 'register'])->name('register');
 
