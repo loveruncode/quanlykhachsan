@@ -18,7 +18,7 @@ class UserController extends Controller
 
     public function index()
     {
-        $users = User::all();
+        $users = User::all(['id','name']);
         return response()->json([
             'message' => 'Danh sách người dùng đã được trả về thành công.',
             'data' => $users
@@ -54,8 +54,6 @@ class UserController extends Controller
     {
 
         Auth::logout();
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
-        return redirect('login');
+        return view('login');
     }
 }
