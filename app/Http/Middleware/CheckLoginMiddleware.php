@@ -6,6 +6,7 @@ use Log;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use PDO;
 use Symfony\Component\HttpFoundation\Response;
 
 class CheckLoginMiddleware
@@ -17,8 +18,10 @@ class CheckLoginMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
+        if(!Auth::check()){
 
-      
+            return redirect()->route('login')->with('error', 'Vui lòng hãy đăng nhập trước');
+        }
         return $next($request);
     }
 }

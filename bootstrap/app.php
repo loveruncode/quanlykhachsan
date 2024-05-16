@@ -4,6 +4,7 @@ use App\Http\Middleware\CheckLoginMiddleware;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
+use League\Flysystem\ChecksumProvider;
 
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
@@ -12,7 +13,9 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
-        $middleware->append(CheckLoginMiddleware::class);
+         $middleware->alias([
+            'checklogin' => \App\Http\Middleware\CheckLoginMiddleware::class,
+         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //

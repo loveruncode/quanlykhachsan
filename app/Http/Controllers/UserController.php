@@ -4,10 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Flasher\Prime\Notification\Type;
 use Illuminate\Support\Facades\Auth;
+use Flasher\Toastr\Laravel\Facade\Toastr;
+use Illuminate\Routing\Controllers\HasMiddleware;
+
 
 class UserController extends Controller
 {
+
+
 
 
     public function index()
@@ -19,33 +25,37 @@ class UserController extends Controller
         ], 200);
     }
 
-    public function login(){
+    public function login()
+    {
 
         return view('login');
     }
 
-    public function regester(){
+    public function regester()
+    {
 
         return view('register');
     }
 
-    public function checklogin(Request $request){
+    public function checklogin(Request $request)
+    {
         $credentials = $request->only('email', 'password');
 
         if (Auth::attempt($credentials)) {
-
-            return view('dashboard.dashboard');
+            return redirect()->route('dashboard')->with('success', 'Đăng nhập thành công!');
         } else {
 
             return redirect()->back()->withErrors(['message' => 'Invalid login credentials']);
         }
-
     }
 
 
-    public function logout(Request $request){
+    public function logout(Request $request)
+    {
 
         Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
         return redirect('login');
     }
 }
