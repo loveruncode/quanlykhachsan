@@ -45,7 +45,7 @@ class UserController extends Controller
             return redirect()->route('dashboard')->with('success', 'Đăng nhập thành công!');
         } else {
 
-            return redirect()->back()->withErrors(['message' => 'Invalid login credentials']);
+            return redirect()->back()->with('error','Sai Tài Khoản hoặc mật khẩu'); 
         }
     }
 

@@ -9,12 +9,13 @@
     <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
         aria-labelledby="alertsDropdown">
         <h6 class="dropdown-header">
-            Alerts Center
+           Thông Báo
         </h6>
         <a class="dropdown-item d-flex align-items-center" href="#">
             <div class="mr-3">
-                <div class="icon-circle bg-primary">
-                    <i class="fas fa-file-alt text-white"></i>
+                <div class="icon-circle bg-success ">
+                    {{-- <i class="fas fa-file-alt text-white"></i> --}}
+                    <i class="fas fa-donate text-white"></i>
                 </div>
             </div>
             <div>
@@ -35,8 +36,9 @@
         </a>
         <a class="dropdown-item d-flex align-items-center" href="#">
             <div class="mr-3">
-                <div class="icon-circle bg-warning">
-                    <i class="fas fa-exclamation-triangle text-white"></i>
+                <div class="icon-circle bg-success ">
+                    {{-- <i class="fas fa-exclamation-triangle text-white"></i> --}}
+                    <i class="fas fa-donate text-white"></i>
                 </div>
             </div>
             <div>
