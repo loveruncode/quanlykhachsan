@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\NotificationRequest;
 use App\Services\Notify\NotificationServiceInterface;
 use App\Repository\Notification\NotificationRepositoryInterface;
-
+use Psy\CodeCleaner\ReturnTypePass;
 
 class NotificationController extends Controller
 {
@@ -32,10 +32,12 @@ class NotificationController extends Controller
     }
 
 
-    public function index()
+    public function index(Request $request)
     {
-            $data = $this->repository->show();
+
+          $data = $this->repository->show();
          return view('notification.index', compact('data'));
+
     }
 
 
@@ -101,10 +103,13 @@ class NotificationController extends Controller
         return back()->with('success', 'Xoá Thông báo thành công');
     }
 
+
     public function search(Request $request){
 
-
-      
+        $query = $request->searchData;
+        $data = $this->repository->search($query);
+        return view('notification.index', compact('data'));
 
     }
+
 }

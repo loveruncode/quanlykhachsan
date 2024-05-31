@@ -67,29 +67,6 @@
     });
 
 
-    $(document).ready(function(){
-        $('#basic-addon2').on('click', function(){
-          let  urlHome = jQuery('meta[name="url-home"]').attr('content')
-          let searchData = $('#searchNotify').val();
-
-          $.ajax({
-            type: 'POST',
-            url: urlHome + '/notify/search',
-            data: { searchData: searchData },
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            },
-            success: function(response) {
-                console.log('Search results received:', searchData);
-            },
-            error: function(xhr, status, error) {
-                console.error('Error sending search request:', error);
-            }
-        });
-
-
-        })
-    })
 
 
 </script>

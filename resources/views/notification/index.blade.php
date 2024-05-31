@@ -6,34 +6,36 @@
             <div class="card-header">Manage Notification</div>
             <div class="card-body">
                 <div class="table-responsive">
-
-                    <table class="table table-bordered table-striped ">
+                    <table class="table table-bordered table-striped  ">
+                        <form method="get" action="{{route('notify.search')}}">
+                            @csrf
                         <div class="input-group mb-3">
-                            <input id="searchNotify" type="text" class="form-control" placeholder="Search..."
+                            <input name="searchData" id="searchNotify" type="text" class="form-control" placeholder="Search..."
                                  aria-describedby="basic-addon2">
                             <div class="input-group-append">
                                 <button class="input-group-text btn btn-primary" id="basic-addon2">Search</button>
                             </div>
-                         
+
                         </div>
+                    </form>
                         <thead>
                             <tr>
-                                <th>ID</th>
-                                <th>Title</th>
-                                <th>Description</th>
-                                <th>Status</th>
-                                <th>Created At</th>
-                                <th>Action</th>
+                                <th scope="col">ID</th>
+                                <th scope="col">Title</th>
+                                <th scope="col">Description</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Created At</th>
+                                <th scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($data as $key => $notification)
-                                <tr>
+                                <tr scope="row">
                                     <td>{{ $key++ }}</td>
                                     <td>{{ $notification->title }}</td>
                                     <td>{{ $notification->desc }}</td>
                                     <td>{{ $notification->status }}</td>
-                                    <td>{{ $notification->created_at }}</td>
+                                    <td>{{ $notification->created_at->format('d-m-Y') }}</td>
                                     <td>
                                         <button class="btn btn-danger delete-button"
                                             data-url="{{ route('notify.delete', ['id' => $notification->id]) }}">

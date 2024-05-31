@@ -35,7 +35,6 @@ class NotificationRepository extends EloquentRepository implements NotificationR
 
     public function search($query){
 
-
         return $this->model->where('title', 'like', '%' . $query . '%')
         ->orWhere('desc', 'like', '%' . $query . '%')
         ->orderBy('created_at', 'desc')
