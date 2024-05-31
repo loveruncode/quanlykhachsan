@@ -13,8 +13,6 @@ class UserController extends Controller
 {
 
 
-
-
     public function index()
     {
         $users = User::all(['id','name']);
@@ -35,17 +33,31 @@ class UserController extends Controller
         return view('register');
     }
 
+
+
+
     public function checklogin(Request $request)
     {
         $credentials = $request->only('email', 'password');
-
         if (Auth::attempt($credentials)) {
-            return redirect()->route('dashboard')->with('success', 'Đăng nhập thành công!');
-        } else {
 
-            return redirect()->back()->with('error','Sai Tài Khoản hoặc mật khẩu');
+            $user = Auth::user();
+            if ($user->roles == 1) {
+                return redirect()->route('dashboard')->with('success', 'Đăng nhập thành công!');
+            } elseif ($user->roles == 2) {
+               return view('public.home');
+            } else {
+                Auth::logout();
+                return redirect()->back()->with('error', 'Vai trò không hợp lệ');
+            }
+        } else {
+            return redirect()->back()->with('error', 'Sai tài khoản hoặc mật khẩu');
         }
     }
+
+
+
+
 
 
     public function logout(Request $request)

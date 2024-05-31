@@ -18,10 +18,10 @@ class CheckLoginMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(!Auth::check()){
-
-            return redirect()->route('login')->with('error', 'Vui lòng hãy đăng nhập trước');
+        if(Auth::check()){
+            return $next($request);
         }
-        return $next($request);
+        return redirect()->route('login')->with('error', 'Vui lòng hãy đăng nhập trước');
+
     }
 }

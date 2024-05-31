@@ -39,12 +39,22 @@ return new class extends Migration
             $table->integer('last_activity')->index();
         });
         DB::table('users')->insert([
-            'name' => 'Admin',
-            'email' => 'admin@gmail.com',
-            'avatar' => config('custom.images.avatarUser'),
-            'password' => bcrypt('123456'),
-            'roles' => 1
+            [
+                'name' => 'Admin',
+                'email' => 'admin@gmail.com',
+                'avatar' => config('custom.images.avatarUser'),
+                'password' => bcrypt('123456'),
+                'roles' => 1
+            ],
+            [
+                'name' => 'User',
+                'email' => 'user@gmail.com',
+                'avatar' => config('custom.images.avatarUser'), 
+                'password' => bcrypt('123456'),
+                'roles' => 2
+            ]
         ]);
+
     }
 
     /**
