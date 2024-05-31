@@ -15,11 +15,12 @@ class UserController extends Controller
 
     public function index()
     {
-        $users = User::all(['id','name']);
-        return response()->json([
-            'message' => 'Danh sách người dùng đã được trả về thành công.',
-            'data' => $users
-        ], 200);
+
+    }
+
+    public function create(){
+
+        return view('user.create');
     }
 
     public function login()
@@ -66,4 +67,10 @@ class UserController extends Controller
         Auth::logout();
         return view('login');
     }
+
+
+
+
+
+
 }

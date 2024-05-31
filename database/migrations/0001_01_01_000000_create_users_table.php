@@ -1,5 +1,6 @@
 <?php
 
+use App\Enum\Gender;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
@@ -17,6 +18,8 @@ return new class extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
+            $table->string('phone')->nullable();
+            $table->tinyInteger('gender')->nullable();
             $table->string('password');
             $table->text('avatar')->nullable();
             $table->tinyInteger('roles')->nullable();
@@ -43,13 +46,15 @@ return new class extends Migration
                 'name' => 'Admin',
                 'email' => 'admin@gmail.com',
                 'avatar' => config('custom.images.avatarUser'),
+                'phone' => '0812333222',
                 'password' => bcrypt('123456'),
                 'roles' => 1
             ],
             [
                 'name' => 'User',
                 'email' => 'user@gmail.com',
-                'avatar' => config('custom.images.avatarUser'), 
+                'avatar' => config('custom.images.avatarUser'),
+                'phone' => '0812333222',
                 'password' => bcrypt('123456'),
                 'roles' => 2
             ]

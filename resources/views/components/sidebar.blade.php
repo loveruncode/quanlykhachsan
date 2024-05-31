@@ -1,8 +1,7 @@
-
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center load" href="{{url('/dashboard')}}">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center load" href="{{ url('/dashboard') }}">
         <div class="sidebar-brand-icon rotate-n-15">
             <i class="fas fa-laugh-wink"></i>
         </div>
@@ -14,7 +13,7 @@
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item active">
-        <a class="nav-link load" href="{{url('/dashboard')}}">
+        <a class="nav-link load" href="{{ url('/dashboard') }}">
             <i class="fas fa-fw fa-tachometer-alt"> </i>
             <span>Dashboard</span></a>
     </li>
@@ -37,7 +36,7 @@
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Danh Sách Các Phòng:</h6>
-                <a class="collapse-item" href="{{route('room.index')}}">Phòng Hạng Thường</a>
+                <a class="collapse-item" href="{{ route('room.index') }}">Phòng Hạng Thường</a>
                 <a class="collapse-item" href="#">Phòng Hạng Sang</a>
             </div>
         </div>
@@ -50,8 +49,7 @@
             <i class="fas fa-fw fa-wrench"></i>
             <span>Utilities</span>
         </a>
-        <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
-            data-parent="#accordionSidebar">
+        <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Custom Utilities:</h6>
                 <a class="collapse-item" href="utilities-color.html">Colors</a>
@@ -62,15 +60,30 @@
         </div>
     </li>
     <li class="nav-item">
-        <a href="#" class="nav-link collapsed" data-toggle="collapse" data-target="#collapseNotify" aria-expanded="true" aria-controls="collapseNotify">
+        <a href="#" class="nav-link collapsed" data-toggle="collapse" data-target="#collapseNotify"
+            aria-expanded="true" aria-controls="collapseNotify">
             <i class="fas fa-fw fa-bell"></i>
             <span>Notification</span>
         </a>
-        <div id="collapseNotify" class="collapse" aria-labelledby="headingNotify"
-            data-parent="#accordionSidebar">
+        <div id="collapseNotify" class="collapse" aria-labelledby="headingNotify" data-parent="#accordionSidebar">
             <div class="bg-white  py-2  collapse-inner rounded">
-                <a class="collapse-item" href="{{route('notify.index')}}">Danh Sách Thông Báo</a>
-                <a class="collapse-item" href="{{route('notify.create')}}">Thêm Thông Báo</a>
+                <a class="collapse-item" href="{{ route('notify.index') }}">Danh Sách Thông Báo</a>
+                <a class="collapse-item" href="{{ route('notify.create') }}">Thêm Thông Báo</a>
+            </div>
+        </div>
+    </li>
+
+    <!--Users -->
+    <li class="nav-item">
+        <a href="#" class="nav-link collapsed" data-toggle="collapse" data-target="#collapseUser"
+            aria-expanded="true" aria-controls="collapseUser">
+            <i class="fas fa-fw fa-users"></i>
+            <span>Member</span>
+        </a>
+        <div id="collapseUser" class="collapse" aria-labelledby="headingNotify" data-parent="#accordionSidebar">
+            <div class="bg-white  py-2  collapse-inner rounded">
+                <a class="collapse-item" href="#">Danh Sách Thành Viên</a>
+                <a class="collapse-item" href="{{route('user.create')}}">Thêm Thành Viên</a>
             </div>
         </div>
     </li>
@@ -117,7 +130,6 @@
             <i class="fas fa-fw fa-table"></i>
             <span>Tables</span></a>
     </li>
-
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">
 
