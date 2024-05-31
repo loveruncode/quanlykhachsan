@@ -8,6 +8,7 @@
         "php": "^8.2",
         "laravel/framework": "^11.0",
         "laravel/tinker": "^2.9",
+        "yajra/laravel-datatables": "^11.0",
         "yoeunes/toastr": "^3.0"
     },
     "require-dev": {
@@ -23,7 +24,9 @@
         "psr-4": {
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
-            "Database\\Seeders\\": "database/seeders/"
+            "Database\\Seeders\\": "database/seeders/",
+            "App\\Helpers\\": "app/Helpers/"
+
         }
     },
     "autoload-dev": {

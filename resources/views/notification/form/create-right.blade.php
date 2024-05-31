@@ -16,8 +16,9 @@
         </div>
         <div class="card-body p-2">
             <select name="status"  class="form-control ">
-               <option value="1">Đã Gửi</option>
-               <option value="2">Chưa Gửi</option>
+                @foreach ($status as $key => $value)
+                <option value="{{$key}}">{{$value}}</option>
+                @endforeach
             </select>
         </div>
     </div>
@@ -27,7 +28,7 @@
             {{ __('Đại Lý&Seller') }}
         </div>
         <div  class="card-body p-3" style="max-height: 200px;">
-            <select  name="user_ids[]"  class="form-control" id="userSelect">
+            <select  name="user_id[]"  class="form-control" id="userSelect">
             </select>
 
         </div>

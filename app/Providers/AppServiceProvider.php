@@ -2,16 +2,20 @@
 
 namespace App\Providers;
 
+
+use Yajra\DataTables\Html\Builder;
 use Illuminate\Support\ServiceProvider;
 
-class AppServiceProvider extends ServiceProvider
-{
-    /**
-     * Register any application services.
-     */
+class AppServiceProvider extends ServiceProvider{
+
+    protected $service = [
+         'App\Services\Notify\NotificationServiceInterface' => 'App\Services\Notify\NotificationService'
+    ];
     public function register(): void
     {
-        //
+        foreach ($this->service as $interface => $implement) {
+            $this->app->singleton($interface, $implement);
+        }
     }
 
     /**
@@ -19,6 +23,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        Builder::useVite();
     }
+
 }
