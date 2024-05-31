@@ -6,8 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Flasher\Prime\Notification\Type;
 use Illuminate\Support\Facades\Auth;
-use Flasher\Toastr\Laravel\Facade\Toastr;
-use Illuminate\Routing\Controllers\HasMiddleware;
+
 
 
 class UserController extends Controller
@@ -27,11 +26,10 @@ class UserController extends Controller
 
     public function login()
     {
-
         return view('login');
     }
 
-    public function regester()
+    public function register()
     {
 
         return view('register');
@@ -45,7 +43,7 @@ class UserController extends Controller
             return redirect()->route('dashboard')->with('success', 'Đăng nhập thành công!');
         } else {
 
-            return redirect()->back()->with('error','Sai Tài Khoản hoặc mật khẩu'); 
+            return redirect()->back()->with('error','Sai Tài Khoản hoặc mật khẩu');
         }
     }
 
