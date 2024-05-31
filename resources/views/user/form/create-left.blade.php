@@ -47,7 +47,7 @@
                             <label class="control-label col-form-label p-0">@lang('Giới Tính'):</label>
                         </div>
                         <div class="card-body p-2">
-                            <select class="form-select" name="gender">
+                            <select name="status" class="form-control ">
                                 <option value="male">@lang('Nam')</option>
                                 <option value="female">@lang('Nữ')</option>
                                 <option value="other">@lang('Khác')</option>
@@ -62,7 +62,7 @@
                             <label class="control-label col-form-label p-0">@lang('Vai Trò'):</label>
                         </div>
                         <div class="card-body p-2">
-                            <select class="form-select" name="roles">
+                            <select name="status" class="form-control ">
                                 <option value="admin">Admin</option>
                                 <option value="user">Người dùng</option>
                             </select>
