@@ -10,7 +10,7 @@
         </div>
         <div class="card-body p-2">
             <div class="d-flex align-items-center h-100 gap-2">
-                <button type="submit" class="btn btn-primary ">Thêm</button>
+                <a href="{{route('user.index')}}" class="btn btn-primary ">Danh sách</a>
             </div>
         </div>
     </div>

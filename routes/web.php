@@ -42,6 +42,7 @@ Route::prefix('/notify')->as('notify.')->group(function(){
 
 Route::prefix('/users')->as('user.')->group(function(){
     Route::controller(App\Http\Controllers\UserController::class)->group(function(){
+        Route::get('/', 'index')->name('index');
         Route::get('/them', 'create')->name('create');
     });
 });
