@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Yajra\DataTables\Html\Builder;
 use Illuminate\Support\ServiceProvider;
 
 class AppRepositoryProvider extends ServiceProvider
@@ -26,6 +27,6 @@ class AppRepositoryProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        Builder::useVite();
     }
 }

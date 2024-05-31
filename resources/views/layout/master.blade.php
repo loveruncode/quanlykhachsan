@@ -32,7 +32,7 @@
                         <img src="{{asset('img/loading.svg')}}" alt="Loading...">
                     </div>
                     @yield('content')
-
+         
                 </div>
             </div>
         </div>
@@ -40,5 +40,5 @@
 </body>
 @include('layout.footer')
 @include('components.modal')
-@include('layout.script');
+@include('layout.script')
 </html>

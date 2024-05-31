@@ -2,11 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Datatables\NotifyDatatable;
 use App\Enum\NotifyStatus;
+use App\Models\Notification;
 use Illuminate\Http\Request;
+use Yajra\DataTables\DataTables;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\NotificationRequest;
+use App\Services\Notify\NotificationServiceInterface;
 use App\Repository\Notification\NotificationRepositoryInterface;
+
 
 class NotificationController extends Controller
 {
@@ -15,17 +21,23 @@ class NotificationController extends Controller
      */
 
     protected $repository;
+    protected $service;
+    public function __construct(
+        NotificationRepositoryInterface $repository,
+        NotificationServiceInterface $service
 
-    public function __construct(NotificationRepositoryInterface $repository)
-    {
+    ) {
         $this->repository = $repository;
+        $this->service = $service;
     }
 
 
     public function index()
     {
-        return view('notification.index');
+            $data = $this->repository->show();
+         return view('notification.index', compact('data'));
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -41,8 +53,15 @@ class NotificationController extends Controller
      */
     public function store(NotificationRequest $request)
     {
-        $data = $request->validated();
-        
+        $validatedData = $request->validated();
+
+        $kq = $this->repository->create($validatedData);
+
+        if (!$kq) {
+
+            return back()->with('error', 'Thêm thông Báo Thất Bại');
+        }
+        return back()->with('success', 'Thêm thông báo thành công !');
     }
 
     /**
@@ -58,7 +77,7 @@ class NotificationController extends Controller
      */
     public function edit(string $id)
     {
-        //
+
     }
 
     /**
@@ -72,8 +91,20 @@ class NotificationController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function delete(string $id)
     {
-        //
+        $result = $this->repository->delete($id);
+        if(!$result){
+
+             return back()->with('error', 'Xoá Thông Báo Thất Bại');
+        }
+        return back()->with('success', 'Xoá Thông báo thành công');
+    }
+
+    public function search(Request $request){
+
+
+      
+
     }
 }

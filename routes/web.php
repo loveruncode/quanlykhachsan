@@ -34,6 +34,8 @@ Route::prefix('/notify')->as('notify.')->group(function(){
         Route::get('/', 'index')->name('index');
         Route::get('/them', 'create')->name('create');
         Route::post('/them', 'store')->name('store');
+        Route::delete('/xoa/{id}', 'delete')->name('delete');
+        Route::post('/search', 'search')->name('search');
     });
 });
 Route::get('/register', [UserController::class, 'register'])->name('register');

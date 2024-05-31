@@ -11,10 +11,11 @@ class Notification extends Model
     protected $table = 'notifications';
     protected $guarded = [];
 
+    
     public function users()
     {
         return $this->belongsToMany(User::class);
     }
 
-  
+
 }

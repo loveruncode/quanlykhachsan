@@ -12,8 +12,8 @@ class NotificationRequest extends BaseRequest
             'title' => ['required', 'string'],
             'desc' => ['required', 'string'],
             'status' => ['required'],
-            'user_id' => ['required', 'array'],
-            'user_id.*' => ['required', 'exists:users,id'],
+            // 'user_id' => ['required', 'array'],
+            // 'user_id.*' => ['required', 'exists:users,id'],
         ];
     }
 
@@ -23,8 +23,8 @@ class NotificationRequest extends BaseRequest
             'title' => ['string'],
             'desc' => ['string'],
             'status' => ['required'],
-            'user_id' => ['nullable', 'array'],
-            'user_id.*' => ['nullable', 'exists:users,id'],
+            // 'user_id' => ['nullable', 'array'],
+            // 'user_id.*' => ['nullable', 'exists:users,id'],
         ];
     }
 
