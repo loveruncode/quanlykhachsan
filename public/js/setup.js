@@ -7,16 +7,6 @@ columns;
 
 
 
-//  animation loading
-$(document).ready(function(){
-    $(".load").click(function(){
-        $("#loading-overlay").fadeIn();
-        setTimeout(function(){
-            $("#loading-overlay").fadeOut();
-        }, 1000);
-    });
-});
-
 $(document).ready(function () {
         $.ajax({
             url: urlHome + '/userName',

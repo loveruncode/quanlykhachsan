@@ -6,7 +6,7 @@
         </div>
         <div class="card-body p-2">
             <div class="d-flex align-items-center h-100 gap-2">
-                <button type="submit" class="btn btn-primary ">Gửi</button>
+                <button id="test1" type="submit" class="btn btn-primary ">Gửi</button>
             </div>
         </div>
     </div>

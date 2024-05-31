@@ -54,20 +54,15 @@
             }).then((result) => {
                 if (result.isConfirmed) {
                     $('<form>', {
-                        'method': 'POST',
-                        'action': url
-                    })
-                    .append('@csrf')
-                    .append('@method("DELETE")')
-                    .appendTo('body')
-                    .submit();
+                            'method': 'POST',
+                            'action': url
+                        })
+                        .append('@csrf')
+                        .append('@method('DELETE')')
+                        .appendTo('body')
+                        .submit();
                 }
             });
         });
     });
-
-
-
-
-
 </script>

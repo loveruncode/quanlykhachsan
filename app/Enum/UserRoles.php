@@ -21,4 +21,15 @@ enum UserRoles :int
     }
 
 
+
+    public static function translate(int $status): string
+    {
+        return match ($status) {
+            UserRoles::Admin->value => __('Quản Trị Viên'),
+            UserRoles::Member->value => __('Khách Hàng'),
+            default => __('Unknown'),
+        };
+    }
+
+
 }

@@ -13,7 +13,17 @@ enum Gender :int
     case Male = 1;
     case Female = 2;
 
-   
+
+
+
+    public static function translate(int $status): string
+    {
+        return match ($status) {
+            Gender::Male->value => __('Nam'),
+            Gender::Female->value => __('Nữ'),
+            default => __('Unknown'),
+        };
+    }
 
 
 }

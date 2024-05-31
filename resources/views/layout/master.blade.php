@@ -19,7 +19,7 @@
             <div id="content">
 
                 <!-- Topbar -->
-               @include('components.navbar')
+                @include('components.navbar')
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
@@ -29,16 +29,17 @@
 
                     <!-- Content Row -->
                     <div id="loading-overlay">
-                        <img src="{{asset('img/loading.svg')}}" alt="Loading...">
+                        <img src="{{ asset('img/loading.svg') }}" alt="Loading...">
                     </div>
                     @yield('content')
-         
+
                 </div>
             </div>
         </div>
     </div>
+    @include('layout.script')
 </body>
 @include('layout.footer')
 @include('components.modal')
-@include('layout.script')
+
 </html>
