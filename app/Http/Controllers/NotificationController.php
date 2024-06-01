@@ -80,14 +80,23 @@ class NotificationController extends Controller
     public function edit(string $id)
     {
 
+        $data = $this->repository->find($id);
+        $status = NotifyStatus::asSelectArray();
+        return view('notification.edit', compact('data','status', 'id'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(NotificationRequest $request, string $id)
     {
-        //
+        $validate = $request->validated();
+        $data = $this->repository->update($id, $validate);
+         if(!$data){
+            return back()->with('error', 'Cập Nhật Thông Báo Thất Bại!');
+         }
+         return redirect()->route('notify.index')->with('success', 'Cập Nhật Thông Báo Thành Công!');
+
     }
 
     /**

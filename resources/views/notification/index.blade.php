@@ -49,7 +49,7 @@
                                 @foreach ($data as $key => $notification)
                                     <tr>
                                         <td>{{ $key++ }}</td>
-                                        <td>{{ $notification->title }}</td>
+                                        <td> <a href="{{route('notify.edit', ['id' => $notification->id])}}">{{ $notification->title }}</a></td>
                                         <td>{{ $notification->desc }}</td>
                                         <td>{{ \App\Enum\NotifyStatus::translate($notification->status) }}</td>
                                         <td>{{ $notification->created_at->format('d-m-Y') }}</td>
