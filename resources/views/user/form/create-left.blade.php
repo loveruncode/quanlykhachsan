@@ -41,13 +41,13 @@
         <div class="col-12 mt-2">
             <div class="row">
                 <!-- Gender -->
-                <div class="col-md-6">
+                <div class="col-12 col-md-6">
                     <div class="card">
                         <div class="card-header d-flex align-items-center justify-content-between">
                             <label class="control-label col-form-label p-0">@lang('Giới Tính'):</label>
                         </div>
-                        <div class="card-body p-2">
-                            <select name="status" class="form-control ">
+                        <div class="card-body p-2 mt-2">
+                            <select name="gender" class="form-control">
                                 <option value="male">@lang('Nam')</option>
                                 <option value="female">@lang('Nữ')</option>
                                 <option value="other">@lang('Khác')</option>
@@ -56,13 +56,13 @@
                     </div>
                 </div>
                 <!-- Roles -->
-                <div class="col-md-6">
+                <div class="col-12 col-md-6">
                     <div class="card">
                         <div class="card-header d-flex align-items-center justify-content-between">
                             <label class="control-label col-form-label p-0">@lang('Vai Trò'):</label>
                         </div>
-                        <div class="card-body p-2">
-                            <select name="status" class="form-control ">
+                        <div class="card-body p-2 mt-2">
+                            <select name="role" class="form-control">
                                 <option value="admin">Admin</option>
                                 <option value="user">Người dùng</option>
                             </select>
@@ -75,25 +75,41 @@
         <div class="col-12 mt-2">
             <div class="row">
                 <!-- Password -->
-                <div class="col-md-6">
+                <div class="col-12 col-md-6">
                     <div class="card">
                         <div class="card-header d-flex align-items-center justify-content-between">
                             <label class="control-label col-form-label p-0">@lang('Mật Khẩu'):</label>
                         </div>
-                        <div class="card-body p-2">
-                            <input type="password" class="form-control" name="password" placeholder="Mật Khẩu" />
+                        <div class="card-body p-2 mt-2">
+                            <div class="input-group">
+                                <input type="password" class="form-control" name="password" placeholder="Mật Khẩu" />
+                                <div class="input-group-append">
+                                    <span class="input-group-text">
+                                        <i class="fa fa-eye-slash toggle-password" onclick="togglePassword(this)"
+                                            aria-hidden=" true"></i>
+                                    </span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <!-- Confirm Password -->
-                <div class="col-md-6">
+                <div class="col-12 col-md-6 mt-2">
                     <div class="card">
                         <div class="card-header d-flex align-items-center justify-content-between">
                             <label class="control-label col-form-label p-0">@lang('Xác Nhận Mật Khẩu'):</label>
                         </div>
                         <div class="card-body p-2">
-                            <input type="password" class="form-control" name="password_confirmation"
-                                placeholder="Xác Nhận Mật Khẩu" />
+                            <div class="input-group">
+                                <input type="password" class="form-control" name="password_confirmation"
+                                    placeholder="Xác Nhận Mật Khẩu" />
+                                <div class="input-group-append">
+                                    <span class="input-group-text">
+                                        <i class="fa fa-eye-slash toggle-password" onclick="togglePassword(this)"
+                                            aria-hidden=" true"></i>
+                                    </span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -101,3 +117,18 @@
         </div>
     </div>
 </div>
+
+<script>
+function togglePassword(icon) {
+    var input = icon.closest(".input-group").querySelector("input");
+    if (input.type === "password") {
+        input.type = "text";
+        icon.classList.remove("fa-eye-slash");
+        icon.classList.add("fa-eye");
+    } else {
+        input.type = "password";
+        icon.classList.remove("fa-eye");
+        icon.classList.add("fa-eye-slash");
+    }
+}
+</script>
