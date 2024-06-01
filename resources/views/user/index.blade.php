@@ -45,7 +45,7 @@
                                 <th scope="col">Created At</th>
                             </tr>
                         </thead>
-                        <!-- <tbody>
+                        {{-- <!-- <tbody>
                             @foreach ($data as $key => $notification)
                             <tr>
                                 <td>{{ $key++ }}</td>
@@ -61,10 +61,10 @@
                                 </td>
                             </tr>
                             @endforeach
-                        </tbody> -->
+                        </tbody> --> --}}
                     </table>
 
-                    {{$data->links('pagination::bootstrap-5')}}
+                    {{-- {{$data->links('pagination::bootstrap-5')}} --}}
                 </div>
             </div>
         </div>

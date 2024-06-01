@@ -82,7 +82,7 @@
         </a>
         <div id="collapseUser" class="collapse" aria-labelledby="headingNotify" data-parent="#accordionSidebar">
             <div class="bg-white  py-2  collapse-inner rounded">
-                <a class="collapse-item" href="#">Danh Sách Thành Viên</a>
+                <a class="collapse-item" href="{{route('user.index')}}">Danh Sách Thành Viên</a>
                 <a class="collapse-item" href="{{route('user.create')}}">Thêm Thành Viên</a>
             </div>
         </div>
