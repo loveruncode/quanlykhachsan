@@ -25,6 +25,7 @@ Route::post('/dangnhap', [UserController::class, 'checklogin'])->name('checklogi
 Route::prefix('/room')->as('room.')->group(function(){
     Route::controller(App\Http\Controllers\RoomController::class)->group(function(){
         Route::get('/', 'index')->name('index');
+        Route::get('/them', 'create')->name('create');
     });
 })->middleware('checklogin');
 

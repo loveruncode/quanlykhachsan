@@ -36,8 +36,8 @@
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Danh Sách Các Phòng:</h6>
-                <a class="collapse-item" href="{{ route('room.index') }}">Phòng Hạng Thường</a>
-                <a class="collapse-item" href="#">Phòng Hạng Sang</a>
+                <a class="collapse-item" href="{{ route('room.index') }}">Danh Sách Phòng </a>
+                <a class="collapse-item" href="{{ route('room.create') }}">Thêm Phòng </a>
             </div>
         </div>
     </li>

@@ -15,7 +15,7 @@
 </form>
 
 <div class="container">
-    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+    <div  class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
         <div class="col mb-4">
             <div class="card">
                 <div class="position-relative">
@@ -55,6 +55,7 @@
                 </div>
             </div>
         </div>
+
 
         <!-- test =)) -->
         <!-- <div class="col mb-4">
