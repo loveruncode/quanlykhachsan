@@ -2,6 +2,18 @@
 
 @section('content')
 
+<form method="get" action="{{ route('notify.search') }}">
+    @csrf
+    <div class="input-group mb-3">
+        <input name="searchData" id="searchNotify" type="text" class="form-control" placeholder="Search..."
+            aria-describedby="basic-addon2">
+        <div class="input-group-append">
+            <button class="input-group-text btn btn-primary" id="basic-addon2">Search</button>
+        </div>
+
+    </div>
+</form>
+
 <div class="container">
     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
         <div class="col mb-4">
@@ -24,7 +36,9 @@
                 </div>
                 <div class="card-body">
                     <div class="d-flex flex-column flex-md-row justify-content-between">
-                        <h5 class="card-title">Apartment in Quận 4</h5>
+                        <a href="#" class="card-title text-Dark" style="font-weight: bold; cursor: pointer;">
+                            Apartment in Quận 4
+                        </a>
                         <span class="text-warning mt-2 mt-md-0">&#9733; 5.0 (3)</span>
                     </div>
                     <p class="card-text">8" walk to Nguyen Hue, Fast Wifi, ... <br> 2 beds</p>
@@ -35,7 +49,7 @@
                         <span class="end-rent">6</span>
                     </p>
                     <p class="card-text">
-                        <span class="total-price text-decoration-line-through">$32</span>
+                        <del><span class="total-price ">$32</span></del>
                         <span class="price-selling text-danger" style="font-weight: 700;">$26</span>
                     </p>
                 </div>
@@ -43,7 +57,7 @@
         </div>
 
         <!-- test =)) -->
-        <div class="col mb-4">
+        <!-- <div class="col mb-4">
             <div class="card">
                 <div class="position-relative">
                     <div class="row position-absolute" style="width: 100%;">
@@ -63,7 +77,9 @@
                 </div>
                 <div class="card-body">
                     <div class="d-flex flex-column flex-md-row justify-content-between">
-                        <h5 class="card-title">Apartment in Quận 4</h5>
+                        <a href="#" class="card-title text-Dark" style="font-weight: bold; cursor: pointer;">
+                            Apartment in Quận 4
+                        </a>
                         <span class="text-warning mt-2 mt-md-0">&#9733; 5.0 (3)</span>
                     </div>
                     <p class="card-text">8" walk to Nguyen Hue, Fast Wifi, ... <br> 2 beds</p>
@@ -74,7 +90,7 @@
                         <span class="end-rent">6</span>
                     </p>
                     <p class="card-text">
-                        <span class="total-price text-decoration-line-through">$32</span>
+                        <del><span class="total-price ">$32</span></del>
                         <span class="price-selling text-danger" style="font-weight: 700;">$26</span>
                     </p>
                 </div>
@@ -100,7 +116,9 @@
                 </div>
                 <div class="card-body">
                     <div class="d-flex flex-column flex-md-row justify-content-between">
-                        <h5 class="card-title">Apartment in Quận 4</h5>
+                        <a href="#" class="card-title text-Dark" style="font-weight: bold; cursor: pointer;">
+                            Apartment in Quận 4
+                        </a>
                         <span class="text-warning mt-2 mt-md-0">&#9733; 5.0 (3)</span>
                     </div>
                     <p class="card-text">8" walk to Nguyen Hue, Fast Wifi, ... <br> 2 beds</p>
@@ -111,7 +129,7 @@
                         <span class="end-rent">6</span>
                     </p>
                     <p class="card-text">
-                        <span class="total-price text-decoration-line-through">$32</span>
+                        <del><span class="total-price ">$32</span></del>
                         <span class="price-selling text-danger" style="font-weight: 700;">$26</span>
                     </p>
                 </div>
@@ -137,7 +155,9 @@
                 </div>
                 <div class="card-body">
                     <div class="d-flex flex-column flex-md-row justify-content-between">
-                        <h5 class="card-title">Apartment in Quận 4</h5>
+                        <a href="#" class="card-title text-Dark" style="font-weight: bold; cursor: pointer;">
+                            Apartment in Quận 4
+                        </a>
                         <span class="text-warning mt-2 mt-md-0">&#9733; 5.0 (3)</span>
                     </div>
                     <p class="card-text">8" walk to Nguyen Hue, Fast Wifi, ... <br> 2 beds</p>
@@ -148,7 +168,7 @@
                         <span class="end-rent">6</span>
                     </p>
                     <p class="card-text">
-                        <span class="total-price text-decoration-line-through">$32</span>
+                        <del><span class="total-price ">$32</span></del>
                         <span class="price-selling text-danger" style="font-weight: 700;">$26</span>
                     </p>
                 </div>
@@ -174,7 +194,9 @@
                 </div>
                 <div class="card-body">
                     <div class="d-flex flex-column flex-md-row justify-content-between">
-                        <h5 class="card-title">Apartment in Quận 4</h5>
+                        <a href="#" class="card-title text-Dark" style="font-weight: bold; cursor: pointer;">
+                            Apartment in Quận 4
+                        </a>
                         <span class="text-warning mt-2 mt-md-0">&#9733; 5.0 (3)</span>
                     </div>
                     <p class="card-text">8" walk to Nguyen Hue, Fast Wifi, ... <br> 2 beds</p>
@@ -185,7 +207,7 @@
                         <span class="end-rent">6</span>
                     </p>
                     <p class="card-text">
-                        <span class="total-price text-decoration-line-through">$32</span>
+                        <del><span class="total-price ">$32</span></del>
                         <span class="price-selling text-danger" style="font-weight: 700;">$26</span>
                     </p>
                 </div>
@@ -211,7 +233,9 @@
                 </div>
                 <div class="card-body">
                     <div class="d-flex flex-column flex-md-row justify-content-between">
-                        <h5 class="card-title">Apartment in Quận 4</h5>
+                        <a href="#" class="card-title text-Dark" style="font-weight: bold; cursor: pointer;">
+                            Apartment in Quận 4
+                        </a>
                         <span class="text-warning mt-2 mt-md-0">&#9733; 5.0 (3)</span>
                     </div>
                     <p class="card-text">8" walk to Nguyen Hue, Fast Wifi, ... <br> 2 beds</p>
@@ -222,12 +246,12 @@
                         <span class="end-rent">6</span>
                     </p>
                     <p class="card-text">
-                        <span class="total-price text-decoration-line-through">$32</span>
+                        <del><span class="total-price ">$32</span></del>
                         <span class="price-selling text-danger" style="font-weight: 700;">$26</span>
                     </p>
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
 </div>
 
