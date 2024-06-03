@@ -2,6 +2,17 @@
     <!-- add multi images -->
     <div class="card mb-3 mt-2">
         <div class="card-header col-form-label">
+            @lang('Hành Động')
+        </div>
+        <div class="card-body d-flex flex-column flex-sm-row align-items-center justify-content-between">
+            <button type="submit" class="btn btn-primary mb-2 mb-sm-0">Thêm Phòng</button>
+            <a href="{{ route('room.index') }}" class="btn btn-primary">Danh Sách</a>
+        </div>
+
+    </div>
+    <!-- Action - add - back to list room -->
+    <div class="card mb-3 mt-2">
+           <div class="card-header col-form-label">
             @lang('Thêm Hình')
         </div>
         <div class="card-body d-flex flex-column flex-sm-row align-items-center justify-content-between">
@@ -10,16 +21,6 @@
         </div>
         <div class="card-body">
             <div id="image-preview" class="mt-2"></div>
-        </div>
-    </div>
-    <!-- Action - add - back to list room -->
-    <div class="card mb-3 mt-2">
-        <div class="card-header col-form-label">
-            @lang('Hành Động')
-        </div>
-        <div class="card-body d-flex flex-column flex-sm-row align-items-center justify-content-between">
-            <button type="submit" class="btn btn-primary mb-2 mb-sm-0">Thêm Phòng</button>
-            <a href="{{ route('room.index') }}" class="btn btn-primary">Danh Sách</a>
         </div>
     </div>
 </div>

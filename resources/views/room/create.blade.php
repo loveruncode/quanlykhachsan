@@ -24,13 +24,13 @@
 <div class="page-body">
     <div class="container-xl">
         {{--  <!-- <form action="{{route('room.store')}}" method="post"> --> --}}
-        <form action="" method="post">
-            @csrf
+        {{-- <form action="#" method="post">
+            @csrf --}}
             <div class="row justify-content-center">
                 @include('room.form.create-left')
                 @include('room.form.create-right')
             </div>
-        </form>
+        {{-- </form> --}}
     </div>
 </div>
 

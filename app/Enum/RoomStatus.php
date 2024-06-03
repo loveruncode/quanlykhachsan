@@ -23,14 +23,14 @@ enum RoomStatus:int{
         };
     }
 
-    public static function translate(int $status): string
-    {
-        return match ($status) {
-            RoomStatus::Available->value => __('Phòng Trống'),
-            RoomStatus::Hired->value => __('Đã thuê'),
-            default => __('Unknown'),
-        };
-    }
+        public static function translate(int $status):string
+        {
+            return match ($status) {
+                RoomStatus::Available->value => __('Phòng Trống'),
+                RoomStatus::Hired->value => __('Đã thuê'),
+                default => __('Unknown'),
+            };
+        }
 
 
 }

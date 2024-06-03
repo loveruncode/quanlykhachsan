@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Enum\RoomStatus;
 use Illuminate\Http\Request;
 
 class RoomController extends Controller
@@ -19,7 +20,9 @@ class RoomController extends Controller
      */
     public function create()
     {
-        return view('room.create');
+
+        $status = RoomStatus::asSelectArray();
+        return view('room.create', compact('status'));
     }
 
     /**
