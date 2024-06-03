@@ -40,15 +40,23 @@ Route::prefix('/notify')->as('notify.')->group(function(){
         Route::get('/search', 'search')->name('search');
         Route::put('/sua/{id}', 'update')->name('update');
     });
-});
+})->middleware('checklogin');
 
 Route::prefix('/users')->as('user.')->group(function(){
     Route::controller(App\Http\Controllers\UserController::class)->group(function(){
         Route::get('/', 'index')->name('index');
         Route::get('/them', 'create')->name('create');
     });
-});
+})->middleware('checklogin');
 
+
+Route::prefix('/food')->as('food.')->group(function(){
+    Route::controller(App\Http\Controllers\FoodController::class)->group(function(){
+        Route::get('/', 'index')->name('index');
+        Route::get('/them', 'create')->name('create');
+    });
+
+});
 
 Route::get('/register', [UserController::class, 'register'])->name('register');
 

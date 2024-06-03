@@ -41,6 +41,21 @@
             </div>
         </div>
     </li>
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFoods"
+            aria-expanded="true" aria-controls="collapseTwo">
+            <i class="fas fa-fw fa-utensils"></i>
+            <span>Food</span>
+        </a>
+        <div id="collapseFoods" class="collapse" aria-labelledby="headingFoods" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Danh Sách Món Ăn:</h6>
+                <a class="collapse-item" href="{{ route('food.index') }}">Danh Sách Món Ăn </a>
+                <a class="collapse-item" href="{{ route('food.create') }}">Thêm Món Ăn </a>
+            </div>
+        </div>
+    </li>
+
 
     <!-- Nav Item - Utilities Collapse Menu -->
     <li class="nav-item">

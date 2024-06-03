@@ -4,9 +4,9 @@
         <div class="card-header col-form-label">
             @lang('Hành Động')
         </div>
-        <div class="card-body d-flex flex-column flex-sm-row align-items-center justify-content-between">
-            <button type="submit" class="btn btn-primary mb-2 mb-sm-0">Thêm Phòng</button>
-            <a href="{{ route('room.index') }}" class="btn btn-primary">Danh Sách</a>
+        <div class="card-body d-flex flex-column flex-sm-row align-items-center">
+            <button type="submit" class="btn btn-primary btn-sm p-1 mx-1 btn-lg ml-1 ">Thêm Phòng</button>
+            <a href="{{ route('room.index') }}" class="btn btn-primary btn-sm p-1 mx-1 btn-lg mr-1 ">Danh Sách</a>
         </div>
 
     </div>
