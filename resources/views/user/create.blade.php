@@ -21,7 +21,7 @@
 </div>
 <div class="page-body">
     <div class="container-xl">
-        <form action="{{route('notify.store')}}" method="post">
+        <form action="{{route('user.store')}}" method="post">
             @csrf
             <div class="row justify-content-center">
                 @include('user.form.create-left')

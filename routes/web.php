@@ -46,6 +46,7 @@ Route::prefix('/users')->as('user.')->group(function(){
     Route::controller(App\Http\Controllers\UserController::class)->group(function(){
         Route::get('/', 'index')->name('index');
         Route::get('/them', 'create')->name('create');
+        Route::post('/them', 'store')->name('store');
     });
 })->middleware('checklogin');
 

@@ -6,7 +6,7 @@
         </div>
         <div class="card-body d-flex flex-column flex-sm-row align-items-center">
             <button type="submit" class="btn btn-primary btn-sm p-1 mx-1 btn-lg ml-1 ">Thêm Món Ăn</button>
-            <a href="{{ route('room.index') }}" class="btn btn-primary btn-sm p-1 mx-1 btn-lg mr-1 ">Danh Sách</a>
+            <a href="{{ route('food.index') }}" class="btn btn-primary btn-sm p-1 mx-1 btn-lg mr-1 ">Danh Sách</a>
         </div>
 
     </div>
