@@ -1,14 +1,13 @@
 <div class="col-12 col-md-4 col-sm-8">
-    <!-- Action - add - back to list room -->
+    <!-- Action - add - back to list blog -->
     <div class="card mb-3 mt-2">
         <div class="card-header col-form-label">
             @lang('Hành Động')
         </div>
         <div class="card-body d-flex flex-column flex-sm-row align-items-center">
-            <button type="submit" class="btn btn-primary btn-sm p-1 mx-1 btn-lg ml-1 ">Thêm Phòng</button>
-            <a href="{{ route('room.index') }}" class="btn btn-primary btn-sm p-1 mx-1 btn-lg mr-1 ">Danh Sách</a>
+            <button type="submit" class="btn btn-primary btn-sm p-1 mx-1 btn-lg ml-1 ">Thêm bài Đăng</button>
+            <a href="{{ route('post.index') }}" class="btn btn-primary btn-sm p-1 mx-1 btn-lg mr-1 ">Danh Sách</a>
         </div>
-
     </div>
     <!-- add multi images -->
     <div class="card mb-3 mt-2">

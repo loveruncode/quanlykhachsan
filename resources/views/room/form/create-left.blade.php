@@ -24,8 +24,7 @@
                     </span>
                 </div>
                 <div class="card-body p-2">
-                    <input type="text" class="form-control" name="title" :value="old('title')"
-                        placeholder="Tiêu Đề" />
+                    <input type="text" class="form-control" name="title" :value="old('title')" placeholder="Tiêu Đề" />
                 </div>
             </div>
         </div>
@@ -61,7 +60,7 @@
                 <div class="card-body p-2">
                     <select name="status" class="form-control ">
                         @foreach ($status as $key => $value)
-                            <option value="{{ $key }}">{{ \App\Enum\RoomStatus::translate($key) }}</option>
+                        <option value="{{ $key }}">{{ \App\Enum\RoomStatus::translate($key) }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -79,7 +78,7 @@
                     </span>
                 </div>
                 <div class="card-body p-2">
-                    <textarea class="form-control" name="description" placeholder="Miêu Tả"></textarea>
+                    <textarea class="form-control checkEditor" name="description" placeholder="Miêu Tả"></textarea>
                 </div>
             </div>
         </div>
@@ -112,8 +111,8 @@
                     </span>
                 </div>
                 <div class="card-body p-2">
-                    <input id="start_date" type="date" class="form-control" name="start_rent"
-                        :value="old('start_rent')" placeholder="Ngày Bắt Đầu" />
+                    <input id="start_date" type="date" class="form-control" name="start_rent" :value="old('start_rent')"
+                        placeholder="Ngày Bắt Đầu" />
                 </div>
             </div>
         </div>
@@ -127,8 +126,8 @@
                     </span>
                 </div>
                 <div class="card-body p-2">
-                    <input id="end_date" type="date" class="form-control" name="end_rent"
-                        :value="old('end_rent')" placeholder="Ngày Kết Thúc" />
+                    <input id="end_date" type="date" class="form-control" name="end_rent" :value="old('end_rent')"
+                        placeholder="Ngày Kết Thúc" />
                 </div>
             </div>
         </div>
@@ -160,8 +159,8 @@
                     </span>
                 </div>
                 <div class="card-body p-2">
-                    <input type="text" class="form-control" id="discount" name="discount"
-                        :value="old('discount')" placeholder="% Giảm Giá" />
+                    <input type="text" class="form-control" id="discount" name="discount" :value="old('discount')"
+                        placeholder="% Giảm Giá" />
                 </div>
             </div>
         </div>
@@ -191,8 +190,7 @@
                     </span>
                 </div>
                 <div class="card-body p-2">
-                    <input readonly type="text" class="form-control" id="total" name="total"
-                        placeholder="Tổng Giá" />
+                    <input readonly type="text" class="form-control" id="total" name="total" placeholder="Tổng Giá" />
                 </div>
             </div>
         </div>
@@ -200,67 +198,67 @@
 </div>
 
 <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        let sellingPriceInput = document.getElementById('sellingPrice');
-        let discountInput = document.getElementById('discount');
-        let totalInput = document.getElementById('total');
-        let start_DateInput = document.getElementById('start_date');
-        let end_DateInput = document.getElementById('end_date');
-        let price_per_date = document.getElementById('price_per_date');
+document.addEventListener("DOMContentLoaded", function() {
+    let sellingPriceInput = document.getElementById('sellingPrice');
+    let discountInput = document.getElementById('discount');
+    let totalInput = document.getElementById('total');
+    let start_DateInput = document.getElementById('start_date');
+    let end_DateInput = document.getElementById('end_date');
+    let price_per_date = document.getElementById('price_per_date');
 
-        function CalDate(total) {
+    function CalDate(total) {
 
-            let startDate = new Date(start_DateInput.value);
-            let endDate = new Date(end_DateInput.value);
-            if (endDate < startDate) {
-                alert("Ngày kết thúc phải lớn hơn ngày bắt đầu!");
-                return;
-            }
-            let millisecondsDiff = endDate - startDate;
-            let daysDiff = (millisecondsDiff / (1000 * 60 * 60 * 24)) + 1;
-            pricePerDate = Math.round(total / daysDiff)
-            return pricePerDate;
+        let startDate = new Date(start_DateInput.value);
+        let endDate = new Date(end_DateInput.value);
+        if (endDate < startDate) {
+            alert("Ngày kết thúc phải lớn hơn ngày bắt đầu!");
+            return;
+        }
+        let millisecondsDiff = endDate - startDate;
+        let daysDiff = (millisecondsDiff / (1000 * 60 * 60 * 24)) + 1;
+        pricePerDate = Math.round(total / daysDiff)
+        return pricePerDate;
+    }
+
+    function formatCurrency(value) {
+        let number = parseInt(value.replace(/\D/g, ''), 10);
+        if (isNaN(number)) {
+            return "";
+        }
+        return new Intl.NumberFormat('vi-VN', {
+            style: 'currency',
+            currency: 'VND'
+        }).format(number);
+    }
+
+    function calculateTotal() {
+        let sellingPrice = parseFloat(sellingPriceInput.value.replace(/\D/g, '')) || 0;
+        let discount = parseFloat(discountInput.value) || 0;
+
+        let discountAmount = sellingPrice * (discount / 100);
+        let total = sellingPrice - discountAmount;
+
+        if (isNaN(discount) || discount === null) {
+            total = sellingPrice;
         }
 
-        function formatCurrency(value) {
-            let number = parseInt(value.replace(/\D/g, ''), 10);
-            if (isNaN(number)) {
-                return "";
-            }
-            return new Intl.NumberFormat('vi-VN', {
-                style: 'currency',
-                currency: 'VND'
-            }).format(number);
-        }
+        totalInput.value = formatCurrency(total.toString());
+        let pricePerDate = CalDate(total);
+        price_per_date.value = formatCurrency(pricePerDate.toString());
 
-        function calculateTotal() {
-            let sellingPrice = parseFloat(sellingPriceInput.value.replace(/\D/g, '')) || 0;
-            let discount = parseFloat(discountInput.value) || 0;
+    }
 
-            let discountAmount = sellingPrice * (discount / 100);
-            let total = sellingPrice - discountAmount;
-
-            if (isNaN(discount) || discount === null) {
-                total = sellingPrice;
-            }
-
-            totalInput.value = formatCurrency(total.toString());
-            let pricePerDate = CalDate(total);
-            price_per_date.value = formatCurrency(pricePerDate.toString());
-
-        }
-
-        function formatInputValue(event) {
-            let input = event.target;
-            input.value = formatCurrency(input.value);
-        }
+    function formatInputValue(event) {
+        let input = event.target;
+        input.value = formatCurrency(input.value);
+    }
 
 
-        sellingPriceInput.addEventListener('input', calculateTotal);
-        discountInput.addEventListener('input', calculateTotal);
-        sellingPriceInput.addEventListener('blur', formatInputValue);
-        totalInput.addEventListener('blur', formatInputValue);
+    sellingPriceInput.addEventListener('input', calculateTotal);
+    discountInput.addEventListener('input', calculateTotal);
+    sellingPriceInput.addEventListener('blur', formatInputValue);
+    totalInput.addEventListener('blur', formatInputValue);
 
 
-    });
+});
 </script>
