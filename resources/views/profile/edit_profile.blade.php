@@ -1,7 +1,7 @@
 <div class="card">
     <div class="card-header bg-primary text-white">
         <h3>Thông tin cá nhân</h3>
-        <img class="card-img-right rounded-circle float-end" id ="avatar" src="" alt="Avatar" width="120px" height="120px">
+        <img src="{{asset('img/logo.jpeg')}}" class="card-img-right rounded-circle float-end" id ="avatar" src="" alt="Avatar" width="120px" height="120px">
         <input type="file" id= "fileInput" onchange="previewAvatar()">
     </div>
     <div class="card-body">
