@@ -3,10 +3,14 @@
 
 
 @section('content')
-
-
-<h1>Nhanh main
-lam cac nhanh khac lay ve su dung</h1>
-<h6>Test Fetch de con flict</h6>
-
+<div class="container-fluid p-3 bg-primary text-white text-center">
+    <h2>Tài khoản của tôi</h2>
+</div>
+<div class="container mt-5">
+    <div class="pg-brown">
+        @include('profile.edit_profile')
+    </div>
+</div>    
+    
+        
 @endsection
