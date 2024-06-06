@@ -26,7 +26,7 @@
                     </span>
                 </div>
                 <div class="card-body p-2">
-                    <textarea class="form-control" name="description" placeholder="Miêu Tả"></textarea>
+                    <textarea class="form-contro checkEditor" name="description" placeholder="Miêu Tả" ></textarea>
                 </div>
             </div>
         </div>

@@ -41,6 +41,23 @@
             </div>
         </div>
     </li>
+
+
+     {{-- post  --}}
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePost"
+            aria-expanded="true" aria-controls="collapsePost">
+            <i class="fas fa-fw fa-book"></i>
+            <span>Blog</span>
+        </a>
+        <div id="collapsePost" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Danh Sách Bài Viết:</h6>
+                <a class="collapse-item" href="{{ route('post.index') }}">Danh Sách Bài Viết </a>
+                <a class="collapse-item" href="{{ route('post.create') }}">Thêm Bài Viết </a>
+            </div>
+        </div>
+    </li>
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFoods"
             aria-expanded="true" aria-controls="collapseTwo">

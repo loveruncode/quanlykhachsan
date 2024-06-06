@@ -16,6 +16,18 @@
 <script src="{{ asset('js/setup.js') }}"></script>
 <script src="{{ asset('js/jquery-3.6.4.min.js') }}"></script>
 <script src="{{ asset('js/sweetalert2@11.js') }}"></script>
+<script src="{{asset('ckeditor5/ckeditor.js')}}"></script>
+
+
+
+     <script>
+        ClassicEditor
+            .create( document.querySelector( '.checkEditor' ) )
+            .catch( error => {
+                console.error( error );
+            } );
+    </script>
+
 <script>
     @if (session('success'))
         Swal.fire({
