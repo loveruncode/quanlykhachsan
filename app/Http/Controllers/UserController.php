@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-
+use App\Enum\Gender;
+use App\Enum\UserRoles;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Flasher\Prime\Notification\Type;
@@ -22,7 +23,10 @@ class UserController extends Controller
 
     public function create(){
 
-        return view('user.create');
+
+        $gender = Gender::asSelectArray();
+        $roles = UserRoles::asSelectArray();
+        return view('user.create', compact('gender','roles'));
     }
 
     public function login()
@@ -58,9 +62,10 @@ class UserController extends Controller
         }
     }
 
-     public function store(Request $request){
+     public function store(UserRequest $request){
 
-     
+        $data = $request->validated();
+        dd($data);
 
      }
 

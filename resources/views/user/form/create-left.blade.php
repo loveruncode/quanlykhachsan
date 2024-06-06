@@ -48,10 +48,11 @@
                         </div>
                         <div class="card-body p-2 mt-2">
                             <select name="gender" class="form-control">
-                                <option value="male">@lang('Nam')</option>
-                                <option value="female">@lang('Nữ')</option>
-                                <option value="other">@lang('Khác')</option>
+                                @foreach ($gender as $key => $value)
+                                <option value="{{$key}}">{{\App\Enum\Gender::translate($key)}}</option>
+                                @endforeach
                             </select>
+
                         </div>
                     </div>
                 </div>
@@ -62,9 +63,10 @@
                             <label class="control-label col-form-label p-0">@lang('Vai Trò'):</label>
                         </div>
                         <div class="card-body p-2 mt-2">
-                            <select name="role" class="form-control">
-                                <option value="admin">Admin</option>
-                                <option value="user">Người dùng</option>
+                            <select name="roles" class="form-control">
+                                @foreach ($roles as $key => $value)
+                                    <option value="{{$key}}">{{\App\Enum\UserRoles::translate($key)}}</option>
+                                @endforeach
                             </select>
                         </div>
                     </div>
