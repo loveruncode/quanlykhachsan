@@ -43,24 +43,25 @@
                                 <th scope="col">PhoneNumber </th>
                                 <th scope="col">Role</th>
                                 <th scope="col">Created At</th>
+                                <th scope="col">Action</th>
                             </tr>
                         </thead>
                         {{-- <!-- <tbody>
                             @foreach ($data as $key => $notification)
                             <tr>
                                 <td>{{ $key++ }}</td>
-                                <td>{{ $notification->title }}</td>
-                                <td>{{ $notification->desc }}</td>
-                                <td>{{ \App\Enum\NotifyStatus::translate($notification->status) }}</td>
-                                <td>{{ $notification->created_at->format('d-m-Y') }}</td>
-                                <td>
-                                    <button class="btn btn-danger delete-button"
-                                        data-url="{{ route('notify.delete', ['id' => $notification->id]) }}">
-                                        <i class="fas fa-fw fa-trash"></i>
-                                    </button>
-                                </td>
-                            </tr>
-                            @endforeach
+                        <td>{{ $notification->title }}</td>
+                        <td>{{ $notification->desc }}</td>
+                        <td>{{ \App\Enum\NotifyStatus::translate($notification->status) }}</td>
+                        <td>{{ $notification->created_at->format('d-m-Y') }}</td>
+                        <td>
+                            <button class="btn btn-danger delete-button"
+                                data-url="{{ route('notify.delete', ['id' => $notification->id]) }}">
+                                <i class="fas fa-fw fa-trash"></i>
+                            </button>
+                        </td>
+                        </tr>
+                        @endforeach
                         </tbody> --> --}}
                     </table>
 
