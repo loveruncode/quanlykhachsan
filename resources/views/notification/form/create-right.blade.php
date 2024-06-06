@@ -1,4 +1,3 @@
-
 <div class="col-12 col-md-4">
     <div class="card mb-3">
         <div class="card-header col-form-label">
@@ -15,9 +14,9 @@
             {{ __('Trạng thái') }}
         </div>
         <div class="card-body p-2">
-            <select name="status"  class="form-control ">
+            <select name="status" class="form-control ">
                 @foreach ($status as $key => $value)
-                <option value="{{$key}}">{{$value}}</option>
+                    <option value="{{ $key }}">{{ $value }}</option>
                 @endforeach
             </select>
         </div>
@@ -27,11 +26,15 @@
         <div class="card-header">
             {{ __('Đại Lý&Seller') }}
         </div>
-        <div  class="card-body p-3" style="max-height: 200px;">
-            <select  name="user_id[]"  class="form-control" id="userSelect">
+        <div class="card-body p-3" style="max-height: 200px;">
+            <select name="user_id[]" class="form-control" id="userSelect">
             </select>
 
         </div>
     </div>
-
+<script>
+    const urlHome = document.querySelector('meta[name="url-home"]').getAttribute('content');
+    /// data =  urlHome + '/'
+  /// xem trong v1.php
+</script>
 </div>
