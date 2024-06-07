@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name')->nullable();
             $table->text('desc')->nullable();
+            $table->unsignedBigInteger('room_id');
             $table->foreign('room_id')->references('id')->on('rooms')->onDelete('cascade');
             $table->timestamps();
         });
@@ -25,6 +26,9 @@ return new class extends Migration
      */
     public function down(): void
     {
+        Schema::table('services', function (Blueprint $table) {
+            $table->dropForeign(['room_id']); 
+        });
         Schema::dropIfExists('services');
     }
 };

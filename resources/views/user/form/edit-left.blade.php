@@ -59,8 +59,7 @@
                         </div>
                         <div class="card-body p-2 mt-2">
                             <select name="roles" class="form-control">
-                                <option value="1">Admin</option>
-                                <option value="2">Customer</option>
+                               <option value="{{$data->roles}}">{{\App\Enum\UserRoles::translate($data->roles)}}</option>
                             </select>
                         </div>
                     </div>

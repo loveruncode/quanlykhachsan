@@ -48,7 +48,8 @@ return new class extends Migration
                 'avatar' => config('custom.images.avatarUser'),
                 'phone' => '0812333222',
                 'password' => bcrypt('123456'),
-                'roles' => 1
+                'roles' => 1,
+                'created_at'=> now(),
             ],
             [
                 'name' => 'User',
@@ -56,7 +57,8 @@ return new class extends Migration
                 'avatar' => config('custom.images.avatarUser'),
                 'phone' => '0812333222',
                 'password' => bcrypt('123456'),
-                'roles' => 2
+                'roles' => 2,
+                'created_at'=> now(),
             ]
         ]);
 
