@@ -46,7 +46,7 @@
                         </div>
                         <div class="card-body p-2 mt-2">
                             <select name="gender" class="form-control">
-                                <option value="{{$data->gender}}">{{\App\Enum\Gender::translate($data->gender)}}</option>
+                                {{--<!-- <option value="{{$data->gender}}">{{\App\Enum\Gender::translate($data->gender)}}</option> -->--}}
                             </select>
                         </div>
                     </div>
@@ -59,7 +59,7 @@
                         </div>
                         <div class="card-body p-2 mt-2">
                             <select name="roles" class="form-control">
-                               <option value="{{$data->roles}}">{{\App\Enum\UserRoles::translate($data->roles)}}</option>
+                                <option value="{{$data->roles}}">{{\App\Enum\UserRoles::translate($data->roles)}}</option>
                             </select>
                         </div>
                     </div>
