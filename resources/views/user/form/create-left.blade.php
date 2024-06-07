@@ -5,8 +5,7 @@
             <div class="card">
                 <div class="card-header d-flex align-items-center justify-content-between">
                     <label class="control-label col-form-label p-0">@lang('Họ và Tên'):</label>
-                    <span class="float-end text-yellow" data-bs-toggle="tooltip" data-bs-placement="top"
-                        title="{{ __('Họ và Tên') }}">
+                    <span class="float-end text-yellow" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ __('Họ và Tên') }}">
                     </span>
                 </div>
                 <div class="card-body p-2">
@@ -32,8 +31,7 @@
                     <label class="control-label col-form-label p-0">@lang('Số Điện Thoại'):</label>
                 </div>
                 <div class="card-body p-2">
-                    <input type="text" class="form-control" name="phone" :value="old('phone')"
-                        placeholder="Số Điện Thoại" required/>
+                    <input type="text" class="form-control" name="phone" :value="old('phone')" placeholder="Số Điện Thoại" required />
                 </div>
             </div>
         </div>
@@ -65,7 +63,7 @@
                         <div class="card-body p-2 mt-2">
                             <select name="roles" class="form-control">
                                 @foreach ($roles as $key => $value)
-                                    <option value="{{$key}}">{{\App\Enum\UserRoles::translate($key)}}</option>
+                                <option value="{{$key}}">{{\App\Enum\UserRoles::translate($key)}}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -87,8 +85,7 @@
                                 <input type="password" class="form-control" name="password" placeholder="Mật Khẩu" />
                                 <div class="input-group-append">
                                     <span class="input-group-text">
-                                        <i class="fa fa-eye-slash toggle-password" onclick="togglePassword(this)"
-                                            aria-hidden=" true"></i>
+                                        <i class="fa fa-eye-slash toggle-password" onclick="togglePassword(this)" aria-hidden=" true"></i>
                                     </span>
                                 </div>
                             </div>
@@ -103,12 +100,10 @@
                         </div>
                         <div class="card-body p-2">
                             <div class="input-group">
-                                <input type="password" class="form-control" name="password_confirmation"
-                                    placeholder="Xác Nhận Mật Khẩu" />
+                                <input type="password" class="form-control" name="password_confirmation" placeholder="Xác Nhận Mật Khẩu" />
                                 <div class="input-group-append">
                                     <span class="input-group-text">
-                                        <i class="fa fa-eye-slash toggle-password" onclick="togglePassword(this)"
-                                            aria-hidden=" true"></i>
+                                        <i class="fa fa-eye-slash toggle-password" onclick="togglePassword(this)" aria-hidden=" true"></i>
                                     </span>
                                 </div>
                             </div>
@@ -121,16 +116,16 @@
 </div>
 
 <script>
-function togglePassword(icon) {
-    var input = icon.closest(".input-group").querySelector("input");
-    if (input.type === "password") {
-        input.type = "text";
-        icon.classList.remove("fa-eye-slash");
-        icon.classList.add("fa-eye");
-    } else {
-        input.type = "password";
-        icon.classList.remove("fa-eye");
-        icon.classList.add("fa-eye-slash");
+    function togglePassword(icon) {
+        var input = icon.closest(".input-group").querySelector("input");
+        if (input.type === "password") {
+            input.type = "text";
+            icon.classList.remove("fa-eye-slash");
+            icon.classList.add("fa-eye");
+        } else {
+            input.type = "password";
+            icon.classList.remove("fa-eye");
+            icon.classList.add("fa-eye-slash");
+        }
     }
-}
 </script>
