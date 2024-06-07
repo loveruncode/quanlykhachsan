@@ -9,8 +9,8 @@
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{ route('dashboard') }}"
                                     class="text-muted">{{ __('Dashboard') }}</a></li>
-                            <li class="breadcrumb-item"><a href="{{ route('notify.index') }}"
-                                    class="text-muted">{{ __('Danh Sách Thông Báo') }}</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('user.index') }}"
+                                    class="text-muted">{{ __('Danh Sách Thành Viên') }}</a></li>
                         </ol>
                     </nav>
                 </div>
@@ -20,7 +20,7 @@
     <div class="page-body">
         <div class="container">
             <div class="card">
-                <div class="card-header">Manage Notification</div>
+                <div class="card-header">Danh Sách Thành Viên</div>
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table table-bordered table-striped  ">
