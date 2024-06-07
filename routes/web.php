@@ -49,6 +49,7 @@ Route::prefix('/users')->as('user.')->group(function(){
         Route::post('/them', 'store')->name('store');
         Route::delete('/xoa/{id}', 'delete')->name('delete');
         Route::get('/search', 'search')->name('search');
+        Route::get('/edit/{id}', 'edit')->name('edit');
     });
 })->middleware('checklogin');
 

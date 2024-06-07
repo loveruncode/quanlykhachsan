@@ -108,6 +108,17 @@ class UserController extends Controller
 
      }
 
+     public function edit($id){
+
+        $data = $this->repository->find($id);
+
+
+        return view('user.edit', compact('data'));
+
+     }
+
+
+
 
 
     public function logout(Request $request)

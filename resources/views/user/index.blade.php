@@ -51,7 +51,7 @@
                                 @foreach ($data as $key => $user)
                                     <tr>
                                         <td>{{ $user->id }}</td>
-                                        <td>{{ $user->name }}</td>
+                                        <td class="text-center"><a href="{{route('user.edit', ['id' => $user->id])}}">{{ $user->name }}</a></td>
                                         <td>{{ $user->email }}</td>
                                         <td>{{ $user->phone }}</td>
                                         <td>{{ \App\Enum\UserRoles::translate($user->roles) }}</td>
