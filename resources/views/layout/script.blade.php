@@ -50,6 +50,19 @@
 
 
 <script>
+    @if (session('pedding'))
+        Swal.fire({
+            icon: 'warning',
+            title: 'Thất Bại!',
+            text: '{{ session('pedding') }}',
+        });
+    @endif
+</script>
+
+
+
+
+<script>
     $(document).ready(function() {
         $('.delete-button').on('click', function(event) {
             event.preventDefault();

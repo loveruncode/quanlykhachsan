@@ -26,8 +26,7 @@ enum UserRoles :int
     {
         return match ($status) {
             UserRoles::Admin->value => __('Quản Trị Viên'),
-            UserRoles::Member->value => __('Khách Hàng'),
-            default => __('Unknown'),
+            UserRoles::Member->value => __('Khách Hàng'),   
         };
     }
 

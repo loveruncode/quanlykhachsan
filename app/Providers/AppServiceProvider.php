@@ -9,7 +9,8 @@ use Illuminate\Support\ServiceProvider;
 class AppServiceProvider extends ServiceProvider{
 
     protected $service = [
-         'App\Services\Notify\NotificationServiceInterface' => 'App\Services\Notify\NotificationService'
+         'App\Services\Notify\NotificationServiceInterface' => 'App\Services\Notify\NotificationService',
+         'App\Services\User\UserServiceInterface' => 'App\Services\User\UserService'
     ];
     public function register(): void
     {

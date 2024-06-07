@@ -33,7 +33,7 @@
                 </div>
                 <div class="card-body p-2">
                     <input type="text" class="form-control" name="phone" :value="old('phone')"
-                        placeholder="Số Điện Thoại" />
+                        placeholder="Số Điện Thoại" required/>
                 </div>
             </div>
         </div>

@@ -9,16 +9,29 @@ use Illuminate\Http\Request;
 use Flasher\Prime\Notification\Type;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\UserRequest;
-
-
+use App\Repository\User\UserRepositoryInterface;
+use App\Services\User\UserServiceInterface;
 
 class UserController extends Controller
 {
 
+    protected $repository;
+    protected $service;
+    public function __construct(UserRepositoryInterface $repository, UserServiceInterface $service)
+    {
+        $this->repository = $repository;
+        $this->service = $service;
+    }
+
+
+
 
     public function index()
     {
-        return view('user.index');
+
+
+        $data = $this->repository->show();
+        return view('user.index', compact('data'));
     }
 
     public function create(){
@@ -64,11 +77,36 @@ class UserController extends Controller
 
      public function store(UserRequest $request){
 
-        $data = $request->validated();
-        dd($data);
+       $response = $this->service->store($request);
+        if(!$response){
+
+            return back()->with('error', 'Thêm Thành Viên Thất Bại!');
+        }
+        return back()->with('success', 'Thêm Thanh Viên Thành Công!');
+
 
      }
 
+     public function delete($id){
+
+        $result = $this->service->delete($id);
+
+        if(!$result){
+            return back()->with('error', 'Xoá Dữ Liệu Thất Bại!');
+        }
+
+        return back()->with('success', 'Xoá Thành Viên Thành Công!');
+
+     }
+
+     public function search(Request $request){
+
+        $query = $request->searchData;
+        $data = $this->repository->search($query);
+        return view('user.index', compact('data'));
+
+
+     }
 
 
 
