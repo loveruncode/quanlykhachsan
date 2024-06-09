@@ -1,20 +1,26 @@
 import classNames from 'classnames/bind';
 import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBell, faCartShopping } from '@fortawesome/free-solid-svg-icons';
 
 import Search from './components/Search';
-import { logo } from '../image';
 import styles from './Header.module.scss';
 import Auth from './Auth';
+import Image from '~/components/image';
+import images from '~/assets/images';
 
 const cx = classNames.bind(styles);
 
 export default function Header() {
+    // test login user
+    const currentUser = false;
+
     return (
         <>
             <header className={cx('header')}>
                 <div className={cx('header__left')}>
                     <Link className={cx('header__left-logo')} to="/">
-                        <img src={logo} alt="logo" />
+                        <img src={images.logo} alt="logo" />
                     </Link>
                 </div>
 
@@ -23,7 +29,22 @@ export default function Header() {
                 </div>
 
                 <div className={cx('header__right')}>
-                    <Auth />
+                    {/* if currentUser === true to show cart notify avt user else show auth sign up sign in */}
+                    {currentUser ? (
+                        <ul className={cx('header__rigth-currentuser')}>
+                            <li className={cx('header__rigth-notify')}>
+                                <FontAwesomeIcon icon={faBell} />
+                            </li>
+                            <li className={cx('header__rigth-cart')}>
+                                <FontAwesomeIcon icon={faCartShopping} />
+                            </li>
+                            <li>
+                                <Image className={cx('user-avatar')} src="asdahjsbdjas" alt="Nguyen Van A" />
+                            </li>
+                        </ul>
+                    ) : (
+                        <Auth />
+                    )}
                 </div>
             </header>
 

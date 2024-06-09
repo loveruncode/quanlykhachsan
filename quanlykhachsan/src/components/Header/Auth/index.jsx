@@ -1,36 +1,19 @@
 import classNames from 'classnames/bind';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 import Modal from '~/components/Modal';
 import styles from './Auth.module.scss';
 import Button from '~/components/Button';
+import { useMobile } from '~/hooks';
 
 const cx = classNames.bind(styles);
 
 export default function Auth() {
     const [signInOpen, setSignInOpen] = useState(false);
     const [signUpOpen, setSignUpOpen] = useState(false);
-    const [isMobile, setMobile] = useState(false);
-    useEffect(() => {
-        const handleResize = () => {
-            if (window.innerWidth < 900) {
-                setMobile(true);
-            } else {
-                setMobile(false);
-            }
-        };
 
-        // Initial check on mount
-        handleResize();
+    const isMobile = useMobile();
 
-        // Listen to window resize events
-        window.addEventListener('resize', handleResize);
-
-        // Cleanup
-        return () => {
-            window.removeEventListener('resize', handleResize);
-        };
-    }, []);
     const openSignInModal = () => {
         setSignInOpen(true);
     };

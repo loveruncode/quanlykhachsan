@@ -1,12 +1,23 @@
 .searchbar {
     form {
         width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
 
         input {
             width: 100%;
             padding: 5px;
             border: 1px solid #ccc;
             border-radius: 4px;
+            user-select: none;
+            outline: none;
+        }
+
+        .search-icon {
+            font-size: 20px;
+            cursor: pointer;
+            margin-left: 10px;
         }
     }
 }
