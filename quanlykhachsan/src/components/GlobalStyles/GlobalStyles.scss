@@ -1,0 +1,57 @@
+@import 'normalize.css';
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
+//  fontWeight 300 400 500 700 900
+
+:root {
+    --color-brand: #3bb77e; // Màu thương hiệu chính
+    --primary-color: #3bb77e; // Màu chính
+    --color-brand-dark: #29a56c; // Màu thương hiệu đậm
+    --color-brand-2: #fdc040; // Màu thương hiệu phụ
+    --color-primary: #5a97fa; // Màu chính thứ hai
+    --color-secondary: #3e5379; // Màu phụ
+    --color-warning: #ff9900; // Màu cảnh báo
+    --color-danger: #fd6e6e; // Màu nguy hiểm
+    --color-success: #81b13d; // Màu thành công
+    --color-info: #2cc1d8; // Màu thông tin
+    --color-text: #7e7e7e; // Màu chữ chính
+    --color-heading: #253d4e; // Màu tiêu đề
+    --color-grey-1: #253d4e; // Màu xám đậm
+    --color-grey-2: #242424; // Màu xám tối
+    --color-grey-4: #adadad; // Màu xám trung bình
+    --color-grey-9: #f4f5f9; // Màu xám nhạt
+    --color-muted: #b6b6b6; // Màu nhạt
+    --color-body: #7e7e7e; // Màu nội dung
+    --color-pink: #da0965;
+    --color-white: #fff;
+    --color-black: #000000;
+
+    --font-family: 'Roboto', sans-serif;
+}
+
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%; // 1rem = 10px
+}
+
+body {
+    font-family: var(--font-family);
+    font-size: 1.6rem; // Tương đương 16px
+    line-height: 1.5;
+    text-rendering: optimizespeed;
+    color: var(--color-text);
+    overflow-y: overlay;
+}
+// Định dạng cho các thẻ li và a
+li,
+a {
+    text-decoration: none;
+    list-style-type: none;
+    color: var(--color-text);
+}
