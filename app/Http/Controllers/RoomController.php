@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Enum\Discount;
 use App\Enum\RoomStatus;
 use Illuminate\Http\Request;
 
@@ -22,7 +23,8 @@ class RoomController extends Controller
     {
 
         $status = RoomStatus::asSelectArray();
-        return view('room.create', compact('status'));
+        $discount = Discount::asSelectArray();
+        return view('room.create', compact('status', 'discount'));
     }
 
     /**
@@ -30,7 +32,8 @@ class RoomController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        dd($data);
     }
 
     /**

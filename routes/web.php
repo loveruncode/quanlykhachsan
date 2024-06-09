@@ -26,6 +26,7 @@ Route::prefix('/room')->as('room.')->group(function(){
     Route::controller(App\Http\Controllers\RoomController::class)->group(function(){
         Route::get('/', 'index')->name('index');
         Route::get('/them', 'create')->name('create');
+        Route::post('/them', 'store')->name('store');
     });
 })->middleware('checklogin');
 

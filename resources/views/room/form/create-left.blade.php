@@ -160,8 +160,14 @@
                     </span>
                 </div>
                 <div class="card-body p-2">
-                    <input type="text" class="form-control" id="discount" name="discount"
-                        :value="old('discount')" placeholder="Giảm Giá" />
+                     <select name="discount" id="discount" class="form-control">
+                        @foreach ($discount as $key =>$value)
+                            <option   value="{{$key}}">{{\App\Enum\Discount::translate($key)}}</option>
+                        @endforeach
+
+                     </select>
+                    {{-- <input type="text" class="form-control" id="discount" name="discount"
+                        :value="old('discount')" placeholder="Giảm Giá" /> --}}
                 </div>
             </div>
         </div>

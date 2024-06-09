@@ -1,5 +1,6 @@
 <?php
 
+use App\Enum\Discount;
 use App\Enum\TypeRoom;
 use App\Enum\RoomStatus;
 use Illuminate\Support\Facades\Schema;
@@ -19,8 +20,7 @@ return new class extends Migration
             $table->string('title')->nullable();
             $table->double('price_selling')->nullable();
             $table->double('total_price')->nullable();
-            $table->unsignedBigInteger('discount_id')->nullable();
-            $table->foreign('discount_id')->references('id')->on('discounts')->onDelete('set null');
+            $table->tinyInteger('discount')->default(Discount::NoDiscount->value)->nullable();
             $table->tinyInteger('status')->default(RoomStatus::Available->value);
             $table->date('start_rent')->nullable();
             $table->date('end_rent')->nullable();
@@ -41,7 +41,6 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('rooms', function (Blueprint $table) {
-            $table->dropForeign(['discount_id']);
             $table->dropForeign(['user_id']);
         });
 
