@@ -23,7 +23,7 @@
                 <td><input type="number" value="{{ $user->phone }}" class='form-control'></td>
             </tr>
             <tr>
-                <td>Giới Tính</td>
+                <td>Quyền</td>
                 <td>
                     <select class="form-control" name="gender">
                         <option value="{{ $user->gender }}">{{ \App\Enum\UserRoles::translate($user->roles) }}</option>

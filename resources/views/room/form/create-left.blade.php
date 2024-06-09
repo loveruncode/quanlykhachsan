@@ -79,7 +79,7 @@
                     </span>
                 </div>
                 <div class="card-body p-2">
-                    <textarea class="form-control checkEditor" name="description" placeholder="Miêu Tả"></textarea>
+                    <textarea name="desc" class="form-control checkEditor"  placeholder="Miêu Tả"></textarea>
                 </div>
             </div>
         </div>
@@ -100,6 +100,23 @@
             </div>
         </div>
     </div>
+    {{-- Floor  --}}
+    <div class="row">
+        <div class="col-12 mt-2">
+            <div class="card">
+                <div class="card-header d-flex align-items-center justify-content-between">
+                    <label class="control-label col-form-label p-0">@lang('Tầng'):</label>
+                    <span class="float-end text-yellow" data-bs-toggle="tooltip" data-bs-placement="top"
+                        title="{{ __('Floor') }}">
+                    </span>
+                </div>
+                <div class="card-body p-2">
+                    <input type="number" class="form-control" name="floor" placeholder="Tầng" />
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- start - end day -->
     <div class="row">
         <!-- start -->
@@ -145,7 +162,7 @@
                     </span>
                 </div>
                 <div class="card-body p-2">
-                    <input type="text" class="form-control" id="sellingPrice" name="selling price"
+                    <input type="text" class="form-control" id="sellingPrice" name="price_selling"
                         :value="old('selling price')" placeholder="Giá Thuê" />
                 </div>
             </div>
@@ -166,8 +183,7 @@
                         @endforeach
 
                      </select>
-                    {{-- <input type="text" class="form-control" id="discount" name="discount"
-                        :value="old('discount')" placeholder="Giảm Giá" /> --}}
+
                 </div>
             </div>
         </div>
@@ -197,7 +213,7 @@
                     </span>
                 </div>
                 <div class="card-body p-2">
-                    <input readonly type="text" class="form-control" id="total" name="total"
+                    <input readonly type="text" class="form-control" id="total" name="total_price"
                         placeholder="Tổng Giá" />
                 </div>
             </div>
