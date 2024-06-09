@@ -14,7 +14,7 @@
 <script src="{{ asset('js/demo/chart-area-demo.js') }}"></script>
 <script src="{{ asset('js/demo/chart-pie-demo.js') }}"></script>
 <script src="{{ asset('js/setup.js') }}"></script>
-<script src="{{ asset('js/jquery-3.6.4.min.js') }}"></script>
+<script src="{{asset('js/jquery-3.7.1.min.js')}}"></script>
 <script src="{{ asset('js/sweetalert2@11.js') }}"></script>
 <script src="{{ asset('ckeditor5/ckeditor.js') }}"></script>
 
