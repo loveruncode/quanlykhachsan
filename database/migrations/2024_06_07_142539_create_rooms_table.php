@@ -24,6 +24,7 @@ return new class extends Migration
             $table->tinyInteger('status')->default(RoomStatus::Available->value);
             $table->date('start_rent')->nullable();
             $table->date('end_rent')->nullable();
+            $table->double('price_per_date')->nullable();
             $table->integer('floor')->nullable();
             $table->tinyInteger('type')->nullable()->default(TypeRoom::Normal->value);
             $table->decimal('area')->nullable();
