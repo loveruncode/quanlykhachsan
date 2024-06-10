@@ -199,7 +199,7 @@
                     </span>
                 </div>
                 <div class="card-body p-2">
-                    <input readonly type="text" class="form-control" id="price_per_date" name="total"
+                    <input readonly type="text" class="form-control" id="price_per_date" name="price_per_date"
                         placeholder="Giá Theo Ngày" />
                 </div>
             </div>

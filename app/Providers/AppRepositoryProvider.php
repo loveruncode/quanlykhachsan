@@ -14,6 +14,7 @@ class AppRepositoryProvider extends ServiceProvider
      protected $repositories = [
         'App\Repository\Notification\NotificationRepositoryInterface' => 'App\Repository\Notification\NotificationRepository',
         'App\Repository\User\UserRepositoryInterface' => 'App\Repository\User\UserRepository',
+        'App\Repository\Room\RoomRepositoryInterface' => 'App\Repository\Room\RoomRepository'
 
     ];
     public function register(): void
