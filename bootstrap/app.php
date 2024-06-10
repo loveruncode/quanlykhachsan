@@ -15,6 +15,7 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withMiddleware(function (Middleware $middleware) {
          $middleware->alias([
             'checklogin' => \App\Http\Middleware\CheckLoginMiddleware::class,
+            'cors' =>\App\Http\Middleware\CorsMiddleware::class,
          ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
