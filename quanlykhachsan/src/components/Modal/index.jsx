@@ -6,7 +6,7 @@ import styles from './Modal.module.scss';
 
 const cx = classNames.bind(styles);
 
-export default function Modal({ isOpen, title, closeModal, children, className }) {
+export default function Modal({ isOpen, title, closeModal, background = true, children, className }) {
     const modalRef = useRef(null);
 
     // Handle key down "Esc" to exit modal
@@ -44,7 +44,7 @@ export default function Modal({ isOpen, title, closeModal, children, className }
     }, [isOpen, closeModal]);
 
     // Dynamically calculate classes using classNames/bind
-    const modalClasses = cx('modal', className);
+    const modalClasses = cx('modal', className, { 'modal-background': background });
 
     // If not open, return null to hide modal
     if (!isOpen) return null;
@@ -69,5 +69,6 @@ Modal.propTypes = {
     title: PropTypes.string.isRequired,
     closeModal: PropTypes.func.isRequired,
     className: PropTypes.string,
-    children: PropTypes.node.isRequired
+    children: PropTypes.node.isRequired,
+    background: PropTypes.bool
 };
