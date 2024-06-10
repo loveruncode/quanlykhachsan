@@ -1,0 +1,131 @@
+.offCanvas {
+    position: fixed;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    transition: transform 0.3s ease;
+
+    &.left {
+        top: 0;
+        left: 0;
+        width: 12cm;
+        height: 100%;
+        transform: translateX(-100%);
+    }
+
+    &.left.show {
+        transform: translateX(0);
+    }
+
+    &.right {
+        top: 0;
+        right: 0;
+        width: 12cm;
+        height: 100%;
+        transform: translateX(100%);
+    }
+
+    &.right.show {
+        transform: translateX(0);
+    }
+
+    &.top {
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 12cm;
+        transform: translateY(-100%);
+    }
+
+    &.top.show {
+        transform: translateY(0);
+    }
+
+    &.bottom {
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 12cm;
+        transform: translateY(100%);
+    }
+
+    &.bottom.show {
+        transform: translateY(0);
+    }
+
+    &.page {
+        width: 100vw; // Sử dụng viewport units cho chiều rộng và chiều cao
+        height: 100vh;
+        top: 0;
+        left: 0;
+        transform: none;
+    }
+
+    @media (max-width: 425px) {
+        &.left,
+        &.right {
+            width: 100%;
+            height: 100%;
+            transform: none;
+        }
+
+        &.top,
+        &.bottom {
+            width: 100%;
+            height: 100%;
+            transform: none;
+        }
+    }
+}
+
+.offCanvas-background {
+    background-color: rgba(0, 0, 0, 0.4); // Màu nền mờ
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 999; // Đảm bảo rằng background mờ hiển thị phía sau offCanvas
+}
+
+.offCanvas-content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+}
+
+.offCanvas-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    background-color: #f1f1f1;
+    border-bottom: 1px solid #ddd;
+}
+
+.offCanvas-title {
+    margin: 0;
+    flex: 1;
+    text-align: center;
+}
+
+.close {
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    position: absolute;
+    left: 10px;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.offCanvas-body {
+    padding: 20px;
+}

@@ -1,19 +1,19 @@
 import classNames from 'classnames/bind';
 import { Link } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBell, faCartShopping } from '@fortawesome/free-solid-svg-icons';
 
 import Search from './components/Search';
 import styles from './Header.module.scss';
 import Auth from './Auth';
 import Image from '~/components/image';
 import images from '~/assets/images';
+import Cart from './components/Cart';
+import Notify from './components/Notify';
 
 const cx = classNames.bind(styles);
 
 export default function Header() {
     // test login user
-    const currentUser = false;
+    const currentUser = true;
 
     return (
         <>
@@ -33,10 +33,10 @@ export default function Header() {
                     {currentUser ? (
                         <ul className={cx('header__rigth-currentuser')}>
                             <li className={cx('header__rigth-notify')}>
-                                <FontAwesomeIcon icon={faBell} />
+                                <Notify />
                             </li>
                             <li className={cx('header__rigth-cart')}>
-                                <FontAwesomeIcon icon={faCartShopping} />
+                                <Cart />
                             </li>
                             <li>
                                 <Image className={cx('user-avatar')} src="asdahjsbdjas" alt="Nguyen Van A" />
