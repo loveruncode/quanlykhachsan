@@ -25,6 +25,7 @@ return new class extends Migration
             $table->date('start_rent')->nullable();
             $table->date('end_rent')->nullable();
             $table->double('price_per_date')->nullable();
+            $table->string('images')->nullable();
             $table->integer('floor')->nullable();
             $table->tinyInteger('type')->nullable()->default(TypeRoom::Normal->value);
             $table->decimal('area')->nullable();

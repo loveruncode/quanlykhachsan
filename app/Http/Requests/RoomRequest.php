@@ -17,13 +17,18 @@ class RoomRequest extends BaseRequest
             'title' => ['required', 'string', 'min:10', 'max:30'],
             'price_selling' => ['required'],
             'total_price' => ['required'],
-            'discount' => ['nullable', new Enum(Discount::class)],
+            'discount' => ['nullable',new Enum(Discount::class)],
             'status' => ['nullable', new Enum(RoomStatus::class)],
             'start_rent' => ['required', 'date'],
             'end_rent' => ['required', 'date'],
             'price_per_date' => ['nullable'],
-            
-
+            'floor' => ['required', 'integer'],
+            'type' => ['nullable', 'string'],
+            'area' => ['required'],
+            'desc' => ['string', 'required'],
+            'address' => ['string', 'required'],
+            'user_id' => ['required', 'array'],
+            'images.*' => ['image', 'max:2048'],
         ];
     }
 
@@ -31,7 +36,22 @@ class RoomRequest extends BaseRequest
     public function messages()
     {
         return [
-
+            'code.required' => 'Mã phòng là bắt buộc.',
+            'title.required' => 'Tiêu đề là bắt buộc.',
+            'title.min' => 'Tiêu đề phải có ít nhất :min ký tự.',
+            'title.max' => 'Tiêu đề không được vượt quá :max ký tự.',
+            'price_selling.required' => 'Giá bán là bắt buộc.',
+            'total_price.required' => 'Tổng giá là bắt buộc.',
+            'start_rent.required' => 'Ngày bắt đầu thuê là bắt buộc.',
+            'start_rent.date' => 'Ngày bắt đầu thuê phải là một ngày hợp lệ.',
+            'end_rent.required' => 'Ngày kết thúc thuê là bắt buộc.',
+            'end_rent.date' => 'Ngày kết thúc thuê phải là một ngày hợp lệ.',
+            'floor.required' => 'Số tầng là bắt buộc.',
+            'floor.integer' => 'Số tầng phải là một số nguyên.',
+            'area.required' => 'Diện tích là bắt buộc.',
+            'desc.required' => 'Mô tả là bắt buộc.',
+            'images.*.image' => 'Hình ảnh phải là một tập tin hình ảnh.',
+            'images.*.max' => 'Kích thước tập tin hình ảnh không được vượt quá :max kilobytes.',
         ];
     }
 }

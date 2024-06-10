@@ -5,9 +5,9 @@ namespace App\Repository\Room;
 
 use App\Models\Room;
 use App\Repository\EloquentRepository;
-use App\Repository\EloquentRepositoryInterface;
+use App\Repository\Room\RoomRepositoryInterface;
 
-class RoomRepository extends EloquentRepository implements EloquentRepositoryInterface{
+class RoomRepository extends EloquentRepository implements RoomRepositoryInterface{
 
 
 
@@ -16,6 +16,6 @@ class RoomRepository extends EloquentRepository implements EloquentRepositoryInt
         return Room::class;
     }
 
-    
+
 
 }

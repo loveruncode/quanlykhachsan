@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Enum\Discount;
 use App\Enum\RoomStatus;
+use App\Http\Requests\RoomRequest;
+use App\Repository\Room\RoomRepositoryInterface;
 use Illuminate\Http\Request;
 
 class RoomController extends Controller
@@ -11,6 +13,14 @@ class RoomController extends Controller
     /**
      * Display a listing of the resource.
      */
+    protected $repository;
+
+    public function __construct(RoomRepositoryInterface $repository)
+    {
+        $this->repository = $repository;
+    }
+
+
     public function index()
     {
         return view('room.index');
@@ -30,10 +40,10 @@ class RoomController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(RoomRequest $request)
     {
-        $data = $request->all();
-        dd($data);
+        $data = $request->validated();
+       dd($data);
     }
 
     /**
