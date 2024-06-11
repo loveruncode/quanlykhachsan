@@ -4,5 +4,5 @@ import Contact from './Contact';
 import Shop from './Shop';
 import Room from './Room';
 import Blog from './Blog';
-
-export { Home, Profile, Contact, Shop, Room, Blog };
+import NotFound from './NotFound';
+export { Home, Profile, Contact, Shop, Room, Blog, NotFound };
