@@ -1,13 +1,14 @@
 import classNames from 'classnames/bind';
 import { Link } from 'react-router-dom';
 
+import config from '~/config';
 import Search from './components/Search';
-import styles from './Header.module.scss';
-import Auth from './Auth';
-import Image from '~/components/image';
-import images from '~/assets/images';
-import Cart from './components/Cart';
 import Notify from './components/Notify';
+import Image from '~/components/image';
+import Cart from './components/Cart';
+import Auth from './Auth';
+import images from '~/assets/images';
+import styles from './Header.module.scss';
 
 const cx = classNames.bind(styles);
 
@@ -19,7 +20,7 @@ export default function Header() {
         <>
             <header className={cx('header')}>
                 <div className={cx('header__left')}>
-                    <Link className={cx('header__left-logo')} to="/">
+                    <Link className={cx('header__left-logo')} to={config.routes.home}>
                         <img src={images.logo} alt="logo" />
                     </Link>
                 </div>
@@ -39,7 +40,9 @@ export default function Header() {
                                 <Cart />
                             </li>
                             <li>
-                                <Image className={cx('user-avatar')} src="asdahjsbdjas" alt="Nguyen Van A" />
+                                <Link to="/profile/123">
+                                    <Image className={cx('user-avatar')} src="asdahjsbdjas" alt="Nguyen Van A" />
+                                </Link>
                             </li>
                         </ul>
                     ) : (
@@ -51,22 +54,22 @@ export default function Header() {
             <nav className={cx('menu')}>
                 <ul>
                     <li className={cx('menu__item')}>
-                        <Link className={cx('menu__item-link')} to="/room">
+                        <Link className={cx('menu__item-link')} to={config.routes.room}>
                             Room
                         </Link>
                     </li>
                     <li className={cx('menu__item')}>
-                        <Link className={cx('menu__item-link')} to="/shop">
+                        <Link className={cx('menu__item-link')} to={config.routes.shop}>
                             Shop
                         </Link>
                     </li>
                     <li className={cx('menu__item')}>
-                        <Link className={cx('menu__item-link')} to="/blog">
+                        <Link className={cx('menu__item-link')} to={config.routes.blog}>
                             Blog
                         </Link>
                     </li>
                     <li className={cx('menu__item')}>
-                        <Link className={cx('menu__item-link')} to="/contact">
+                        <Link className={cx('menu__item-link')} to={config.routes.contact}>
                             Contact
                         </Link>
                     </li>
