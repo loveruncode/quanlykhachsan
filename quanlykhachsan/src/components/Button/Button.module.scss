@@ -13,9 +13,9 @@
     border: 1px solid transparent;
     user-select: none;
 
-    + .wrapper {
-        margin-left: 8px;
-    }
+    // + .wrapper {
+    //     margin-left: 8px;
+    // }
 
     &.disabled {
         pointer-events: none;
@@ -63,7 +63,7 @@
 
     &:hover {
         border-color: currentColor;
-        background-color: rgba(254, 44, 85, 0.06);
+        background-color: rgba(44, 254, 114, 0.06);
     }
 }
 
