@@ -63,14 +63,22 @@ Route::prefix('/food')->as('food.')->group(function(){
 
 })->middleware('checklogin');
 
-
 Route::prefix('/post')->as('post.')->group(function(){
     Route::controller(App\Http\Controllers\PostController::class)->group(function(){
         Route::get('/', 'index')->name('index');
         Route::get('/them', 'create')->name('create');
     });
-
 })->middleware('checklogin');
+
+
+Route::prefix('/route')->as('route.')->group(function(){
+    Route::controller(App\Http\Controllers\RouteController::class)->group(function(){
+        Route::get('/', 'index')->name('index');
+
+
+    });
+});
+
 
 Route::get('/register', [UserController::class, 'register'])->name('register');
 
