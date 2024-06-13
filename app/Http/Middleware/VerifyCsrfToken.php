@@ -13,6 +13,6 @@ class VerifyCsrfToken extends Middleware
      */
     protected $except = [
         //
-        'ckfinder/*', 'admin/quan-ly-file/*'
+        'api/*',  
     ];
 }

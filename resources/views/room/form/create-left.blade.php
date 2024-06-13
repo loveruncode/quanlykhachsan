@@ -79,7 +79,7 @@
                     </span>
                 </div>
                 <div class="card-body p-2">
-                    <textarea name="desc" class="form-control checkEditor"  placeholder="Miêu Tả"></textarea>
+                    <textarea name="desc" class="form-control checkEditor" placeholder="Miêu Tả"></textarea>
                 </div>
             </div>
         </div>
@@ -130,7 +130,7 @@
                 </div>
                 <div class="card-body p-2">
                     <input id="start_date" type="date" class="form-control" name="start_rent"
-                        :value="old('start_rent')" placeholder="Ngày Bắt Đầu" required/>
+                        :value="old('start_rent')" placeholder="Ngày Bắt Đầu" required />
                 </div>
             </div>
         </div>
@@ -145,7 +145,7 @@
                 </div>
                 <div class="card-body p-2">
                     <input id="end_date" type="date" class="form-control" name="end_rent"
-                        :value="old('end_rent')" placeholder="Ngày Kết Thúc" required/>
+                        :value="old('end_rent')" placeholder="Ngày Kết Thúc" required />
                 </div>
             </div>
         </div>
@@ -163,7 +163,7 @@
                 </div>
                 <div class="card-body p-2">
                     <input type="text" class="form-control" id="sellingPrice" name="price_selling"
-                        :value="old('selling price')" placeholder="Giá Thuê" />
+                        placeholder="Giá Thuê" />
                 </div>
             </div>
         </div>
@@ -177,12 +177,12 @@
                     </span>
                 </div>
                 <div class="card-body p-2">
-                     <select name="discount" id="discount" class="form-control">
-                        @foreach ($discount as $key =>$value)
-                            <option   value="{{$key}}">{{\App\Enum\Discount::translate($key)}}</option>
+                    <select name="discount" id="discount" class="form-control">
+                        @foreach ($discount as $key => $value)
+                            <option value="{{ $key }}">{{ \App\Enum\Discount::translate($key) }}</option>
                         @endforeach
 
-                     </select>
+                    </select>
 
                 </div>
             </div>
@@ -243,17 +243,6 @@
             return pricePerDate;
         }
 
-        function formatCurrency(value) {
-            let number = parseInt(value.replace(/\D/g, ''), 10);
-            if (isNaN(number)) {
-                return "";
-            }
-            return new Intl.NumberFormat('vi-VN', {
-                style: 'currency',
-                currency: 'VND'
-            }).format(number);
-        }
-
         function calculateTotal() {
             let sellingPrice = parseFloat(sellingPriceInput.value.replace(/\D/g, '')) || 0;
             let discount = parseFloat(discountInput.value) || 0;
@@ -265,14 +254,14 @@
                 total = sellingPrice;
             }
 
-            totalInput.value = formatCurrency(total.toString());
+            totalInput.value = total.toString();
             let pricePerDate = CalDate(total);
-            pricePerDateInput.value = formatCurrency(pricePerDate.toString());
+            pricePerDateInput.value = pricePerDate.toString();
         }
 
         function formatInputValue(event) {
             let input = event.target;
-            input.value = formatCurrency(input.value);
+            input.value = input.value.replace(/\D/g, '');
         }
 
         sellingPriceInput.addEventListener('input', calculateTotal);
@@ -281,6 +270,8 @@
         totalInput.addEventListener('blur', formatInputValue);
         start_DateInput.addEventListener('change', calculateTotal);
         end_DateInput.addEventListener('change', calculateTotal);
+        sellingPriceInput.value = sellingPriceInput.value.replace(/\u00A0/g, '');
+        pricePerDateInput.value = pricePerDateInput.value.replace(/\u00A0/g, '');
+        totalInput.value = totalInput.value.replace(/\u00A0/g, '');
     });
-</script>
 </script>
