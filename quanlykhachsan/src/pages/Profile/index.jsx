@@ -1,22 +1,28 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useLocation } from 'react-router-dom';
 import classNames from 'classnames/bind';
 import { getUserById } from './users';
 
 import styles from './Profile.module.scss';
-import Image from '~/components/image';
+import Input from '~/components/Input';
+import Image from '~/components/Image';
 import Button from '~/components/Button';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBookBookmark, faShieldHalved, faUser } from '@fortawesome/free-solid-svg-icons';
 
 const cx = classNames.bind(styles);
 
-function Profile() {
-    let { id } = useParams();
+export default function Profile() {
+    const { id } = useParams();
+    const location = useLocation();
     const [user, setUser] = useState(null);
-    const [name, setName] = useState('');
+
+    const [birthday, setBirthday] = useState('');
+    const [address, setAddress] = useState('');
+    const [avatar, setAvatar] = useState(null);
     const [email, setEmail] = useState('');
     const [phone, setPhone] = useState('');
-    const [avatar, setAvatar] = useState('');
-    const [isEditing, setIsEditing] = useState(false);
+    const [name, setName] = useState('');
 
     useEffect(() => {
         getUserById(id)
@@ -25,96 +31,118 @@ function Profile() {
                 setName(userData.name);
                 setEmail(userData.email);
                 setPhone(userData.phone);
+                setAddress(userData.address);
+                setBirthday(userData.birthday);
             })
             .catch((error) => {
                 console.error('Error fetching user:', error);
             });
     }, [id]);
 
-    const handleEdit = () => {
-        setIsEditing(true);
-    };
-
-    const handleSave = () => {
-        setIsEditing(false);
-    };
-
-    const handleCancel = () => {
-        // Reset state to the original user data
-        setName(user.name);
-        setEmail(user.email);
-        setPhone(user.phone);
-        setAvatar(user.avatar);
-        setIsEditing(false);
-    };
-
     if (!user) {
         return <div>Loading...</div>;
     }
-    // test
+
+    const handleSaveChanges = (e) => {
+        e.preventDefault();
+        console.log({ name, email, phone, address, birthday });
+    };
+
+    const handleAvatarChange = (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            setAvatar(URL.createObjectURL(file));
+        }
+    };
+    const handleButtonClick = (e) => {
+        e.preventDefault();
+        document.getElementById('avatar-input').click();
+    };
+
     return (
-        <div className={cx('profileWrapper')}>
-            <h2>Profile</h2>
-            <div className={cx('profile')}>
-                <div className={cx('profile__left')}>
-                    <Image className={cx('profile__left__avatar')} src={user.avatar} alt={user.name} />
-                    {!isEditing && (
-                        <Button primary className={cx('profile__left__editButton')} onClick={handleEdit}>
-                            Edit Profile
+        <div className={cx('profile')}>
+            <div className={cx('wrapper')}>
+                <div className={cx('left')}>
+                    <ul>
+                        <Button
+                            className={cx('btn-Link', { active: location.pathname === `/profile/${id}` })}
+                            to={`/profile/${id}`}
+                        >
+                            <FontAwesomeIcon icon={faUser} style={{ paddingRight: '5px' }} />
+                            Thông tin tài khoản
                         </Button>
-                    )}
-                    {isEditing && (
-                        <>
+                        <Button
+                            className={cx('btn-Link', {
+                                active: location.pathname === `/profile/${id}/history-orders`
+                            })}
+                            to={`/profile/${id}/history-orders`}
+                        >
+                            <FontAwesomeIcon icon={faBookBookmark} style={{ paddingRight: '5px' }} />
+                            Lịch sử đơn hàng
+                        </Button>
+                        <Button
+                            className={cx('btn-Link', { active: location.pathname === `/profile/${id}/security` })}
+                            to={`/profile/${id}/security`}
+                        >
+                            <FontAwesomeIcon icon={faShieldHalved} style={{ paddingRight: '5px' }} />
+                            Bảo mật tài khoản
+                        </Button>
+                    </ul>
+                </div>
+                <div className={cx('right')}>
+                    <span className={cx('title')}>Thông Tin Tài Khoảng</span>
+                    <form className={cx('profile-info')}>
+                        {/* avatar */}
+                        <div className={cx('info-avatar')}>
+                            <Image src={!avatar ? user.avatar : avatar} alt="Avatar" className={cx('profile-image')} />
+                            <Button onClick={handleButtonClick} outline>
+                                Đổi ảnh đại diện
+                            </Button>
                             <input
                                 type="file"
+                                id="avatar-input"
+                                style={{ display: 'none' }}
+                                onChange={handleAvatarChange}
                                 accept="image/*"
-                                onChange={avatar}
-                                className={cx('profile__left__avatarInput')}
                             />
-                        </>
-                    )}
-                </div>
-                <div className={cx('profile__right')}>
-                    <div className={cx('profile__right__userInfo')}>
-                        {isEditing ? (
-                            <>
-                                <div className={cx('profile__right__userInfo__item')}>
-                                    <strong>User Name:</strong>{' '}
-                                    <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
-                                </div>
-                                <div className={cx('profile__right__userInfo__item')}>
-                                    <strong>Email:</strong>{' '}
-                                    <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} />
-                                </div>
-                                <div className={cx('profile__right__userInfo__item')}>
-                                    <strong>Phone:</strong>{' '}
-                                    <input type="text" value={phone} onChange={(e) => setPhone(e.target.value)} />
-                                </div>
-                                <Button className={cx('profile__right__userInfo__editButtons')} onClick={handleSave}>
-                                    Save
+                        </div>
+                        {/* Input */}
+                        <div className={cx('info-inputs')}>
+                            <div className={cx('inline')}>
+                                <Input label="Họ và Tên" data={name} setData={setName} className={cx('username')} />
+                                <Input label="Email" data={email} setData={setEmail} className={cx('email')} readOnly />
+                            </div>
+
+                            <div className={cx('inline')}>
+                                <Input label="Số Điện Thoại" data={phone} setData={setPhone} className={cx('phone')} />
+                                {!birthday ? (
+                                    <Input
+                                        label="Ngày Sinh"
+                                        type="date"
+                                        data={birthday}
+                                        setData={setBirthday}
+                                        className={cx('date')}
+                                    />
+                                ) : (
+                                    <Input
+                                        label="Ngày Sinh"
+                                        type="date"
+                                        data={birthday}
+                                        setData={setBirthday}
+                                        className={cx('date')}
+                                    />
+                                )}
+                            </div>
+                            <Input label="Địa Chỉ" data={address} setData={setAddress} classname={cx('address')} />
+                            {location.pathname === `/profile/${id}` && (
+                                <Button primary className={cx('save-button')} onClick={handleSaveChanges}>
+                                    Lưu thay đổi
                                 </Button>
-                                <Button className={cx('profile__right__userInfo__editButtons')} onClick={handleCancel}>
-                                    Cancel
-                                </Button>
-                            </>
-                        ) : (
-                            <>
-                                <p className={cx('profile__right__userInfo__item')}>
-                                    <strong>User Name:</strong> {user.name}
-                                </p>
-                                <p className={cx('profile__right__userInfo__item')}>
-                                    <strong>Email:</strong> {user.email}
-                                </p>
-                                <p className={cx('profile__right__userInfo__item')}>
-                                    <strong>Phone:</strong> {user.phone}
-                                </p>
-                            </>
-                        )}
-                    </div>
+                            )}
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
     );
 }
-
-export default Profile;

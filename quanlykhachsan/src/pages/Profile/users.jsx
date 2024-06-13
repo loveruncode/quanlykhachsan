@@ -1,6 +1,22 @@
 const users = [
-    { id: 1, avatar: 'sadhsabdhba', name: 'Nguyen Van A', email: 'vana@example.com', phone: '03488484848448' },
-    { id: 2, avatar: 'sadhsabdhba', name: 'Tran Thi B', email: 'tranb@example.com', phone: '03488484848448' }
+    {
+        id: 1,
+        avatar: 'sadhsabdhba',
+        name: 'Nguyen Van A',
+        email: 'vana@example.com',
+        phone: '03488484848448',
+        address: 'HCM',
+        birthday: '2024-04-04'
+    },
+    {
+        id: 2,
+        avatar: 'sadhsabdhba',
+        name: 'Tran Thi B',
+        email: 'tranb@example.com',
+        phone: '03488484848448',
+        address: 'HCM',
+        birthday: '2024-04-04'
+    }
 ];
 //  Mock Api
 export const getUsers = () => {

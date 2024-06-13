@@ -1,10 +1,11 @@
 
 import classNames from 'classnames/bind';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
+
 import config from '~/config';
 import Search from './components/Search';
 import Notify from './components/Notify';
-import Image from '~/components/image';
+import Image from '~/components/Image';
 import Cart from './components/Cart';
 import Auth from './Auth';
 import images from '~/assets/images';
@@ -15,6 +16,9 @@ import 'react-toastify/dist/ReactToastify.css';
 const cx = classNames.bind(styles);
 
 export default function Header() {
+
+    let { id } = useParams();
+
     const token = localStorage.getItem('token');
     const currentUser = token ? true : false;
 
@@ -71,7 +75,7 @@ export default function Header() {
                                 <Cart />
                             </li>
                             <li>
-                                <Link to="/profile/123">
+                                <Link to={`${config.routes.profile}/${id}`}>
                                     <Image className={cx('user-avatar')} src="asdahjsbdjas" alt="Nguyen Van A" />
                                 </Link>
                             </li>
