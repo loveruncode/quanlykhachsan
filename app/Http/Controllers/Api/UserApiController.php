@@ -75,13 +75,11 @@ class UserApiController extends Controller
         if ($validator->fails()) {
             return response()->json(['error' => $validator->errors()], 400);
         }
-
-        // Create new user
         try {
             $user = new User();
             $user->name = $request->input('name');
             $user->email = $request->input('email');
-            $user->password = Hash::make($request->input('password'));
+             $user->password = Hash::make($request->input('password'));
             $user->save();
 
             // Return success response
