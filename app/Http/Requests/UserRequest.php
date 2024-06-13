@@ -5,7 +5,6 @@ namespace App\Http\Requests;
 use App\Enum\Gender;
 use App\Enum\UserRoles;
 use Illuminate\Validation\Rules\Enum;
-use Illuminate\Foundation\Http\FormRequest;
 
 class UserRequest extends BaseRequest
 {

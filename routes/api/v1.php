@@ -7,8 +7,9 @@ use App\Http\Middleware\CorsMiddleware;
 Route::middleware([CorsMiddleware::class])->group(function () {
 
     Route::controller(App\Http\Controllers\Api\UserApiController::class)->group(function(){
-        Route::get('/admin',  'index')->name('index');
-
+        Route::get('api/admin',  'index')->name('index');
+        Route::post('api/login', 'checklogin')->name('checklogin');
+    
     });
 });
 

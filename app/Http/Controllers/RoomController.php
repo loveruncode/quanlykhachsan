@@ -4,9 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Enum\Discount;
 use App\Enum\RoomStatus;
-use App\Http\Requests\RoomRequest;
-use App\Repository\Room\RoomRepositoryInterface;
 use Illuminate\Http\Request;
+use App\Http\Requests\RoomRequest;
+use Illuminate\Validation\Rules\Enum;
+use Illuminate\Support\Facades\Validator;
+use App\Repository\Room\RoomRepositoryInterface;
+use App\Services\Room\RoomService;
 
 class RoomController extends Controller
 {
@@ -14,15 +17,21 @@ class RoomController extends Controller
      * Display a listing of the resource.
      */
     protected $repository;
+    protected $service;
 
-    public function __construct(RoomRepositoryInterface $repository)
-    {
+    public function __construct(
+        RoomRepositoryInterface $repository,
+        RoomService $service
+    ) {
         $this->repository = $repository;
+        $this->service = $service;
     }
 
 
     public function index()
     {
+        
+
         return view('room.index');
     }
 
@@ -42,9 +51,16 @@ class RoomController extends Controller
      */
     public function store(RoomRequest $request)
     {
-        $data = $request->validated();
-       dd($data);
+
+        $response = $this->service->store($request);
+        if (!$response) {
+
+            return back()->with('error', 'Thêm Phòng Thất Bại!');
+        }
+        return back()->with('success', 'Thêm Phòng Thành Công!');
     }
+
+
 
     /**
      * Display the specified resource.

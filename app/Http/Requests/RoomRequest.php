@@ -2,9 +2,12 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Room;
 use App\Enum\Discount;
 use App\Enum\RoomStatus;
+use App\Http\Requests\BaseRequest;
 use Illuminate\Validation\Rules\Enum;
+
 
 class RoomRequest extends BaseRequest
 {
@@ -13,25 +16,27 @@ class RoomRequest extends BaseRequest
     public function methodPost()
     {
         return [
-            'code' => ['required', 'string'],
-            'title' => ['required', 'string', 'min:10', 'max:30'],
-            'price_selling' => ['required'],
-            'total_price' => ['required'],
-            'discount' => ['nullable',new Enum(Discount::class)],
+            'code' => ['required', 'string', function ($attribute, $value, $fail) {
+                if (Room::where('code', $value)->exists()) {
+                    $fail('Đã có mã Phòng này rồi');
+                }
+            }],
+            'title' => ['required', 'string',],
+            'price_selling' => ['nullable', 'required'],
+            'total_price' => ['nullable'],
+            'discount' => ['nullable', new Enum(Discount::class)],
             'status' => ['nullable', new Enum(RoomStatus::class)],
             'start_rent' => ['required', 'date'],
             'end_rent' => ['required', 'date'],
             'price_per_date' => ['nullable'],
-            'floor' => ['required', 'integer'],
+            'floor' => ['nullable',],
             'type' => ['nullable', 'string'],
-            'area' => ['required'],
-            'desc' => ['string', 'required'],
-            'address' => ['string', 'required'],
-            'user_id' => ['required', 'array'],
+            'area' => ['nullable', 'required'],
+            'desc' => ['string', 'nullable'],
+            'address' => ['string', 'nullable'],
             'images.*' => ['image', 'max:2048'],
         ];
     }
-
 
     public function messages()
     {

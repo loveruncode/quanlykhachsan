@@ -17,6 +17,13 @@ return Application::configure(basePath: dirname(__DIR__))
             'checklogin' => \App\Http\Middleware\CheckLoginMiddleware::class,
             'cors' =>\App\Http\Middleware\CorsMiddleware::class,
          ]);
+         $middleware->validateCsrfTokens(except: [
+            'api/*',  
+            'stripe/*',
+            'http://example.com/foo/bar',
+            'http://example.com/foo/*',
+        ]);
+
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //
