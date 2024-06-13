@@ -63,12 +63,13 @@ class UserApiController extends Controller
     }
 
 
-  public function register(Request $request)
+    public function register(Request $request)
     {
         // Validation rules
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
+            'phone' => 'required',
             'password' => 'required|string|min:6',
         ]);
 
@@ -79,7 +80,8 @@ class UserApiController extends Controller
             $user = new User();
             $user->name = $request->input('name');
             $user->email = $request->input('email');
-             $user->password = Hash::make($request->input('password'));
+            $user->phone = $request->input('phone');
+            $user->password = Hash::make($request->input('password'));
             $user->save();
 
             // Return success response
@@ -89,9 +91,4 @@ class UserApiController extends Controller
             return response()->json(['error' => 'Đăng ký thất bại'], 500);
         }
     }
-
-
-
-
-
 }
