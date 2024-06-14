@@ -11,7 +11,7 @@ Route::middleware([CorsMiddleware::class])->group(function () {
         Route::post('api/login', 'checklogin')->name('checklogin');
         Route::post('api/logout', 'logout')->name('logout');
         Route::post('api/register', 'register')->name('register');
-        Route::get('api/profile/{id}', 'profile')->name('profile');
+        Route::get('api/profilev1/{id}', 'profile')->name('profile');
     });
 });
 
