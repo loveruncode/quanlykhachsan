@@ -93,4 +93,27 @@ class UserApiController extends Controller
             return response()->json(['error' => 'Đăng ký thất bại'], 500);
         }
     }
+
+
+    public function profile($id)
+    {
+
+        $data = $this->repository->find($id);
+        if ($data) {
+            return response()->json([
+                'status' => 'success',
+                'data' => $data
+            ], 200);
+        } else {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Profile not found'
+            ], 404);
+        }
+    }
+
+
+
+
+
 }
