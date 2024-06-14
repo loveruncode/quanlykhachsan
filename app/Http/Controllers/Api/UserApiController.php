@@ -43,16 +43,22 @@ class UserApiController extends Controller
         if (!filter_var($request->input('email'), FILTER_VALIDATE_EMAIL)) {
             return response()->json(['error' => 'Invalid email format'], 400);
         }
+
         $credentials = $request->only('email', 'password');
 
         if (!$token = Auth::attempt($credentials)) {
             return response()->json(['error' => 'Sai Tài Khoản Mật Khâu'], 401);
         }
+
+        $userId = Auth::id();
+
         return response()->json([
             'access_token' => $token,
             'token_type' => 'Bearer',
+            'user_id' => $userId
         ]);
     }
+
 
 
     public function logout(Request $request)
