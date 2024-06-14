@@ -10,6 +10,22 @@
         </div>
 
     </div>
+     {{-- type room --}}
+
+     <div class="card mb-3 mt-2">
+        <div class="card-header col-form-label">
+            @lang('Loại Phòng')
+        </div>
+        <div class="card-body d-flex flex-column flex-sm-row align-items-center">
+            <select name="type" id="discount" class="form-control">
+                @foreach ($type as $key => $value)
+                    <option value="{{ $key }}">{{ \App\Enum\TypeRoom::translate($key) }}</option>
+                @endforeach
+
+            </select>
+        </div>
+
+    </div>
     <!-- add multi images -->
     <div class="card mb-3 mt-2">
         <div class="card-header col-form-label">

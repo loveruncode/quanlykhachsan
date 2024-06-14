@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Enum\Discount;
 use App\Enum\RoomStatus;
+use App\Enum\TypeRoom;
 use Illuminate\Http\Request;
 use App\Http\Requests\RoomRequest;
 use Illuminate\Validation\Rules\Enum;
@@ -30,7 +31,7 @@ class RoomController extends Controller
 
     public function index()
     {
-        
+
 
         return view('room.index');
     }
@@ -43,7 +44,8 @@ class RoomController extends Controller
 
         $status = RoomStatus::asSelectArray();
         $discount = Discount::asSelectArray();
-        return view('room.create', compact('status', 'discount'));
+        $type = TypeRoom::asSelectArray();
+        return view('room.create', compact('status', 'discount','type'));
     }
 
     /**

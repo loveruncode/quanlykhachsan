@@ -14,6 +14,7 @@ enum TypeRoom:int{
 
     case Vip = 1;
     case Normal = 2;
+    case BestSeller = 3;
 
     public function badge(){
         return match($this) {
@@ -29,6 +30,7 @@ enum TypeRoom:int{
         return match ($status) {
             TypeRoom::Vip->value => __('Phòng Vip'),
             TypeRoom::Normal->value => __('Phòng Thường'),
+            TypeRoom::BestSeller->value => __('Phòng Best Seller'),
             default => __('Unknown'),
         };
     }
