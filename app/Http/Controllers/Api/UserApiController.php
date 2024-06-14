@@ -81,6 +81,7 @@ class UserApiController extends Controller
             $user->name = $request->input('name');
             $user->email = $request->input('email');
             $user->phone = $request->input('phone');
+            $user->gender = $request->input('gender');
             $user->roles = 2;
             $user->password = Hash::make($request->input('password'));
             $user->save();
