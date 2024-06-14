@@ -100,38 +100,26 @@ class UserApiController extends Controller
         }
     }
 
+
     public function profile($id)
     {
-        $user = auth()->user();
 
-        if (!$user) {
+        $data = $this->repository->find($id);
+        if ($data) {
             return response()->json([
-                'status' => 'error',
-                'message' => 'Unauthorized'
-            ], 401);
-        }
-        $authenticatedUserId = $user->id;
-
-        if ($authenticatedUserId == $id) {
-            $data = $this->repository->find($id);
-
-            if ($data) {
-                return response()->json([
-                    'status' => 'success',
-                    'data' => $data
-                ], 200);
-            } else {
-                return response()->json([
-                    'status' => 'error',
-                    'message' => 'Profile not found'
-                ], 404);
-            }
+                'status' => 'success',
+                'data' => $data
+            ], 200);
         } else {
             return response()->json([
                 'status' => 'error',
-                'message' => 'Unauthorized to access this profile'
-            ], 403);
+                'message' => 'Profile not found'
+            ], 404);
         }
     }
+
+
+
+
 
 }
