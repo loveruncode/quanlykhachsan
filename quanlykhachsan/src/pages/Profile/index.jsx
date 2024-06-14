@@ -1,14 +1,14 @@
 import { useEffect, useState } from 'react';
 import { useParams, useLocation } from 'react-router-dom';
 import classNames from 'classnames/bind';
-import { getUserById } from './users';
 
 import styles from './Profile.module.scss';
 import Input from '~/components/Input';
-import Image from '~/components/Image';
+import Image from '~/components/image';
 import Button from '~/components/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBookBookmark, faShieldHalved, faUser } from '@fortawesome/free-solid-svg-icons';
+// import { decodeUserId } from '~/utils';
 
 const cx = classNames.bind(styles);
 
@@ -16,7 +16,6 @@ export default function Profile() {
     const { id } = useParams();
     const location = useLocation();
     const [user, setUser] = useState(null);
-
     const [birthday, setBirthday] = useState('');
     const [address, setAddress] = useState('');
     const [avatar, setAvatar] = useState(null);
@@ -25,18 +24,49 @@ export default function Profile() {
     const [name, setName] = useState('');
 
     useEffect(() => {
-        getUserById(id)
-            .then((userData) => {
-                setUser(userData);
-                setName(userData.name);
-                setEmail(userData.email);
-                setPhone(userData.phone);
-                setAddress(userData.address);
-                setBirthday(userData.birthday);
-            })
-            .catch((error) => {
-                console.error('Error fetching user:', error);
-            });
+        const token = localStorage.getItem('token');
+        // const encodedUserId = localStorage.getItem('user_id');
+
+        // if (!token || !encodedUserId) {
+        if (!token) {
+            // Xử lý khi không có token hoặc encodedUserId
+            console.error('Token or encoded user_id is not available. Redirect to login page or handle the situation.');
+            return;
+        }
+
+        // const id = decodeUserId(encodedUserId);
+        console.log(id);
+
+        const fetchUserInfo = async () => {
+            try {
+                const response = await fetch(`${import.meta.env.VITE_url}/api/profile/${id}`, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        Accept: 'application/json',
+                        Authorization: `Bearer ${token}`
+                    }
+                });
+
+                if (response.ok) {
+                    const data = await response.json();
+                    console.log(data.data);
+                    setUser(data.data);
+                    setBirthday(data.data.birthday || '');
+                    setAddress(data.data.address || '');
+                    setAvatar(data.data.avatar || '');
+                    setEmail(data.data.email || '');
+                    setPhone(data.data.phone || '');
+                    setName(data.data.name || '');
+                } else {
+                    console.error('Failed to fetch user data');
+                }
+            } catch (error) {
+                console.error('Network error:', error);
+            }
+        };
+
+        fetchUserInfo();
     }, [id]);
 
     if (!user) {
@@ -54,6 +84,7 @@ export default function Profile() {
             setAvatar(URL.createObjectURL(file));
         }
     };
+
     const handleButtonClick = (e) => {
         e.preventDefault();
         document.getElementById('avatar-input').click();
@@ -90,11 +121,10 @@ export default function Profile() {
                     </ul>
                 </div>
                 <div className={cx('right')}>
-                    <span className={cx('title')}>Thông Tin Tài Khoảng</span>
+                    <span className={cx('title')}>Thông Tin Tài Khoản</span>
                     <form className={cx('profile-info')}>
-                        {/* avatar */}
                         <div className={cx('info-avatar')}>
-                            <Image src={!avatar ? user.avatar : avatar} alt="Avatar" className={cx('profile-image')} />
+                            <Image src={avatar} alt="Avatar" className={cx('profile-image')} />
                             <Button onClick={handleButtonClick} outline>
                                 Đổi ảnh đại diện
                             </Button>
@@ -106,34 +136,22 @@ export default function Profile() {
                                 accept="image/*"
                             />
                         </div>
-                        {/* Input */}
                         <div className={cx('info-inputs')}>
                             <div className={cx('inline')}>
                                 <Input label="Họ và Tên" data={name} setData={setName} className={cx('username')} />
                                 <Input label="Email" data={email} setData={setEmail} className={cx('email')} readOnly />
                             </div>
-
                             <div className={cx('inline')}>
                                 <Input label="Số Điện Thoại" data={phone} setData={setPhone} className={cx('phone')} />
-                                {!birthday ? (
-                                    <Input
-                                        label="Ngày Sinh"
-                                        type="date"
-                                        data={birthday}
-                                        setData={setBirthday}
-                                        className={cx('date')}
-                                    />
-                                ) : (
-                                    <Input
-                                        label="Ngày Sinh"
-                                        type="date"
-                                        data={birthday}
-                                        setData={setBirthday}
-                                        className={cx('date')}
-                                    />
-                                )}
+                                <Input
+                                    label="Ngày Sinh"
+                                    type="date"
+                                    data={birthday}
+                                    setData={setBirthday}
+                                    className={cx('date')}
+                                />
                             </div>
-                            <Input label="Địa Chỉ" data={address} setData={setAddress} classname={cx('address')} />
+                            <Input label="Địa Chỉ" data={address} setData={setAddress} className={cx('address')} />
                             {location.pathname === `/profile/${id}` && (
                                 <Button primary className={cx('save-button')} onClick={handleSaveChanges}>
                                     Lưu thay đổi
