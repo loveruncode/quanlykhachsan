@@ -1,6 +1,7 @@
 <?php
 
 use App\Enum\Discount;
+use App\Enum\RatingScore;
 use App\Enum\TypeRoom;
 use App\Enum\RoomStatus;
 use Illuminate\Support\Facades\Schema;
@@ -25,12 +26,13 @@ return new class extends Migration
             $table->date('start_rent')->nullable();
             $table->date('end_rent')->nullable();
             $table->double('price_per_date')->nullable();
-            $table->string('images')->nullable();
+            $table->text('pic')->nullable();
             $table->integer('floor')->nullable();
             $table->tinyInteger('type')->nullable()->default(TypeRoom::Normal->value);
             $table->decimal('area')->nullable();
             $table->text('desc')->nullable();
             $table->string('address')->nullable();
+            $table->tinyInteger('rating')->default(RatingScore::Okay->value)->nullable();
             $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('set null');
             $table->timestamps();

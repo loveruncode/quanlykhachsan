@@ -17,7 +17,7 @@
 <script src="{{asset('js/jquery-3.7.1.min.js')}}"></script>
 <script src="{{ asset('js/sweetalert2@11.js') }}"></script>
 <script src="{{ asset('ckeditor5/ckeditor.js') }}"></script>
-
+<script src="{{asset('select2/dist/js/select2.min.js')}}"></script>
 
 
 <script>
@@ -91,6 +91,14 @@
         });
     });
 
+
+
+    $(document).ready(function() {
+            $('.select2').select2({
+                theme: 'bootstrap-5',
+                width: '100%'
+            });
+        });
 
 
 

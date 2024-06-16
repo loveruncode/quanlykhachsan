@@ -18,7 +18,7 @@ return Application::configure(basePath: dirname(__DIR__))
             'cors' =>\App\Http\Middleware\CorsMiddleware::class,
          ]);
          $middleware->validateCsrfTokens(except: [
-            'api/*',  
+            'api/*',
             'stripe/*',
             'http://example.com/foo/bar',
             'http://example.com/foo/*',

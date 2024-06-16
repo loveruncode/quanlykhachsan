@@ -45,7 +45,7 @@
                     </span>
                 </div>
                 <div class="card-body p-2">
-                    <input id="area" type="text" class="form-control" name="area" :value="old('Diện Tích')"
+                    <input id="area" type="number" class="form-control" name="area" :value="old('Diện Tích')"
                         placeholder="Diện Tích Đơn Vị: (m2)" />
                 </div>
             </div>
@@ -59,7 +59,7 @@
                     </span>
                 </div>
                 <div class="card-body p-2">
-                    <select name="status" class="form-control ">
+                    <select name="status" class="form-control select2 ">
                         @foreach ($status as $key => $value)
                             <option value="{{ $key }}">{{ \App\Enum\RoomStatus::translate($key) }}</option>
                         @endforeach
@@ -95,7 +95,7 @@
                     </span>
                 </div>
                 <div class="card-body p-2">
-                    <input class="form-control" name="address" placeholder="Địa chỉ Đường/ Phường/ Quận/ TP" />
+                    <input class="form-control" name="address" placeholder="Đường,Phường,Quận,Tp" />
                 </div>
             </div>
         </div>

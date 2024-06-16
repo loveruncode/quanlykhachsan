@@ -3,11 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Enum\Discount;
+use App\Enum\RatingScore;
 use App\Enum\RoomStatus;
+use App\Enum\TypeRoom;
 use Illuminate\Http\Request;
 use App\Http\Requests\RoomRequest;
-use Illuminate\Validation\Rules\Enum;
-use Illuminate\Support\Facades\Validator;
 use App\Repository\Room\RoomRepositoryInterface;
 use App\Services\Room\RoomService;
 
@@ -30,9 +30,9 @@ class RoomController extends Controller
 
     public function index()
     {
-        
+        $room = $this->repository->show();
 
-        return view('room.index');
+        return view('room.index', compact('room'));
     }
 
     /**
@@ -43,7 +43,9 @@ class RoomController extends Controller
 
         $status = RoomStatus::asSelectArray();
         $discount = Discount::asSelectArray();
-        return view('room.create', compact('status', 'discount'));
+        $type = TypeRoom::asSelectArray();
+        $rate = RatingScore::asSelectArray();
+        return view('room.create', compact('status', 'discount','type', 'rate'));
     }
 
     /**
@@ -75,7 +77,9 @@ class RoomController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $data = $this->repository->find($id);
+
+         return view('room.edit', compact('data'));
     }
 
     /**
@@ -92,5 +96,13 @@ class RoomController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function search(Request $request){
+
+        $query = $request->searchData;
+        $room = $this->repository->search($query);
+        return view('room.index', compact('room'));
+
     }
 }
