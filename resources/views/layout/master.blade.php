@@ -32,7 +32,7 @@
                         <img src="{{ asset('img/loading.svg') }}" alt="Loading...">
                     </div>
                     @yield('content')
-
+                   
                 </div>
             </div>
         </div>

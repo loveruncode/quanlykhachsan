@@ -77,7 +77,9 @@ class RoomController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $data = $this->repository->find($id);
+
+         return view('room.edit', compact('data'));
     }
 
     /**
@@ -94,5 +96,13 @@ class RoomController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function search(Request $request){
+
+        $query = $request->searchData;
+        $room = $this->repository->search($query);
+        return view('room.index', compact('room'));
+
     }
 }

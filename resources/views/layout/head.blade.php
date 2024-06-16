@@ -12,8 +12,10 @@
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
-     <link rel="stylesheet" href="{{asset('select2/dist/css/select2.min.css')}}">
-     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2-bootstrap-5-theme/1.1.0/select2-bootstrap-5-theme.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('select2/dist/css/select2.min.css') }}">
+    <link
+        href="https://cdnjs.cloudflare.com/ajax/libs/select2-bootstrap-5-theme/1.1.0/select2-bootstrap-5-theme.min.css"
+        rel="stylesheet">
     <style>
         #loading-overlay {
             position: fixed;
@@ -36,6 +38,8 @@
             height: 50px;
 
         }
+
+     
     </style>
     @stack('scripts')
 </head>

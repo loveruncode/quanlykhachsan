@@ -27,6 +27,8 @@ Route::prefix('/room')->as('room.')->group(function(){
         Route::get('/', 'index')->name('index');
         Route::get('/them', 'create')->name('create');
         Route::post('/them', 'store')->name('store');
+        Route::get('/sua/{id}', 'edit')->name('edit');
+        Route::get('/search', 'search')->name('search');
     });
 })->middleware('checklogin');
 

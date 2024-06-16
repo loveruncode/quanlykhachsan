@@ -95,7 +95,7 @@
                     </span>
                 </div>
                 <div class="card-body p-2">
-                    <input class="form-control" name="address" placeholder="Địa chỉ Đường/ Phường/ Quận/ TP" />
+                    <input class="form-control" name="address" placeholder="Đường,Phường,Quận,Tp" />
                 </div>
             </div>
         </div>

@@ -17,7 +17,7 @@
             @lang('Loại Phòng')
         </div>
         <div class="card-body d-flex flex-column flex-sm-row align-items-center">
-            <select name="type" id="discount" class="form-control select2 ">
+            <select name="type" id="type" class="form-control select2">
                 @foreach ($type as $key => $value)
                     <option value="{{ $key }}">{{ \App\Enum\TypeRoom::translate($key) }}</option>
                 @endforeach
