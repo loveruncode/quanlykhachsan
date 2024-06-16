@@ -20,15 +20,14 @@ class RoomService implements RoomServiceInterface
     public function store(Request $request)
     {
         $validatedData = $request->validated();
-
         $imagePaths = [];
-        if ($request->hasFile('images')) {
-            foreach ($request->file('images') as $avatar) {
+        if ($request->hasFile('pic')) {
+            foreach ($request->file('pic') as $avatar) {
                 $imageName = time() . '_' . $avatar->getClientOriginalName();
                 $avatar->storeAs('public', $imageName);
                 $imagePaths[] = $imageName;
             }
-            $validatedData['images'] = implode(',', $imagePaths);
+            $validatedData['pic'] = implode(',', $imagePaths);
         }
 
         $result = $this->repository->create($validatedData);

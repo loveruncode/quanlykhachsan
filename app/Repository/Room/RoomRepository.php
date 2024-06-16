@@ -16,6 +16,11 @@ class RoomRepository extends EloquentRepository implements RoomRepositoryInterfa
         return Room::class;
     }
 
+    public function show(){
+        return $this->model->orderBy('created_at', 'desc')->paginate(6);
+    }
+
+
 
 
 }

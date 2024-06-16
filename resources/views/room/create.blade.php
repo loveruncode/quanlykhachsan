@@ -23,7 +23,7 @@
     <!-- page body -->
     <div class="page-body">
         <div class="container-xl">
-            <form action="{{ route('room.store') }}" method="post">
+            <form action="{{ route('room.store') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 @if ($errors->any())
                     <div class="alert alert-danger">

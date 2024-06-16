@@ -4,7 +4,9 @@ namespace App\Http\Requests;
 
 use App\Models\Room;
 use App\Enum\Discount;
+use App\Enum\RatingScore;
 use App\Enum\RoomStatus;
+use App\Enum\TypeRoom;
 use App\Http\Requests\BaseRequest;
 use Illuminate\Validation\Rules\Enum;
 
@@ -30,11 +32,12 @@ class RoomRequest extends BaseRequest
             'end_rent' => ['required', 'date'],
             'price_per_date' => ['nullable'],
             'floor' => ['nullable',],
-            'type' => ['nullable', 'string'],
-            'area' => ['nullable', 'required'],
+            'type' => ['nullable', new Enum(TypeRoom::class)],
+            'rating' => ['nullable', new Enum(RatingScore::class)],
+            'area' => ['required', 'integer'],
             'desc' => ['string', 'nullable'],
             'address' => ['string', 'nullable'],
-            'images.*' => ['image', 'max:2048'],
+            'pic.*' => ['image', 'max:2048'],
         ];
     }
 
@@ -55,8 +58,6 @@ class RoomRequest extends BaseRequest
             'floor.integer' => 'Số tầng phải là một số nguyên.',
             'area.required' => 'Diện tích là bắt buộc.',
             'desc.required' => 'Mô tả là bắt buộc.',
-            'images.*.image' => 'Hình ảnh phải là một tập tin hình ảnh.',
-            'images.*.max' => 'Kích thước tập tin hình ảnh không được vượt quá :max kilobytes.',
         ];
     }
 }

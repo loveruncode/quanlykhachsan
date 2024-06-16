@@ -16,6 +16,8 @@
 
 <div class="container">
     <div  class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+        @foreach ($room as $key =>$value)
+
         <div class="col mb-4">
             <div class="card">
                 <div class="position-relative">
@@ -23,7 +25,7 @@
                         <div class="col-6 col-md-4 d-flex align-items-center">
                             <div class="p-1 rounded"
                                 style="backdrop-filter: blur(5px); background-color: rgba(145, 140, 127, 0.5); color: white;">
-                                Superhost
+                                {{$value->type}}
                             </div>
                         </div>
                         <div class="col-6 col-md-8 d-flex justify-content-end align-items-center">
@@ -31,13 +33,13 @@
                                 onclick="handleChangeIconHeart(this)"></i>
                         </div>
                     </div>
-                    <img src="https://assets-global.website-files.com/5c6d6c45eaa55f57c6367749/65045f093c166fdddb4a94a5_x-65045f0266217.webp"
-                        class="card-img-top" alt="img hotel">
+                    <img src="{{asset('/storage/'.$value->pic)}}"
+                        class="card-img-top img-thumbnail" alt="img hotel" >
                 </div>
                 <div class="card-body">
                     <div class="d-flex flex-column flex-md-row justify-content-between">
                         <a href="#" class="card-title text-Dark" style="font-weight: bold; cursor: pointer;">
-                            Apartment in Quận 4
+                           {{$value->title}}
                         </a>
                         <span class="text-warning mt-2 mt-md-0">&#9733; 5.0 (3)</span>
                     </div>
@@ -55,6 +57,7 @@
                 </div>
             </div>
         </div>
+        @endforeach
 
 
         <!-- test =)) -->

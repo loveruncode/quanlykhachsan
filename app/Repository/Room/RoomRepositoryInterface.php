@@ -8,6 +8,6 @@ use App\Repository\EloquentRepositoryInterface;
 interface RoomRepositoryInterface extends EloquentRepositoryInterface{
 
 
+    public function show();
 
-    
 }
