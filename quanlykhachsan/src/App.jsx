@@ -1,30 +1,10 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { useState, useEffect } from 'react';
-import Header from './components/Header';
+import Header from './layouts/components/Header';
+
 import { publicRoutes, privateRoutes } from './routes/routes';
-import SignInModal from './components/Auth/SignInModal';
+import PrivateRoute from './components/PrivateRoute';
 
 export default function App() {
-    const token = localStorage.getItem('token');
-    const [showModal, setShowModal] = useState(false); // State để kiểm soát việc hiển thị modal đăng nhập
-
-    const currentUser = token ? true : false;
-    const [loggedIn, setLoggedIn] = useState(currentUser);
-
-    useEffect(() => {
-        if (!currentUser) {
-            setShowModal(true);
-        } else {
-            setShowModal(false); // Nếu đã có token, ẩn modal
-            setLoggedIn(true);
-        }
-    }, [currentUser]);
-
-    const handleLoginSuccess = () => {
-        setLoggedIn(true);
-    };
-    console.log(currentUser);
-
     return (
         <>
             <Router>
@@ -34,20 +14,12 @@ export default function App() {
                     {publicRoutes.map((route, index) => (
                         <Route key={index} path={route.path} element={<route.component />} />
                     ))}
-                    {/* Các route private */}
-                    {privateRoutes.map((route, index) => (
-                        <Route
-                            key={index}
-                            path={route.path}
-                            element={
-                                loggedIn ? (
-                                    <route.component />
-                                ) : (
-                                    <SignInModal isOpen={showModal} closeModal={handleLoginSuccess} />
-                                )
-                            }
-                        />
-                    ))}
+                    {/* check route ẩn nếu ko đăng nhập đá về room và cảnh báo */}
+                    <Route element={<PrivateRoute />}>
+                        {privateRoutes.map((route, index) => (
+                            <Route key={index} path={route.path} element={<route.component />} />
+                        ))}
+                    </Route>
                 </Routes>
             </Router>
         </>

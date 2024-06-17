@@ -1,10 +1,10 @@
 import { useState } from 'react';
+import classNames from 'classnames/bind';
 import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import Button from '~/components/Button';
-import styles from '~/components/Header/Header.module.scss';
-import classNames from 'classnames';
+import styles from '~/layouts/components/Header/Header.module.scss';
 import { useMobile } from '~/hooks';
 import OffCanvas from '~/components/OffCanvas';
 

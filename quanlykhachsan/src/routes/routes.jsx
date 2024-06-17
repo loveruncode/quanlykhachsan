@@ -11,9 +11,8 @@ const publicRoutes = [
 ];
 const privateRoutes = [
     { path: config.routes.profile, component: Profile, exact: true },
-    { path: `${config.routes.profile}/:id`, component: Profile },
-    { path: `${config.routes.profile}/:id/history-orders`, component: HistoryOders },
-    { path: `${config.routes.profile}/:id/security`, component: Security }
+    { path: config.routes.HistoryOders, component: HistoryOders },
+    { path: config.routes.security, component: Security }
 ];
 
 export { publicRoutes, privateRoutes };

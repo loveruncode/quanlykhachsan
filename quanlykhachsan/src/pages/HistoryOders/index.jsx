@@ -1,3 +1,1 @@
-export default function HistoryOders() {
-    return <div>HistoryOders</div>;
-}
+export { default } from './HistoryOders';

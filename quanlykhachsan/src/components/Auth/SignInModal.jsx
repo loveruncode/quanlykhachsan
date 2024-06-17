@@ -1,66 +1,70 @@
 import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import Modal from '~/components/Modal';
 import styles from './Auth.module.scss';
 import Button from '~/components/Button';
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-// import { encodeUserId } from '~/utils';
+import { signInStart, signInSuccess, signInFailure } from '~/redux/user/userSlice';
+import { useNavigate } from 'react-router-dom';
 
 const cx = classNames.bind(styles);
 
 export default function SignInModal({ isOpen, closeModal, switchToSignUp }) {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    const [formData, setFormData] = useState({ email: '', password: '' });
+    const { loading, error } = useSelector((state) => state.user);
+
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+
+    const handleChange = (e) => {
+        setFormData({ ...formData, [e.target.id]: e.target.value });
+    };
+
     const handleSignInSubmit = async (e) => {
         e.preventDefault();
 
         if (validate()) {
             try {
-                const response = await fetch(`${import.meta.env.VITE_url}/api/login`, {
+                dispatch(signInStart());
+                const response = await fetch(`/api/login`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
                         Accept: 'application/json'
                     },
-                    body: JSON.stringify({ email, password })
+                    body: JSON.stringify(formData)
                 });
-                console.log(response);
+
                 if (response.ok) {
                     const data = await response.json();
-                    console.log('Login successful:', data);
                     toast.success('Đăng nhập thành công');
-                    const token = data.access_token;
-                    const id = data.user_id;
-                    // const encodedUserId = encodeUserId(id);
-                    localStorage.setItem('token', token);
-                    // localStorage.setItem('user_id', encodedUserId);
-                    localStorage.setItem('user_id', id);
-                    setEmail('');
-                    setPassword('');
+                    dispatch(signInSuccess(data));
+                    setFormData({ email: '', password: '' });
                     closeModal();
-                    console.log(token);
-                    console.log(data);
+                    navigate('/');
                     window.location.reload();
                 } else {
                     const data = await response.json();
-                    console.log('Login error:', data);
                     toast.error(data.error || 'Đăng nhập thất bại');
+                    dispatch(signInFailure(data));
                 }
             } catch (error) {
-                console.error('Network error:', error);
                 toast.error('Lỗi mạng');
+                dispatch(signInFailure(error));
             }
         }
     };
 
     const validate = () => {
-        if (!email) {
+        if (!formData.email) {
             toast.warning('Vui lòng nhập email');
             return false;
         }
-        if (!password) {
+        if (!formData.password) {
             toast.warning('Vui lòng nhập mật khẩu');
             return false;
         }
@@ -72,19 +76,21 @@ export default function SignInModal({ isOpen, closeModal, switchToSignUp }) {
             <form onSubmit={handleSignInSubmit} className={cx('form')}>
                 <h2 className={cx('form-title')}>Đăng Nhập vào Hotel</h2>
                 <input
-                    value={email}
                     name="email"
                     type="email"
+                    id="email"
                     placeholder="Email"
-                    onChange={(e) => setEmail(e.target.value)}
+                    value={formData.email}
+                    onChange={handleChange}
                 />
                 <input
-                    value={password}
                     name="password"
                     type="password"
+                    id="password"
                     placeholder="Mật khẩu"
                     minLength={6}
-                    onChange={(e) => setPassword(e.target.value)}
+                    value={formData.password}
+                    onChange={handleChange}
                 />
                 <span>
                     Chưa có tài khoản?
@@ -92,9 +98,10 @@ export default function SignInModal({ isOpen, closeModal, switchToSignUp }) {
                         Đăng Ký
                     </Button>
                 </span>
-                <Button type="submit" primary>
-                    Đăng Nhập
+                <Button disabled={loading} type="submit" primary>
+                    {loading ? 'Loading...' : 'Đăng Nhập'}
                 </Button>
+                <p className="text-red-700 mt-5">{error ? error.message || 'Something went wrong!' : ''}</p>
             </form>
         </Modal>
     );

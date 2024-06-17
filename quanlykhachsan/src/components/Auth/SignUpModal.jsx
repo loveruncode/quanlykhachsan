@@ -20,7 +20,7 @@ export default function SignUpModal({ isOpen, closeModal, switchToSignIn }) {
     const handleSignUpSubmit = async (e) => {
         e.preventDefault();
         try {
-            const res = await fetch(`${import.meta.env.VITE_url}/api/register`, {
+            const res = await fetch('/api/register', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -52,6 +52,14 @@ export default function SignUpModal({ isOpen, closeModal, switchToSignIn }) {
                 <input type="text" placeholder="Họ và tên" id="name" onChange={handleChange} required />
                 <input type="tel" placeholder="Số điện thoại" id="phone" onChange={handleChange} required />
                 <input type="email" placeholder="Email" id="email" onChange={handleChange} required />
+                <select className={cx('select')} id="gender" name="gender" onChange={handleChange} required>
+                    <option className={cx('opt')} value="1">
+                        Nam
+                    </option>
+                    <option className={cx('opt')} value="2">
+                        Nữ
+                    </option>
+                </select>
                 <input
                     type="password"
                     placeholder="Mật khẩu"

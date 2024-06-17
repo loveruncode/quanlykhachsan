@@ -1,7 +1,1 @@
-export default function Contact() {
-    return (
-        <>
-            <div>Contact</div>
-        </>
-    );
-}
+export { default } from './Contact';
