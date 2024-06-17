@@ -11,7 +11,7 @@ const publicRoutes = [
 ];
 const privateRoutes = [
     { path: config.routes.profile, component: Profile, exact: true },
-    { path: config.routes.HistoryOders, component: HistoryOders },
+    { path: config.routes.historyOrders, component: HistoryOders },
     { path: config.routes.security, component: Security }
 ];
 
