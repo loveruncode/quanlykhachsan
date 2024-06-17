@@ -1,7 +1,1 @@
-export default function Room() {
-    return (
-        <>
-            <div>Room</div>
-        </>
-    );
-}
+export { default } from './Room';

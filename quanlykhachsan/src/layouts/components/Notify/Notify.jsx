@@ -5,7 +5,7 @@ import classNames from 'classnames/bind';
 
 import Modal from '~/components/Modal';
 import Button from '~/components/Button';
-import styles from '~/components/Header/Header.module.scss';
+import styles from '~/layouts/components/Header/Header.module.scss';
 
 const cx = classNames.bind(styles);
 

@@ -1,11 +1,12 @@
 const routes = {
     home: '/',
-    profile: '/profile',
-    user: '/:id',
+    room: '/room',
     shop: '/shop',
     blog: '/blog',
     contact: '/contact',
-    room: '/room'
+    profile: '/profile',
+    historyOrders: '/profile/history-orders',
+    security: '/profile/security'
 };
 
 export default routes;
