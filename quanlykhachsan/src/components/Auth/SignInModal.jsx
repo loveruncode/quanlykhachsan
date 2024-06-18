@@ -74,7 +74,7 @@ export default function SignInModal({ isOpen, closeModal, switchToSignUp }) {
     return (
         <Modal isOpen={isOpen} title="Đăng Nhập" closeModal={closeModal}>
             <form onSubmit={handleSignInSubmit} className={cx('form')}>
-                <h2 className={cx('form-title')}>Đăng Nhập vào Hotel</h2>
+                <h2 className={cx('form-title')}>Đăng Nhập vào EQHotel</h2>
                 <input
                     name="email"
                     type="email"

@@ -48,7 +48,7 @@ export default function SignUpModal({ isOpen, closeModal, switchToSignIn }) {
     return (
         <Modal isOpen={isOpen} title="Đăng Ký" closeModal={closeModal}>
             <form onSubmit={handleSignUpSubmit} className={cx('form')}>
-                <h2 className={cx('form-title')}>Chào mừng bạn đến với Hotel</h2>
+                <h2 className={cx('form-title')}>Chào mừng bạn đến với EQHotel</h2>
                 <input type="text" placeholder="Họ và tên" id="name" onChange={handleChange} required />
                 <input type="tel" placeholder="Số điện thoại" id="phone" onChange={handleChange} required />
                 <input type="email" placeholder="Email" id="email" onChange={handleChange} required />
