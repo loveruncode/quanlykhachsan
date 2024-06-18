@@ -4,6 +4,11 @@ import Header from './layouts/components/Header';
 import { publicRoutes, privateRoutes } from './routes/routes';
 import PrivateRoute from './components/PrivateRoute';
 
+//import route from './routes/routes';
+//import Header from './components/Header/Header';
+import Footer from './components/Footer/Footer';
+
+
 export default function App() {
     return (
         <>
@@ -21,6 +26,8 @@ export default function App() {
                         ))}
                     </Route>
                 </Routes>
+                <Footer />
+                
             </Router>
         </>
     );
