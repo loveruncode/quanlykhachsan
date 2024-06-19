@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Button from '~/components/Button';
-import SignInModal from './SignInModal';
-import SignUpModal from './SignUpModal';
+import SignIn from './SignIn';
+import SignUp from './SignUp';
 import { useMobile } from '~/hooks';
 
 export default function Auth() {
@@ -32,8 +32,8 @@ export default function Auth() {
             {!isMobile && <Button onClick={openSignInModal}>Đăng Nhập</Button>}
             <Button onClick={openSignUpModal}>Đăng Ký</Button>
 
-            <SignInModal isOpen={signInOpen} closeModal={closeSignInModal} switchToSignUp={openSignUpModal} />
-            <SignUpModal isOpen={signUpOpen} closeModal={closeSignUpModal} switchToSignIn={openSignInModal} />
+            <SignIn isOpen={signInOpen} closeModal={closeSignInModal} switchToSignUp={openSignUpModal} />
+            <SignUp isOpen={signUpOpen} closeModal={closeSignUpModal} switchToSignIn={openSignInModal} />
         </>
     );
 }

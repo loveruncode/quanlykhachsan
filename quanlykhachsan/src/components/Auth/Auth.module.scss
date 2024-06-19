@@ -19,7 +19,16 @@
         border-color: var(--color-black); /* Màu border khi focus */
     }
 }
-
+.changeSignUp,
+.changeSignIn {
+    display: flex;
+    margin-bottom: 5px;
+    .csut,
+    .csit {
+        line-height: 38px;
+        margin-left: 15px;
+    }
+}
 .select {
     // border: none;
     border: 1px solid transparent;

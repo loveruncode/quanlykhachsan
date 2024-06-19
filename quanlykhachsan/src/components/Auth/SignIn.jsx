@@ -92,12 +92,12 @@ export default function SignInModal({ isOpen, closeModal, switchToSignUp }) {
                     value={formData.password}
                     onChange={handleChange}
                 />
-                <span>
-                    Chưa có tài khoản?
+                <div className={cx('changeSignUp')}>
+                    <span className={cx('csut')}>Chưa có tài khoản?</span>
                     <Button type="button" onClick={switchToSignUp} className={cx('signup-link')}>
                         Đăng Ký
                     </Button>
-                </span>
+                </div>
                 <Button disabled={loading} type="submit" primary>
                     {loading ? 'Loading...' : 'Đăng Nhập'}
                 </Button>

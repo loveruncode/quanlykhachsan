@@ -69,12 +69,12 @@ export default function SignUpModal({ isOpen, closeModal, switchToSignIn }) {
                     required
                 />
                 <input type="password" placeholder="Xác nhận mật khẩu" minLength={6} required />
-                <span>
-                    Đã có tài khoản?
+                <div className={cx('changeSignIn')}>
+                    <span className={cx('csit')}>Đã có tài khoản?</span>
                     <Button onClick={switchToSignIn} className={cx('signup-link')}>
                         Đăng Nhập
                     </Button>
-                </span>
+                </div>
                 <Button type="submit" primary>
                     Đăng Ký
                 </Button>

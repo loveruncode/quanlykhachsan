@@ -16,10 +16,16 @@ import Search from '../Search';
 import Notify from '../Notify';
 import Cart from '../Cart';
 import { useEffect, useState } from 'react';
+import OffCanvas from '~/components/OffCanvas';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBars } from '@fortawesome/free-solid-svg-icons';
+import { useMobile } from '~/hooks';
 
 const cx = classNames.bind(styles);
 
 export default function Header() {
+    const [showOffcanvas, setShowOffcanvas] = useState(false);
+    const isMobile = useMobile();
     const [avatar, setAvatar] = useState(null);
     const dispatch = useDispatch();
     const { currentUser } = useSelector((state) => state.user);
@@ -57,6 +63,9 @@ export default function Header() {
             fetchUserInfo();
         }
     }, [currentUser]);
+
+    const handleShow = () => setShowOffcanvas(true);
+    const handleClose = () => setShowOffcanvas(false);
 
     const handleLogout = async () => {
         try {
@@ -100,24 +109,61 @@ export default function Header() {
                 <div className={cx('header__right')}>
                     {/* Nếu đã đăng nhập thì hiển thị thông tin người dùng và nút Đăng Xuất */}
                     {currentUser ? (
-                        <ul className={cx('header__rigth-currentuser')}>
-                            <li className={cx('header__right-notify')}>
-                                <Notify />
-                            </li>
-                            <li className={cx('header__right-cart')}>
-                                <Cart />
-                            </li>
-                            <li>
-                                <Link to={`${config.routes.profile}`}>
-                                    <Image className={cx('user-avatar')} src={avatar} alt="Nguyen Van A" />
-                                </Link>
-                            </li>
-                            <li>
-                                <Button outline text onClick={handleLogout} className={cx('btn-logout')}>
-                                    Đăng Xuất
+                        isMobile ? (
+                            <div className={cx('isMobile')}>
+                                <Button className={cx('btnShowCanvas')} small onClick={handleShow}>
+                                    <FontAwesomeIcon icon={faBars} />
                                 </Button>
-                            </li>
-                        </ul>
+                                <OffCanvas isOpen={showOffcanvas} closeOffCanvas={handleClose} title="EQHotel" page>
+                                    <ul className={cx('header__right-currentuser-mobile')}>
+                                        <li className={cx('header__right-notify-mobile')}>
+                                            <Notify />
+                                        </li>
+                                        <li className={cx('header__right-cart-mobile')}>
+                                            <Cart />
+                                        </li>
+                                        <li>
+                                            <div className={cx('inline')}>
+                                                <Link to={`${config.routes.profile}`}>
+                                                    <Image
+                                                        className={cx('user-avatar-mobile')}
+                                                        src={avatar}
+                                                        alt="Nguyen Van A"
+                                                    />
+                                                </Link>
+                                                <Button
+                                                    outline
+                                                    text
+                                                    onClick={handleLogout}
+                                                    className={cx('btn-logout-mobile')}
+                                                >
+                                                    Đăng Xuất
+                                                </Button>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </OffCanvas>
+                            </div>
+                        ) : (
+                            <ul className={cx('header__right-currentuser')}>
+                                <li className={cx('header__right-notify')}>
+                                    <Notify />
+                                </li>
+                                <li className={cx('header__right-cart')}>
+                                    <Cart />
+                                </li>
+                                <li>
+                                    <Link to={`${config.routes.profile}`}>
+                                        <Image className={cx('user-avatar')} src={avatar} alt="Nguyen Van A" />
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Button outline text onClick={handleLogout} className={cx('btn-logout')}>
+                                        Đăng Xuất
+                                    </Button>
+                                </li>
+                            </ul>
+                        )
                     ) : (
                         <Auth />
                     )}

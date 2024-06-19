@@ -19,11 +19,11 @@ export default function Cart() {
 
     return (
         <>
-            <div>
-                <Button small className={cx('btn-Cart')} onClick={handleShow}>
-                    <FontAwesomeIcon icon={faCartShopping} />
-                </Button>
-                {isMobile ? (
+            {isMobile ? (
+                <>
+                    <Button small className={cx('btn-Cart')} onClick={handleShow}>
+                        <FontAwesomeIcon icon={faCartShopping} /> <span>Giỏ hàng</span>
+                    </Button>
                     <OffCanvas
                         isOpen={showOffcanvas}
                         background={true}
@@ -36,7 +36,12 @@ export default function Cart() {
                             <p>Here are the items in your cart.</p>
                         </div>
                     </OffCanvas>
-                ) : (
+                </>
+            ) : (
+                <>
+                    <Button small className={cx('btn-Cart')} onClick={handleShow}>
+                        <FontAwesomeIcon icon={faCartShopping} />
+                    </Button>
                     <OffCanvas
                         isOpen={showOffcanvas}
                         background={true}
@@ -49,8 +54,8 @@ export default function Cart() {
                             <p>Here are the items in your cart.</p>
                         </div>
                     </OffCanvas>
-                )}
-            </div>
+                </>
+            )}
         </>
     );
 }
