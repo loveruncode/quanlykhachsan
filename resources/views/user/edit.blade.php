@@ -20,8 +20,17 @@
 </div>
 <div class="page-body">
     <div class="container-xl">
-        <form action="#" method="POST">
+        <form action="{{route('user.update', ['id' => $data->id])}}" method="POST" enctype="multipart/form-data">
             @csrf
+            @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
             @method('PUT')
             <div class="row justify-content-center">
                 @include('user.form.edit-left')

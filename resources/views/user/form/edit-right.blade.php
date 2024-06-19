@@ -28,7 +28,7 @@
                 @if ($data->avatar == null)
                 <td class="text-center"><img class="text-center" src="{{ asset('img/loading.svg') }}" height="30px"></td>
                 @else
-                <td class="text-center"><img src="{{ asset('/storage/' . $user->avatar) }}" height="50px"></td>
+                <td class="text-center"><img src="{{ asset('/storage/' . $data->avatar) }}" height="50px"></td>
                 @endif
             </div>
         </div>

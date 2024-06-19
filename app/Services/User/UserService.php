@@ -40,9 +40,27 @@ class UserService implements UserServiceInterface
 
     public function update($id, Request $request)
     {
-        
+        $validatedData = $request->validated();
 
+        $imagePaths = [];
+        if ($request->hasFile('avatar')) {
+            foreach ($request->file('avatar') as $avatar) {
+                $imageName = time() . '_' . $avatar->getClientOriginalName();
+                $avatar->storeAs('public', $imageName);
+                $imagePaths[] = $imageName;
+            }
+            $validatedData['avatar'] = implode(',', $imagePaths);
+        }
 
+        $user = $this->repository->find($id);
+        if (empty($validatedData['password'])) {
+            $validatedData['password'] = $user->password;
+        } else {
+            $validatedData['password'] = bcrypt($validatedData['password']);
+        }
+        $result = $this->repository->update($id, $validatedData);
+
+        return $result;
     }
 
 
@@ -59,7 +77,7 @@ class UserService implements UserServiceInterface
                     Storage::delete('public/' . $imagePath);
                 }
             }
-           $kq =  $this->repository->delete($id);
+            $kq =  $this->repository->delete($id);
             return $kq;
         }
 

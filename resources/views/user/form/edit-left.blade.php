@@ -45,8 +45,12 @@
                             <label class="control-label col-form-label p-0">@lang('Giới Tính'):</label>
                         </div>
                         <div class="card-body p-2 mt-2">
-                            <select name="gender" class="form-control">
-                                {{--<!-- <option value="{{$data->gender}}">{{\App\Enum\Gender::translate($data->gender)}}</option> -->--}}
+                            <select name="gender" class="form-control select2">
+                                @foreach ($gender as $key => $value)
+                                <option value="{{ $key }}" {{$key == $data->gender ? 'selected' : ''  }}>
+                                {{ \App\Enum\Gender::translate($key) }}
+                                </option>
+                                @endforeach
                             </select>
                         </div>
                     </div>

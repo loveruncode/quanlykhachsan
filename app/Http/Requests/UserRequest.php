@@ -28,6 +28,20 @@ class UserRequest extends BaseRequest
 
         ];
     }
+    public function methodPut()
+    {
+        return [
+            'name' => ['required', 'string'],
+            'email' => ['required', 'email'],
+            'phone' => ['required', 'regex:/((09|03|07|08|05)+([0-9]{8})\b)/'],
+            'gender' => ['nullable', new Enum(Gender::class)],
+            'roles' => ['nullable', new Enum(UserRoles::class)],
+            'avatar.*' => ['image', 'max:2048'],
+            'password' => ['nullable', 'string', 'min:6', 'confirmed'],
+            'password_confirmation' => ['nullable', 'required_with:password', 'same:password'],
+        ];
+    }
+
 
 
     public function messages()

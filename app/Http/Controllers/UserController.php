@@ -53,7 +53,15 @@ class UserController extends Controller
         return view('register');
     }
 
+    public function update($id, UserRequest $request){
 
+        $id = request('id');
+        $respone = $this->service->update($id,$request);
+        if($respone){
+            return back()->with('success', __('Đã Cập Nhật Thành Công'));
+        }
+        return back()->with('error', __('Đã Cập Nhật Thất Bại'));
+    }
 
 
     public function checklogin(Request $request)
@@ -111,9 +119,8 @@ class UserController extends Controller
      public function edit($id){
 
         $data = $this->repository->find($id);
-
-
-        return view('user.edit', compact('data'));
+        $gender = Gender::asSelectArray();
+        return view('user.edit', compact('data', 'gender'));
 
      }
 

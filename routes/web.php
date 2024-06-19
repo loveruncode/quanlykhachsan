@@ -54,6 +54,7 @@ Route::prefix('/users')->as('user.')->group(function(){
         Route::delete('/xoa/{id}', 'delete')->name('delete');
         Route::get('/search', 'search')->name('search');
         Route::get('/edit/{id}', 'edit')->name('edit');
+        Route::put('/sua/{id}', 'update')->name('update');
     });
 })->middleware('checklogin');
 
