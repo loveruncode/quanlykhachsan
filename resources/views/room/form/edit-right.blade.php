@@ -18,11 +18,11 @@
         </div>
         <div class="card-body d-flex flex-column flex-sm-row align-items-center">
             <select name="type" id="type" class="form-control select2">
-                {{-- @foreach ($type as $key => $value)
+                @foreach ($type as $key => $value)
                     <option value="{{ $key }}" {{$key == $data->type ? 'selected' : '' }}>
                 {{ \App\Enum\TypeRoom::translate($key) }}
                 </option>
-                @endforeach --}}
+                @endforeach
             </select>
         </div>
 
@@ -33,11 +33,11 @@
         </div>
         <div class="card-body d-flex flex-column flex-sm-row align-items-center">
             <select name="rating" id="rating" class="form-control select2">
-                {{-- @foreach ($rate as $key => $value)
-                    <option value="{{ $key }}" {{$key == $data->rate ? 'selected' : '' }}>
+                @foreach ($rating as $key => $value)
+                    <option value="{{ $key }}" {{$key == $data->rating ? 'selected' : '' }}>
                 {{ \App\Enum\RatingScore::translate($key) }}
                 </option>
-                @endforeach --}}
+                @endforeach
             </select>
         </div>
 

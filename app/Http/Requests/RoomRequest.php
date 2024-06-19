@@ -41,6 +41,28 @@ class RoomRequest extends BaseRequest
         ];
     }
 
+    public function methodPut()
+    {
+        return [
+            'code' => ['required','string'],
+            'title' => ['required', 'string',],
+            'price_selling' => ['nullable', 'required'],
+            'total_price' => ['nullable'],
+            'discount' => ['nullable', new Enum(Discount::class)],
+            'status' => ['nullable', new Enum(RoomStatus::class)],
+            'start_rent' => ['required', 'date'],
+            'end_rent' => ['required', 'date'],
+            'price_per_date' => ['nullable'],
+            'floor' => ['nullable',],
+            'type' => ['nullable', new Enum(TypeRoom::class)],
+            'rating' => ['nullable', new Enum(RatingScore::class)],
+            'area' => ['required'],
+            'desc' => ['string', 'nullable'],
+            'address' => ['string', 'nullable'],
+            'pic.*' => ['image', 'max:2048'],
+        ];
+    }
+
     public function messages()
     {
         return [

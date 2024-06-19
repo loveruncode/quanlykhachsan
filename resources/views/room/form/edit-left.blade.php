@@ -53,11 +53,11 @@
                 </div>
                 <div class="card-body p-2">
                     <select name="status" class="form-control select2">
-                        {{-- @foreach ($status as $key => $value)
+                        @foreach ($status as $key => $value)
                         <option value="{{ $key }}" {{$key == $data->status ? 'selected' : ''  }}>
                         {{ \App\Enum\RoomStatus::translate($key) }}
                         </option>
-                        @endforeach --}}
+                        @endforeach
                     </select>
                 </div>
             </div>
@@ -163,11 +163,11 @@
                 </div>
                 <div class="card-body p-2">
                     <select name="discount" id="discount" class="form-control">
-                        {{-- @foreach ($discount as $key => $value)
+                        @foreach ($discount as $key => $value)
                         <option value="{{ $key }}" {{ $data->discount == $key ? 'selected' : '' }}>
                         {{ \App\Enum\Discount::translate($key) }}
                         </option>
-                        @endforeach --}}
+                        @endforeach
                     </select>
                 </div>
             </div>
@@ -183,7 +183,7 @@
                     </span>
                 </div>
                 <div class="card-body p-2">
-                    <input readonly type="text" class="form-control" id="price_per_date" name="price_per_date" placeholder="Giá Theo Ngày" />
+                    <input value="{{$data->price_per_date}}" readonly type="text" class="form-control" id="price_per_date" name="price_per_date" placeholder="Giá Theo Ngày" />
                 </div>
             </div>
         </div>
@@ -195,7 +195,7 @@
                     </span>
                 </div>
                 <div class="card-body p-2">
-                    <input readonly type="text" class="form-control" id="total" name="total_price" placeholder="Tổng Giá" />
+                    <input value="{{$data->total_price}}" readonly type="text" class="form-control" id="total" name="total_price" placeholder="Tổng Giá" />
                 </div>
             </div>
         </div>

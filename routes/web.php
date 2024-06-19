@@ -29,6 +29,7 @@ Route::prefix('/room')->as('room.')->group(function(){
         Route::post('/them', 'store')->name('store');
         Route::get('/sua/{id}', 'edit')->name('edit');
         Route::get('/search', 'search')->name('search');
+        Route::put('/sua/{id}', 'update')->name('update');
     });
 })->middleware('checklogin');
 

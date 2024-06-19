@@ -27,7 +27,7 @@ interface RoomServiceInterface
      *
      * @return boolean
      */
-    public function update($id, Request $request);
+    public function update($id,Request $request);
     /**
      * Xóa
      *

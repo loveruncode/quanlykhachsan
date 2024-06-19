@@ -78,16 +78,24 @@ class RoomController extends Controller
     public function edit(string $id)
     {
         $data = $this->repository->find($id);
-
-         return view('room.edit', compact('data'));
+        $status = RoomStatus::asSelectArray();
+        $type = TypeRoom::asSelectArray();
+        $rating = RatingScore::asSelectArray();
+        $discount = Discount::asSelectArray();
+         return view('room.edit', compact('data', 'status', 'type', 'rating', 'discount'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update($id,RoomRequest $request)
     {
-        //
+        $id = request('id');
+        $respone = $this->service->update($id,$request);
+        if($respone){
+            return back()->with('success', __('Đã Cập Nhật Thành Công'));
+        }
+        return back()->with('error', __('Đã Cập Nhật Thất Bại'));
     }
 
     /**
