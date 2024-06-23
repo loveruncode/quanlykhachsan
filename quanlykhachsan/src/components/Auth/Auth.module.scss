@@ -41,3 +41,11 @@
 .select:focus {
     border-color: var(--color-black);
 }
+.ocv-m-btn-auth {
+    display: flex;
+    flex-direction: column;
+}
+.search {
+    display: flex;
+    justify-content: center;
+}

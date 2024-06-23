@@ -44,7 +44,7 @@ export default function Search() {
             {isMobile ? (
                 <div>
                     <Button onClick={handleShow}>
-                        <FontAwesomeIcon icon={faSearch} />
+                        <FontAwesomeIcon icon={faSearch} /> Search
                     </Button>
                     <OffCanvas
                         isOpen={showOffcanvas}
