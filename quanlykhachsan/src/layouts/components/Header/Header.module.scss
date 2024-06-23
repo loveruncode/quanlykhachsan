@@ -21,7 +21,7 @@
     .header__center {
         flex-grow: 1;
         display: flex;
-        justify-content: center;
+        // justify-content: center;
     }
 
     .header__right {
@@ -50,10 +50,6 @@
 .header__right-currentuser-mobile {
     display: flex;
     flex-direction: column;
-    .header__right-notify-mobile {
-    }
-    .header__right-cart-mobile {
-    }
 }
 
 .user-avatar-mobile {
