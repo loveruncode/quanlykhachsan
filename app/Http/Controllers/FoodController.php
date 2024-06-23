@@ -2,16 +2,34 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\FoodRequest;
+use App\Repository\Food\FoodRepositoryInterface;
+use App\Services\Food\FoodServiceInterface;
 use Illuminate\Http\Request;
 
 class FoodController extends Controller
 {
+
+    protected $service;
+    protected $repository;
+
+    public function __construct(FoodServiceInterface $service,
+    FoodRepositoryInterface $repository
+    )
+    {
+         $this->service = $service;
+        $this->repository = $repository;
+    }
+
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('food.index');
+        $food = $this->repository->show();
+
+        return view('food.index', compact('food'));
     }
 
     /**
@@ -25,9 +43,16 @@ class FoodController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(FoodRequest $request)
     {
-        //
+        $response = $this->service->store($request);
+        if (!$response) {
+
+            return back()->with('error', 'Thêm Món Ăn Thất Bại!');
+        }
+        return back()->with('success', 'Thêm Món Ăn Thành Công!');
+
+
     }
 
     /**

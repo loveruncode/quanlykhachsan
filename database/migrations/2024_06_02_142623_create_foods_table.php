@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name')->nullable();
             $table->integer('qty')->nullable();
-            $table->date('eat_time')->nullable();
+            $table->string('eat_time')->nullable();
             $table->string('image')->nullable();
             $table->double('price')->nullable();
             $table->text('desc')->nullable();

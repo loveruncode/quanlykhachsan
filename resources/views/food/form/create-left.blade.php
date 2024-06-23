@@ -10,7 +10,7 @@
                     </span>
                 </div>
                 <div class="card-body p-2">
-                    <input class="form-control" name="description" placeholder="Tên Món Ăn" />
+                    <input class="form-control" name="name" placeholder="Tên Món Ăn" />
                 </div>
             </div>
         </div>
@@ -26,7 +26,7 @@
                     </span>
                 </div>
                 <div class="card-body p-2">
-                    <textarea  class="form-control checkEditor" name="description" placeholder="Miêu Tả" ></textarea>
+                    <textarea  class="form-control checkEditor" name="desc" placeholder="Miêu Tả" ></textarea>
                 </div>
             </div>
         </div>
@@ -43,7 +43,7 @@
                     </span>
                 </div>
                 <div class="card-body p-2">
-                    <input class="form-control" type="time" name="description" placeholder="Giờ Ăn" />
+                    <input class="form-control" type="time" name="eat_time" placeholder="Giờ Ăn" />
                 </div>
             </div>
         </div>
@@ -60,10 +60,25 @@
                     </span>
                 </div>
                 <div class="card-body p-2">
-                    <input class="form-control" name="  description" placeholder="Giá Tiền Món Ăn" />
+                    <input type="number" class="form-control" name="price" placeholder="Giá Tiền Món Ăn" />
                 </div>
             </div>
         </div>
     </div>
-
+     {{-- qty --}}
+    <div class="row">
+        <div class="col-12 mt-2">
+            <div class="card">
+                <div class="card-header d-flex align-items-center justify-content-between">
+                    <label class="control-label col-form-label p-0">@lang('Số Lượng'):</label>
+                    <span class="float-end text-yellow" data-bs-toggle="tooltip" data-bs-placement="top"
+                        title="{{ __('Số Lượng') }}">
+                    </span>
+                </div>
+                <div class="card-body p-2">
+                    <input type="number" class="form-control" name="qty" placeholder="Số Lượng ..." />
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

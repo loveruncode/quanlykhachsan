@@ -7,5 +7,5 @@ use App\Repository\EloquentRepositoryInterface;
 interface FoodRepositoryInterface extends EloquentRepositoryInterface{
 
 
-    
+    public function show();
 }

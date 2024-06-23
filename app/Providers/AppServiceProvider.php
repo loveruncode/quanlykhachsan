@@ -11,7 +11,10 @@ class AppServiceProvider extends ServiceProvider{
     protected $service = [
          'App\Services\Notify\NotificationServiceInterface' => 'App\Services\Notify\NotificationService',
          'App\Services\User\UserServiceInterface' => 'App\Services\User\UserService',
-         'App\Services\Room\RoomServiceInterface' => 'App\Services\Room\RoomService'
+         'App\Services\Room\RoomServiceInterface' => 'App\Services\Room\RoomService',
+         'App\Services\Food\FoodServiceInterface' =>'App\Services\Food\FoodService',
+
+
     ];
     public function register(): void
     {
