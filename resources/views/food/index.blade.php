@@ -42,7 +42,7 @@
                         </div>
                     </div>
                     <div class="card-body m-auto align-content-start">
-                        <a class="text-dark name" style="font-weight: bold; cursor: pointer;">{{ $value->name }}</a>
+                        <a href="{{route('food.edit', ['id' => $value->id])}}" class="text-dark name" style="font-weight: bold; cursor: pointer;">{{ $value->name }}</a>
                         <p class="text-dark desc">{!! $value->desc !!}</p>
                         <p class="EatTime">{{ $value->eat_time }}</p>
                         <p class="price">${{ \App\Helpers\Helper::formatNumber($value->price) }} VND</p>

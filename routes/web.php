@@ -65,6 +65,8 @@ Route::prefix('/food')->as('food.')->group(function () {
         Route::get('/', 'index')->name('index');
         Route::get('/them', 'create')->name('create');
         Route::post('/them', 'store')->name('store');
+        Route::get('/sua/{id}', 'edit')->name('edit');
+        Route::put('/sua/{id}', 'update')->name('update');
     });
 })->middleware('checklogin');
 

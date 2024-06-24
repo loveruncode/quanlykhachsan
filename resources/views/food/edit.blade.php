@@ -12,7 +12,7 @@
                                     class="text-muted">{{ __('Dashboard') }}</a></li>
                             <li class="breadcrumb-item"><a href="{{ route('food.index') }}"
                                     class="text-muted">{{ __('Danh Sách Món Ăn') }}</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">{{ __('Thêm Món Ăn') }}</li>
+                            <li class="breadcrumb-item active" aria-current="page">{{ __('Sửa Món Ăn') }}</li>
                         </ol>
                     </nav>
                 </div>
@@ -22,7 +22,7 @@
     <!-- page body -->
     <div class="page-body">
         <div class="container-xl">
-            <form action="{{ route('food.store') }}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('food.update', ['id' => $data->id]) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @if ($errors->any())
                     <div class="alert alert-danger">
@@ -33,9 +33,10 @@
                         </ul>
                     </div>
                 @endif
+                @method('PUT')
                 <div class="row justify-content-center">
-                    @include('food.form.create-left')
-                    @include('food.form.create-right')
+                    @include('food.form.edit-left')
+                    @include('food.form.edit-right')
                 </div>
             </form>
         </div>
