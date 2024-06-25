@@ -67,6 +67,7 @@ Route::prefix('/food')->as('food.')->group(function () {
         Route::post('/them', 'store')->name('store');
         Route::get('/sua/{id}', 'edit')->name('edit');
         Route::put('/sua/{id}', 'update')->name('update');
+        Route::delete('/xoa/{id}', 'delete')->name('delete');
     });
 })->middleware('checklogin');
 

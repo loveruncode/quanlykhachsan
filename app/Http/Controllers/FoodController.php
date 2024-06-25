@@ -75,17 +75,27 @@ class FoodController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request)
+    public function update(FoodRequest $request)
     {
-        $data = $request->all();
-        dd($data);
+
+        $id = request('id');
+        $result = $this->service->update($id,$request);
+        if(!$result){
+            return back()->with('error', 'Chỉnh Sửa Thất Bại!');
+        }
+        return redirect()->route('food.index')->with('success','Đã Chỉnh Sửa Thành Công!');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function delete($id)
     {
-        //
+        $result = $this->repository->delete($id);
+        if(!$result){
+
+             return back()->with('error', 'Xoá Món Ăn Thất Bại');
+        }
+        return back()->with('success', 'Xoá Món Ăn thành công');
     }
 }
