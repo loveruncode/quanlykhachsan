@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Repository\Food;
+namespace  App\Repository\Post;
 
 use App\Repository\EloquentRepositoryInterface;
 
-interface FoodRepositoryInterface extends EloquentRepositoryInterface{
+interface PostRepositoryInterface extends EloquentRepositoryInterface{
 
 
     public function show();

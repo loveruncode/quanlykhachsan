@@ -23,14 +23,13 @@
 <!-- page body -->
 <div class="page-body">
     <div class="container-xl">
-        {{--  <!-- <form action="{{route('room.store')}}" method="post"> --> --}}
-        {{-- <form action="#" method="post">
-            @csrf --}}
+         <form action="{{route('post.store')}}" method="post"  enctype="multipart/form-data">
+            @csrf
         <div class="row justify-content-center">
             @include('blog.form.create-left')
             @include('blog.form.create-right')
         </div>
-        {{-- </form> --}}
+        </form>
     </div>
 </div>
 

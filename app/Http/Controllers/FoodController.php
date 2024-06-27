@@ -98,4 +98,12 @@ class FoodController extends Controller
         }
         return back()->with('success', 'Xoá Món Ăn thành công');
     }
+
+    public function search(Request $request){
+
+
+        $query = $request->searchData;
+        $food = $this->repository->search($query);
+        return view('food.index', compact('food'));
+    }
 }

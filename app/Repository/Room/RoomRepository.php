@@ -25,6 +25,8 @@ class RoomRepository extends EloquentRepository implements RoomRepositoryInterfa
 
         return $this->model->where('code', 'like', '%' . $query . '%')
         ->orWhere('title', 'like', '%' . $query . '%')
+        ->orWhere('total_price', 'like', '%' . $query . '%')
+        ->orWhere('price_per_date', 'like', '%' . $query . '%')
         ->orderBy('created_at', 'desc')
         ->paginate(10);
     }

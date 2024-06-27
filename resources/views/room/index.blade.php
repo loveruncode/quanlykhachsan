@@ -86,7 +86,12 @@
                                     style="font-weight: 700;">${{ \App\Helpers\Helper::formatNumber($value->total_price) }}
                                     VND</span>
                             </p>
-
+                            <div class="d-flex flex-row-reverse mt-1">
+                                <button class="btn btn-danger delete-button"
+                                    data-url="{{ route('room.delete', ['id' => $value->id]) }}">
+                                    <i class="fas fa-fw fa-trash"></i>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>

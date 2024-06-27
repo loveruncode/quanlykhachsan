@@ -1,7 +1,7 @@
 @extends('layout.master')
 
 @section('content')
-    <form method="get" action="{{ route('notify.search') }}">
+    <form method="get" action="{{ route('food.search') }}">
         @csrf
         <div class="input-group mb-3">
             <input name="searchData" id="searchNotify" type="text" class="form-control" placeholder="Search..."

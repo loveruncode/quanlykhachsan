@@ -15,7 +15,8 @@ class AppRepositoryProvider extends ServiceProvider
         'App\Repository\Notification\NotificationRepositoryInterface' => 'App\Repository\Notification\NotificationRepository',
         'App\Repository\User\UserRepositoryInterface' => 'App\Repository\User\UserRepository',
         'App\Repository\Room\RoomRepositoryInterface' => 'App\Repository\Room\RoomRepository',
-        'App\Repository\Food\FoodRepositoryInterface' => 'App\Repository\Food\FoodRepository'
+        'App\Repository\Food\FoodRepositoryInterface' => 'App\Repository\Food\FoodRepository',
+        'App\Repository\Post\PostRepositoryInterface' => 'App\Repository\Post\PostRepository',
 
     ];
     public function register(): void

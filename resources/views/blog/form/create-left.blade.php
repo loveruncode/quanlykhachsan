@@ -20,15 +20,16 @@
         <div class="col-12 mt-2">
             <div class="card">
                 <div class="card-header d-flex align-items-center justify-content-between">
-                    <label class="control-label col-form-label p-0">@lang('trạng thái'):</label>
+                    <label class="control-label col-form-label p-0">@lang('Trạng Thái'):</label>
                     <span class="float-end text-yellow" data-bs-toggle="tooltip" data-bs-placement="top"
                         title="{{ __('Status') }}">
                     </span>
                 </div>
                 <div class="card-body p-2">
                     <select name="status" id="status" class="form-control ">
-                        <option value="1">Published</option>
-                        <option value="2">Draft</option>
+                     @foreach ($status as $key => $value)
+                        <option value="{{$key}}">{{$value}}</option>
+                     @endforeach
                     </select>
                 </div>
             </div>
@@ -45,7 +46,7 @@
                     </span>
                 </div>
                 <div class="card-body p-2">
-                    <textarea class="form-control checkEditor" name="description" placeholder="Miêu Tả"></textarea>
+                    <textarea class="form-control checkEditor" name="desc" placeholder="Miêu Tả"></textarea>
                 </div>
             </div>
         </div>
