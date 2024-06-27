@@ -5,11 +5,13 @@
             <div class="card">
                 <div class="card-header d-flex align-items-center justify-content-between">
                     <label class="control-label col-form-label p-0">@lang('Mã Phòng'):</label>
-                    <span class="float-end text-yellow" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ __('code') }}">
+                    <span class="float-end text-yellow" data-bs-toggle="tooltip" data-bs-placement="top"
+                        title="{{ __('code') }}">
                     </span>
                 </div>
                 <div class="card-body p-2">
-                    <input type="text" class="form-control" name="code" value="{{$data->code}}" placeholder="Mã Phòng: VD L01" />
+                    <input type="text" class="form-control" name="code" value="{{ $data->code }}"
+                        placeholder="Mã Phòng: VD L01" />
                 </div>
             </div>
         </div>
@@ -17,11 +19,13 @@
             <div class="card">
                 <div class="card-header d-flex align-items-center justify-content-between">
                     <label class="control-label col-form-label p-0">@lang('Tiêu Đề'):</label>
-                    <span class="float-end text-yellow" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ __('Title') }}">
+                    <span class="float-end text-yellow" data-bs-toggle="tooltip" data-bs-placement="top"
+                        title="{{ __('Title') }}">
                     </span>
                 </div>
                 <div class="card-body p-2">
-                    <input type="text" class="form-control" name="title" value="{{$data->title}}" placeholder="Tiêu Đề" />
+                    <input type="text" class="form-control" name="title" value="{{ $data->title }}"
+                        placeholder="Tiêu Đề" />
                 </div>
             </div>
         </div>
@@ -36,11 +40,13 @@
             <div class="card">
                 <div class="card-header d-flex align-items-center justify-content-between">
                     <label class="control-label col-form-label p-0">@lang('Diện Tích'):</label>
-                    <span class="float-end text-yellow" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ __('area') }}">
+                    <span class="float-end text-yellow" data-bs-toggle="tooltip" data-bs-placement="top"
+                        title="{{ __('area') }}">
                     </span>
                 </div>
                 <div class="card-body p-2">
-                    <input id="area" type="number" class="form-control" name="area" value="{{$data->area}}" placeholder="Diện Tích Đơn Vị: (m2)" />
+                    <input id="area" type="number" class="form-control" name="area" value="{{ $data->area }}"
+                        placeholder="Diện Tích Đơn Vị: (m2)" />
                 </div>
             </div>
         </div>
@@ -48,15 +54,16 @@
             <div class="card">
                 <div class="card-header d-flex align-items-center justify-content-between">
                     <label class="control-label col-form-label p-0">@lang('Trạng Thái'):</label>
-                    <span class="float-end text-yellow" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ __('Status') }}">
+                    <span class="float-end text-yellow" data-bs-toggle="tooltip" data-bs-placement="top"
+                        title="{{ __('Status') }}">
                     </span>
                 </div>
                 <div class="card-body p-2">
                     <select name="status" class="form-control select2">
                         @foreach ($status as $key => $value)
-                        <option value="{{ $key }}" {{$key == $data->status ? 'selected' : ''  }}>
-                        {{ \App\Enum\RoomStatus::translate($key) }}
-                        </option>
+                            <option value="{{ $key }}" {{ $key == $data->status ? 'selected' : '' }}>
+                                {{ \App\Enum\RoomStatus::translate($key) }}
+                            </option>
                         @endforeach
                     </select>
                 </div>
@@ -69,7 +76,8 @@
             <div class="card">
                 <div class="card-header d-flex align-items-center justify-content-between">
                     <label class="control-label col-form-label p-0">@lang('Miêu Tả'):</label>
-                    <span class="float-end text-yellow" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ __('Description') }}">
+                    <span class="float-end text-yellow" data-bs-toggle="tooltip" data-bs-placement="top"
+                        title="{{ __('Description') }}">
                     </span>
                 </div>
                 <div class="card-body p-2">
@@ -84,11 +92,13 @@
             <div class="card">
                 <div class="card-header d-flex align-items-center justify-content-between">
                     <label class="control-label col-form-label p-0">@lang('Địa Chỉ'):</label>
-                    <span class="float-end text-yellow" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ __('Address') }}">
+                    <span class="float-end text-yellow" data-bs-toggle="tooltip" data-bs-placement="top"
+                        title="{{ __('Address') }}">
                     </span>
                 </div>
                 <div class="card-body p-2">
-                    <input class="form-control" value="{{$data->address}}" name="address" placeholder="Đường,Phường,Quận,Tp" />
+                    <input class="form-control" value="{{ $data->address }}" name="address"
+                        placeholder="Đường,Phường,Quận,Tp" />
                 </div>
             </div>
         </div>
@@ -99,11 +109,13 @@
             <div class="card">
                 <div class="card-header d-flex align-items-center justify-content-between">
                     <label class="control-label col-form-label p-0">@lang('Tầng'):</label>
-                    <span class="float-end text-yellow" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ __('Floor') }}">
+                    <span class="float-end text-yellow" data-bs-toggle="tooltip" data-bs-placement="top"
+                        title="{{ __('Floor') }}">
                     </span>
                 </div>
                 <div class="card-body p-2">
-                    <input type="number" value="{{$data->floor}}" class="form-control" name="floor" placeholder="Tầng" />
+                    <input type="number" value="{{ $data->floor }}" class="form-control" name="floor"
+                        placeholder="Tầng" />
                 </div>
             </div>
         </div>
@@ -116,11 +128,13 @@
             <div class="card">
                 <div class="card-header d-flex align-items-center justify-content-between">
                     <label class="control-label col-form-label p-0">@lang('Ngày Bắt Đầu'):</label>
-                    <span class="float-end text-yellow" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ __('Start Rent') }}">
+                    <span class="float-end text-yellow" data-bs-toggle="tooltip" data-bs-placement="top"
+                        title="{{ __('Start Rent') }}">
                     </span>
                 </div>
                 <div class="card-body p-2">
-                    <input id="start_date" type="date" class="form-control" name="start_rent" value="{{$data->start_rent}}" placeholder="Ngày Bắt Đầu" required />
+                    <input id="start_date" type="date" class="form-control" name="start_rent"
+                        value="{{ $data->start_rent }}" placeholder="Ngày Bắt Đầu" required />
                 </div>
             </div>
         </div>
@@ -129,11 +143,13 @@
             <div class="card">
                 <div class="card-header d-flex align-items-center justify-content-between">
                     <label class="control-label col-form-label p-0">@lang('Ngày Kết Thúc'):</label>
-                    <span class="float-end text-yellow" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ __('End Rent') }}">
+                    <span class="float-end text-yellow" data-bs-toggle="tooltip" data-bs-placement="top"
+                        title="{{ __('End Rent') }}">
                     </span>
                 </div>
                 <div class="card-body p-2">
-                    <input id="end_date" type="date" class="form-control" name="end_rent" value="{{$data->end_rent}}" placeholder="Ngày Kết Thúc" required />
+                    <input id="end_date" type="date" class="form-control" name="end_rent"
+                        value="{{ $data->end_rent }}" placeholder="Ngày Kết Thúc" required />
                 </div>
             </div>
         </div>
@@ -145,11 +161,13 @@
             <div class="card">
                 <div class="card-header d-flex align-items-center justify-content-between">
                     <label class="control-label col-form-label p-0">@lang('Giá Thuê'):</label>
-                    <span class="float-end text-yellow" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ __('Selling Price') }}">
+                    <span class="float-end text-yellow" data-bs-toggle="tooltip" data-bs-placement="top"
+                        title="{{ __('Selling Price') }}">
                     </span>
                 </div>
                 <div class="card-body p-2">
-                    <input type="text" class="form-control" value="{{$data->price_selling}}" id="sellingPrice" name="price_selling" placeholder="Giá Thuê" />
+                    <input type="text" class="form-control" value="{{ $data->price_selling }}" id="sellingPrice"
+                        name="price_selling" placeholder="Giá Thuê" />
                 </div>
             </div>
         </div>
@@ -158,15 +176,16 @@
             <div class="card">
                 <div class="card-header d-flex align-items-center justify-content-between">
                     <label class="control-label col-form-label p-0">@lang('Giảm Giá'):</label>
-                    <span class="float-end text-yellow" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ __('Discount') }}">
+                    <span class="float-end text-yellow" data-bs-toggle="tooltip" data-bs-placement="top"
+                        title="{{ __('Discount') }}">
                     </span>
                 </div>
                 <div class="card-body p-2">
                     <select name="discount" id="discount" class="form-control">
                         @foreach ($discount as $key => $value)
-                        <option value="{{ $key }}" {{ $data->discount == $key ? 'selected' : '' }}>
-                        {{ \App\Enum\Discount::translate($key) }}
-                        </option>
+                            <option value="{{ $key }}" {{ $data->discount == $key ? 'selected' : '' }}>
+                                {{ \App\Enum\Discount::translate($key) }}
+                            </option>
                         @endforeach
                     </select>
                 </div>
@@ -179,11 +198,13 @@
             <div class="card">
                 <div class="card-header d-flex align-items-center justify-content-between">
                     <label class="control-label col-form-label p-0">@lang('Giá Theo Ngày'):</label>
-                    <span class="float-end text-yellow" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ __('Price_per_date') }}">
+                    <span class="float-end text-yellow" data-bs-toggle="tooltip" data-bs-placement="top"
+                        title="{{ __('Price_per_date') }}">
                     </span>
                 </div>
                 <div class="card-body p-2">
-                    <input value="{{$data->price_per_date}}" readonly type="text" class="form-control" id="price_per_date" name="price_per_date" placeholder="Giá Theo Ngày" />
+                    <input value="{{ $data->price_per_date }}" readonly type="text" class="form-control"
+                        id="price_per_date" name="price_per_date" placeholder="Giá Theo Ngày" />
                 </div>
             </div>
         </div>
@@ -191,11 +212,13 @@
             <div class="card">
                 <div class="card-header d-flex align-items-center justify-content-between">
                     <label class="control-label col-form-label p-0">@lang('Tổng Giá'):</label>
-                    <span class="float-end text-yellow" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ __('Total') }}">
+                    <span class="float-end text-yellow" data-bs-toggle="tooltip" data-bs-placement="top"
+                        title="{{ __('Total') }}">
                     </span>
                 </div>
                 <div class="card-body p-2">
-                    <input value="{{$data->total_price}}" readonly type="text" class="form-control" id="total" name="total_price" placeholder="Tổng Giá" />
+                    <input value="{{ $data->total_price }}" readonly type="text" class="form-control"
+                        id="total" name="total_price" placeholder="Tổng Giá" />
                 </div>
             </div>
         </div>

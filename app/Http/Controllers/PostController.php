@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Enum\NotifyStatus;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -19,8 +20,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        
-         return view('blog.create');
+        $status = NotifyStatus::asSelectArray();
+         return view('blog.create',compact('status'));
     }
 
     /**
@@ -28,7 +29,8 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        dd($data);
     }
 
     /**

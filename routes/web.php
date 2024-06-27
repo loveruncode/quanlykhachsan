@@ -31,6 +31,7 @@ Route::prefix('/room')->as('room.')->group(function () {
         Route::get('/sua/{id}', 'edit')->name('edit');
         Route::get('/search', 'search')->name('search');
         Route::put('/sua/{id}', 'update')->name('update');
+        Route::delete('/xoa/{id}', 'delete')->name('delete');
     });
 })->middleware('checklogin');
 
@@ -65,6 +66,10 @@ Route::prefix('/food')->as('food.')->group(function () {
         Route::get('/', 'index')->name('index');
         Route::get('/them', 'create')->name('create');
         Route::post('/them', 'store')->name('store');
+        Route::get('/sua/{id}', 'edit')->name('edit');
+        Route::put('/sua/{id}', 'update')->name('update');
+        Route::delete('/xoa/{id}', 'delete')->name('delete');
+        Route::get('/search', 'search')->name('search');
     });
 })->middleware('checklogin');
 
@@ -72,6 +77,7 @@ Route::prefix('/post')->as('post.')->group(function () {
     Route::controller(App\Http\Controllers\PostController::class)->group(function () {
         Route::get('/', 'index')->name('index');
         Route::get('/them', 'create')->name('create');
+        Route::post('/them', 'store')->name('store');
     });
 })->middleware('checklogin');
 

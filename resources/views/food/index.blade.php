@@ -1,7 +1,7 @@
 @extends('layout.master')
 
 @section('content')
-    <form method="get" action="{{ route('notify.search') }}">
+    <form method="get" action="{{ route('food.search') }}">
         @csrf
         <div class="input-group mb-3">
             <input name="searchData" id="searchNotify" type="text" class="form-control" placeholder="Search..."
@@ -20,7 +20,8 @@
                         @php
                             $images = explode(',', $value->image);
                         @endphp
-                        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                        <div id="carouselExampleControls{{ $key }}" class="carousel slide custom-carousel"
+                            data-ride="carousel">
                             <div class="carousel-inner">
                                 @foreach ($images as $index => $image)
                                     <div class="carousel-item @if ($loop->first) active @endif">
@@ -29,27 +30,33 @@
                                     </div>
                                 @endforeach
                             </div>
-                            <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
-                                data-slide="prev">
+                            <a class="carousel-control-prev" href="#carouselExampleControls{{ $key }}"
+                                role="button" data-slide="prev">
                                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                                 <span class="sr-only">Previous</span>
                             </a>
-                            <a class="carousel-control-next" href="#carouselExampleControls" role="button"
-                                data-slide="next">
+                            <a class="carousel-control-next" href="#carouselExampleControls{{ $key }}"
+                                role="button" data-slide="next">
                                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                                 <span class="sr-only">Next</span>
                             </a>
                         </div>
                     </div>
                     <div class="card-body m-auto align-content-start">
-                        <a class="text-dark name" style="font-weight: bold; cursor: pointer;">{{ $value->name }}</a>
+                        <a href="{{ route('food.edit', ['id' => $value->id]) }}" class="text-dark name"
+                            style="font-weight: bold; cursor: pointer;">{{ $value->name }}</a>
                         <p class="text-dark desc">{!! $value->desc !!}</p>
                         <p class="EatTime">{{ $value->eat_time }}</p>
                         <p class="price">${{ \App\Helpers\Helper::formatNumber($value->price) }} VND</p>
+                        <div class="d-flex flex-row-reverse">
+                            <button class="btn btn-danger delete-button"
+                                data-url="{{ route('food.delete', ['id' => $value->id]) }}">
+                                <i class="fas fa-fw fa-trash"></i>
+                            </button>
+                        </div>
                     </div>
                 </div>
+            @endforeach
         </div>
-    </div>
-    @endforeach
     </div>
 @endsection

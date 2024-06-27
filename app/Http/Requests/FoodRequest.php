@@ -23,6 +23,18 @@ class FoodRequest extends BaseRequest
             'image.*' => ['image', 'max:2048'],
         ];
     }
+
+    public function methodPut()
+    {
+        return [
+            'name' => ['nullable', 'string'],
+            'qty' => ['nullable', 'integer'],
+            'eat_time' => ['nullable'],
+            'price' => ['nullable'],
+            'desc' => ['string', 'nullable'],
+            'image.*' => ['image', 'max:2048'],
+        ];
+    }
     public function messages()
     {
         return [

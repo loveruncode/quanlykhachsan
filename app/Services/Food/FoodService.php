@@ -8,13 +8,14 @@ use Illuminate\Http\Request;
 use App\Services\Food\FoodServiceInterface;
 
 
-class FoodService implements FoodServiceInterface{
+class FoodService implements FoodServiceInterface
+{
 
     protected $repository;
 
     public function __construct(FoodRepositoryInterface $repository)
     {
-         $this->repository = $repository;
+        $this->repository = $repository;
     }
 
 
@@ -38,14 +39,23 @@ class FoodService implements FoodServiceInterface{
 
     public function update($id, Request $request)
     {
+        $validatedData = $request->validated();
 
+        $imagePaths = [];
+        if ($request->hasFile('image')) {
+            foreach ($request->file('image') as $avatar) {
+                $imageName = time() . '_' . $avatar->getClientOriginalName();
+                $avatar->storeAs('public', $imageName);
+                $imagePaths[] = $imageName;
+            }
+            $validatedData['image'] = implode(',', $imagePaths);
+        }
+        $result = $this->repository->update($id, $validatedData);
 
+        return $result;
     }
 
     public function delete($id)
     {
-
     }
-
-
 }

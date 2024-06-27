@@ -45,7 +45,7 @@ class RoomController extends Controller
         $discount = Discount::asSelectArray();
         $type = TypeRoom::asSelectArray();
         $rate = RatingScore::asSelectArray();
-        return view('room.create', compact('status', 'discount','type', 'rate'));
+        return view('room.create', compact('status', 'discount', 'type', 'rate'));
     }
 
     /**
@@ -82,17 +82,17 @@ class RoomController extends Controller
         $type = TypeRoom::asSelectArray();
         $rating = RatingScore::asSelectArray();
         $discount = Discount::asSelectArray();
-         return view('room.edit', compact('data', 'status', 'type', 'rating', 'discount'));
+        return view('room.edit', compact('data', 'status', 'type', 'rating', 'discount'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update($id,RoomRequest $request)
+    public function update($id, RoomRequest $request)
     {
         $id = request('id');
-        $respone = $this->service->update($id,$request);
-        if($respone){
+        $respone = $this->service->update($id, $request);
+        if ($respone) {
             return back()->with('success', __('Đã Cập Nhật Thành Công'));
         }
         return back()->with('error', __('Đã Cập Nhật Thất Bại'));
@@ -101,16 +101,21 @@ class RoomController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function delete($id)
     {
-        //
+        $result = $this->repository->delete($id);
+        if (!$result) {
+
+            return back()->with('error', 'Xoá Phòng Thất Bại');
+        }
+        return back()->with('success', 'Xoá Phòng thành công');
     }
 
-    public function search(Request $request){
+    public function search(Request $request)
+    {
 
         $query = $request->searchData;
         $room = $this->repository->search($query);
         return view('room.index', compact('room'));
-
     }
 }
