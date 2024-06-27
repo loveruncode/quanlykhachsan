@@ -101,7 +101,9 @@ export default function Header() {
                         <img src={images.logo} alt="logo" />
                     </Link>
                 </div>
-
+                <div className={cx('header__center')}>
+                    <Search />
+                </div>
                 <div className={cx('header__right')}>
                     {/* Nếu đã đăng nhập thì hiển thị thông tin người dùng và nút Đăng Xuất */}
                     {currentUser ? (
@@ -111,9 +113,6 @@ export default function Header() {
                                     <FontAwesomeIcon icon={faBars} />
                                 </Button>
                                 <OffCanvas isOpen={showOffcanvas} closeOffCanvas={handleClose} title="EQHotel" page>
-                                    <div className={cx('header__center')}>
-                                        <Search />
-                                    </div>
                                     <ul className={cx('header__right-currentuser-mobile')}>
                                         <li className={cx('header__right-notify-mobile')}>
                                             <Notify />

@@ -7,7 +7,6 @@ import styles from './Auth.module.scss';
 import Button from '~/components/Button';
 import SignIn from './SignIn';
 import SignUp from './SignUp';
-import Search from '~/layouts/components/Search';
 import { useMobile } from '~/hooks';
 import OffCanvas from '../OffCanvas';
 
@@ -66,9 +65,6 @@ export default function Auth() {
                         <div className={cx('ocv-m-btn-auth')}>
                             <Button onClick={openSignInModal}>Đăng Nhập</Button>
                             <Button onClick={openSignUpModal}>Đăng Ký</Button>
-                            <div className={cx('search')}>
-                                <Search />
-                            </div>
                         </div>
                     </OffCanvas>
                 </>
