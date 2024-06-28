@@ -15,7 +15,7 @@
             @lang('Thêm Hình')
         </div>
         <div class="card-body d-flex flex-column flex-sm-row align-items-center justify-content-between">
-            <input type="file" name="image" id="images" onchange="previewImages(event)" multiple>
+            <input type="file" name="image[]" id="images" onchange="previewImages(event)" multiple>
         </div>
         <div class="card-body">
             <div id="image-preview" class="mt-2"></div>

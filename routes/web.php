@@ -78,6 +78,7 @@ Route::prefix('/post')->as('post.')->group(function () {
         Route::get('/', 'index')->name('index');
         Route::get('/them', 'create')->name('create');
         Route::post('/them', 'store')->name('store');
+        Route::delete('/xoa/{id}', 'delete')->name('delete');
     });
 })->middleware('checklogin');
 

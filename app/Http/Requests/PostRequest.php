@@ -17,6 +17,7 @@ class PostRequest extends BaseRequest
             'status' =>['nullable', new Enum(NotifyStatus::class)],
             'desc' => ['string', 'required'],
             'image.*' => ['image', 'max:2048'],
+            'user_id' => ['nullable'],
         ];
     }
 

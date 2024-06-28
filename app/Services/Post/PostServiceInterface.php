@@ -32,4 +32,5 @@ interface PostServiceInterface{
      * @return boolean
      */
     public function delete($id);
+    public function getImagesFromString($imageString);
 }
