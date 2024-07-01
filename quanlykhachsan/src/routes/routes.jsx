@@ -1,5 +1,6 @@
 import config from '~/config';
 import { Home, Profile, Contact, Shop, Room, Blog, NotFound, HistoryOders, Security } from '~/pages';
+import RoomDetails from '~/pages/RoomDetails';
 
 const publicRoutes = [
     { path: config.routes.home, component: Home },
@@ -7,6 +8,7 @@ const publicRoutes = [
     { path: config.routes.blog, component: Blog },
     { path: config.routes.contact, component: Contact },
     { path: config.routes.room, component: Room },
+    { path: config.routes.roomDetails, component: RoomDetails },
     { path: '*', component: NotFound }
 ];
 const privateRoutes = [

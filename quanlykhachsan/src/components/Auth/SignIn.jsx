@@ -10,6 +10,7 @@ import styles from './Auth.module.scss';
 import Button from '~/components/Button';
 import { signInStart, signInSuccess, signInFailure } from '~/redux/user/userSlice';
 import { useNavigate } from 'react-router-dom';
+import { Post } from '../AxiosClient';
 
 const cx = classNames.bind(styles);
 
@@ -30,25 +31,21 @@ export default function SignInModal({ isOpen, closeModal, switchToSignUp }) {
         if (validate()) {
             try {
                 dispatch(signInStart());
-                const response = await fetch(`/api/login`, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        Accept: 'application/json'
-                    },
-                    body: JSON.stringify(formData)
-                });
+                const response = await Post({ endPoint: 'login', data: formData });
+                console.log(response);
+                console.log(formData);
 
-                if (response.ok) {
-                    const data = await response.json();
+                if (response.status == 200) {
+                    const data = response.data;
+                    console.log('data', data);
                     toast.success('Đăng nhập thành công');
                     dispatch(signInSuccess(data));
                     setFormData({ email: '', password: '' });
-                    closeModal();
-                    navigate('/');
-                    window.location.reload();
+                    // closeModal();
+                    navigate('/room');
                 } else {
-                    const data = await response.json();
+                    // const data = await response.json();
+                    const data = response.data;
                     toast.error(data.error || 'Đăng nhập thất bại');
                     dispatch(signInFailure(data));
                 }

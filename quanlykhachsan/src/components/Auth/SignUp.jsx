@@ -7,6 +7,7 @@ import Modal from '~/components/Modal';
 import styles from './Auth.module.scss';
 import Button from '~/components/Button';
 import { useState } from 'react';
+import { Post } from '../AxiosClient';
 
 const cx = classNames.bind(styles);
 
@@ -20,23 +21,18 @@ export default function SignUpModal({ isOpen, closeModal, switchToSignIn }) {
     const handleSignUpSubmit = async (e) => {
         e.preventDefault();
         try {
-            const res = await fetch('/api/register', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(formData)
-            });
+            const response = await Post({ endPoint: 'register', data: formData });
+            console.log(response);
+            console.log(formData);
 
-            if (res.ok) {
-                const data = await res.json();
-                console.log('Login successful:', data);
+            if (response.status == 201) {
+                const data = response.data;
+                console.log('Signup successful:', data);
                 toast.success('Đăng Ký thành công');
                 console.log(data);
-                closeModal();
-                window.location.reload();
+                // closeModal();
             } else {
-                const data = await res.json();
+                const data = response.data;
                 console.log('Register error:', data);
                 toast.error(data.error || 'Đăng Ký thất bại');
             }
@@ -52,14 +48,6 @@ export default function SignUpModal({ isOpen, closeModal, switchToSignIn }) {
                 <input type="text" placeholder="Họ và tên" id="name" onChange={handleChange} required />
                 <input type="tel" placeholder="Số điện thoại" id="phone" onChange={handleChange} required />
                 <input type="email" placeholder="Email" id="email" onChange={handleChange} required />
-                <select className={cx('select')} id="gender" name="gender" onChange={handleChange} required>
-                    <option className={cx('opt')} value="1">
-                        Nam
-                    </option>
-                    <option className={cx('opt')} value="2">
-                        Nữ
-                    </option>
-                </select>
                 <input
                     type="password"
                     placeholder="Mật khẩu"
@@ -68,7 +56,14 @@ export default function SignUpModal({ isOpen, closeModal, switchToSignIn }) {
                     onChange={handleChange}
                     required
                 />
-                <input type="password" placeholder="Xác nhận mật khẩu" minLength={6} required />
+                <input
+                    type="password"
+                    placeholder="Xác nhận mật khẩu"
+                    minLength={6}
+                    id="confirmPassword"
+                    onChange={handleChange}
+                    required
+                />
                 <div className={cx('changeSignIn')}>
                     <span className={cx('csit')}>Đã có tài khoản?</span>
                     <Button onClick={switchToSignIn} className={cx('signup-link')}>

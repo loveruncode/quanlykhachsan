@@ -1,0 +1,32 @@
+.cardContainer {
+    display: flex;
+    justify-content: center;
+
+    flex-wrap: wrap;
+    gap: 22.5px;
+    user-select: none;
+}
+
+.cardHeaderTitle {
+    display: flex;
+    justify-content: space-evenly;
+}
+.cardHeader .title,
+.cardHeaderTitle .rating {
+    line-height: 57px;
+}
+.cardHeaderTitle .rating {
+    color: #f6c23e;
+    font-size: 2rem;
+}
+
+.cardHeader .image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.cardBody .desc {
+    margin: 10px 0;
+    text-align: left;
+}

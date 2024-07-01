@@ -1,0 +1,30 @@
+.cardContainer {
+    background-color: #fff;
+    border: 1px solid #e3e6f0;
+    color: black;
+    text-align: center;
+    padding: 15px;
+    width: 14.66%; /* 100% / 6 = 16.66% */
+    height: auto;
+    border-radius: 10px;
+    box-sizing: border-box;
+    margin: 0.5em;
+}
+
+/* Media Queries cho kích thước màn hình nhỏ hơn */
+@media (max-width: 1500px) {
+    .cardContainer {
+        width: 25% !important; /* 100% / 4 = 25% */
+    }
+}
+@media (max-width: 1200px) {
+    .cardContainer {
+        width: 40% !important; /* 100% / 4 = 25% */
+    }
+}
+
+@media (max-width: 840px) {
+    .cardContainer {
+        width: 100% !important; /* 100% / 1 = 100% */
+    }
+}

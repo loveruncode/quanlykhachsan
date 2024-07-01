@@ -7,9 +7,10 @@ import Input from '~/components/Input';
 import Image from '~/components/image';
 import Button from '~/components/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBookBookmark, faShieldHalved, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faBookBookmark, faShieldHalved, faUser, faEdit } from '@fortawesome/free-solid-svg-icons';
 import { useSelector } from 'react-redux';
 import config from '~/config';
+import { Get } from '~/components/AxiosClient';
 
 const cx = classNames.bind(styles);
 
@@ -28,6 +29,15 @@ export default function Profile() {
         gender: '',
         roles: ''
     });
+    const [isEditing, setIsEditing] = useState(false); // Thêm trạng thái editMode
+
+    const maskEmail = (email) => {
+        let [localPart, domain] = email.split('@');
+        if (localPart.length > 2) {
+            localPart = localPart[0] + '***' + localPart[localPart.length - 1];
+        }
+        return localPart + '@' + domain;
+    };
 
     useEffect(() => {
         const token = currentUser.access_token;
@@ -39,26 +49,19 @@ export default function Profile() {
 
         const fetchUserInfo = async () => {
             try {
-                const response = await fetch(`/api/profilev1/${userId}`, {
-                    method: 'GET',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        Accept: 'application/json',
-                        Authorization: `Bearer ${token}`
-                    }
-                });
+                const response = await Get({ endPoint: `profilev1/${userId}`, Authorization: `Bearer ${token}` });
 
-                if (response.ok) {
-                    const data = await response.json();
+                if (response.status === 200) {
+                    const data = response.data.data;
                     setFormData({
-                        name: data.data.name || '',
-                        birthday: data.data.birthday || '',
-                        address: data.data.address || '',
-                        avatar: data.data.avatar || null,
-                        email: data.data.email || '',
-                        phone: data.data.phone || '',
-                        gender: data.data.gender || '',
-                        roles: data.data.roles || ''
+                        name: data.name || '',
+                        birthday: data.birthday || '',
+                        address: data.address || '',
+                        avatar: data.avatar || null,
+                        email: data.email || '',
+                        phone: data.phone || '',
+                        gender: data.gender || '',
+                        roles: data.roles || ''
                     });
                 } else {
                     console.error('Failed to fetch user data');
@@ -77,7 +80,9 @@ export default function Profile() {
 
     const handleSaveChanges = async (e) => {
         e.preventDefault();
-        console.log(formData);
+        // TODO: Thực hiện API lưu thay đổi thông tin người dùng ở đây
+        console.log('Saving changes:', formData);
+        setIsEditing(false); // Chuyển về chế độ xem sau khi lưu thay đổi
     };
 
     const handleAvatarChange = (e) => {
@@ -93,6 +98,11 @@ export default function Profile() {
     const handleButtonClick = (e) => {
         e.preventDefault();
         document.getElementById('avatar-input').click();
+    };
+
+    const handleEditClick = (e) => {
+        e.preventDefault();
+        setIsEditing(true); // Chuyển về chế độ chỉnh sửa khi nhấn nút "Sửa"
     };
 
     let userRole;
@@ -138,16 +148,20 @@ export default function Profile() {
                     <form className={cx('profile-info')}>
                         <div className={cx('info-avatar')}>
                             <Image src={formData.avatar} alt="Avatar" className={cx('profile-image')} />
-                            <Button onClick={handleButtonClick} outline>
-                                Đổi ảnh đại diện
-                            </Button>
-                            <input
-                                type="file"
-                                id="avatar-input"
-                                style={{ display: 'none' }}
-                                onChange={handleAvatarChange}
-                                accept="image/*"
-                            />
+                            {isEditing && (
+                                <>
+                                    <Button onClick={handleButtonClick} outline>
+                                        Đổi ảnh đại diện
+                                    </Button>
+                                    <input
+                                        type="file"
+                                        id="avatar-input"
+                                        style={{ display: 'none' }}
+                                        onChange={handleAvatarChange}
+                                        accept="image/*"
+                                    />
+                                </>
+                            )}
                         </div>
                         <div className={cx('info-inputs')}>
                             <div className={cx('inline')}>
@@ -156,14 +170,25 @@ export default function Profile() {
                                     data={formData.name}
                                     setData={(value) => setFormData({ ...formData, name: value })}
                                     className={cx('username')}
+                                    readOnly={!isEditing}
                                 />
-                                <Input
-                                    label="Email"
-                                    data={formData.email}
-                                    setData={(value) => setFormData({ ...formData, email: value })}
-                                    className={cx('email')}
-                                    readOnly
-                                />
+                                {!isEditing ? (
+                                    <Input
+                                        label="Email"
+                                        data={maskEmail(formData.email)}
+                                        setData={(value) => setFormData({ ...formData, email: value })}
+                                        className={cx('email')}
+                                        readOnly
+                                    />
+                                ) : (
+                                    <Input
+                                        label="Email"
+                                        data={formData.email}
+                                        setData={(value) => setFormData({ ...formData, email: value })}
+                                        className={cx('email')}
+                                        readOnly
+                                    />
+                                )}
                             </div>
                             <div className={cx('inline')}>
                                 <Input
@@ -171,6 +196,7 @@ export default function Profile() {
                                     data={formData.phone}
                                     setData={(value) => setFormData({ ...formData, phone: value })}
                                     className={cx('phone')}
+                                    readOnly={!isEditing}
                                 />
                                 <Input
                                     label="Ngày Sinh"
@@ -178,6 +204,7 @@ export default function Profile() {
                                     data={formData.birthday}
                                     setData={(value) => setFormData({ ...formData, birthday: value })}
                                     className={cx('date')}
+                                    readOnly={!isEditing}
                                 />
                             </div>
                             <div className={cx('inline')}>
@@ -186,6 +213,7 @@ export default function Profile() {
                                     data={formData.address}
                                     setData={(value) => setFormData({ ...formData, address: value })}
                                     className={cx('address')}
+                                    readOnly={!isEditing}
                                 />
                                 <select
                                     name="gender"
@@ -193,16 +221,23 @@ export default function Profile() {
                                     value={formData.gender}
                                     className={cx('gender')}
                                     onChange={(e) => setFormData({ ...formData, gender: e.target.value })}
+                                    disabled={!isEditing}
                                 >
                                     <option value="1">Nam</option>
                                     <option value="2">Nữ</option>
                                 </select>
                             </div>
-                            {/* <p>Vai trò: {userRole}</p> */}
-                            {location.pathname === `/profile` && (
+                            {isEditing ? (
                                 <Button primary className={cx('save-button')} onClick={handleSaveChanges}>
                                     Lưu thay đổi
                                 </Button>
+                            ) : (
+                                location.pathname === `/profile` && (
+                                    <Button className={cx('save-button')} onClick={handleEditClick} outline>
+                                        <FontAwesomeIcon icon={faEdit} style={{ paddingRight: '5px' }} />
+                                        Sửa
+                                    </Button>
+                                )
                             )}
                         </div>
                     </form>

@@ -1,9 +1,15 @@
+import classNames from 'classnames/bind';
 import PropTypes from 'prop-types';
 
+import styles from './Input.module.scss';
+
+const cx = classNames.bind(styles);
+
 export default function Input({ label, data, setData, placeholder, type = 'text', readOnly = false, classname }) {
+    const classes = cx('InputConainer', { [classname]: classname });
     return (
         <>
-            <div className={classname}>
+            <div className={classes}>
                 <label>{label}</label>
                 <input
                     type={type}

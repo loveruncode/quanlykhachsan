@@ -1,0 +1,9 @@
+.InputConainer {
+    input {
+        outline: none;
+        border: 1px solid white;
+    }
+    input:focus {
+        border: 1px solid black;
+    }
+}
