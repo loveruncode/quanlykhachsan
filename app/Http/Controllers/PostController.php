@@ -30,7 +30,12 @@ class PostController extends Controller
     public function index()
     {
         $posts = $this->repository->show();
-       
+
+        foreach ($posts as $key => $value) {
+            $images = explode(',', $value->image);
+            $posts[$key]->images = $images;
+        }
+
         return view('blog.index', compact('posts'));
     }
 

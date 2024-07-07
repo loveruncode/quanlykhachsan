@@ -54,7 +54,10 @@
                                         <td>{!! $post->desc !!}</td>
                                         <td>{{ \App\Enum\NotifyStatus::translate($post->status) }}</td>
                                         <td>
-                                            <img src="{{asset('/storage/'.$post)}}" alt="hinh anh">
+                                            @foreach ($post->images as $image)
+                                                <img src="{{ asset('/storage/' . trim($image)) }}" alt="image"
+                                                    height="50px" width="50px">
+                                            @endforeach
                                         </td>
                                         <td>{{ $post->created_at->format('d-m-Y') }}</td>
                                         <td>
